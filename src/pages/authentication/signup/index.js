@@ -3,7 +3,7 @@ import { SignUpWrapper } from "./styled";
 export const SignUp = () => {
     return (
         <SignUpWrapper>
-            Index Page
+            Sign up page
         </SignUpWrapper>
     )
 }
