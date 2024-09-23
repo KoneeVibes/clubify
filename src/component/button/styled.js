@@ -7,13 +7,13 @@ export const BaseButton = styled.button(({ width, backgroundcolor }) => {
     backgroundColor: backgroundcolor || "#4B95FF",
     border: "none",
     color: "white",
-    borderRadius: "8px",
+    borderRadius: "5px",
     width: width || "-webkit-fill-available",
     padding: "calc(var(--cardPadding)/2) var(--cardPadding)",
     fontSize: "1rem",
     cursor: "pointer",
-    "@media screen and (max-width: 425px)": {
-      width: "-webkit-fill-available",
-    },
+    // "@media screen and (max-width: 425px)": {
+    //   width: "-webkit-fill-available",
+    // },
   };
 });
