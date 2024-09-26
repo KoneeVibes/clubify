@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const EventsWrapper = styled("div")(() => {
+export const FacilitiesWrapper = styled("div")(() => {
     return {
 
     }
