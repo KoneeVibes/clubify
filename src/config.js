@@ -5,37 +5,37 @@ export const sideNavLinks = [
     {
         name: "Dashboard",
         icon: <FontAwesomeIcon icon={faGrip} />,
-        url: ""
+        url: "/dashboard"
     },
     {
         name: "Membership",
         icon: <FontAwesomeIcon icon={faUserPlus} />,
-        url: ""
+        url: "/membership"
     },
     {
         name: "Events",
         icon: <FontAwesomeIcon icon={faCalendarDay} />,
-        url: ""
+        url: "/events"
     },
     {
         name: "Facilities",
         icon: <FontAwesomeIcon icon={faHouse} />,
-        url: ""
+        url: "/facilities"
     },
     {
         name: "Services",
         icon: <FontAwesomeIcon icon={faListUl} />,
-        url: ""
+        url: "/services"
     },
     {
         name: "Billing",
         icon: <FontAwesomeIcon icon={faMoneyCheck} />,
-        url: ""
+        url: "/billing"
     },
     {
         name: "Settings",
         icon: <FontAwesomeIcon icon={faGear} />,
-        url: ""
+        url: "/settings"
     },
 
 ]
