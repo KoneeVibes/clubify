@@ -7,6 +7,9 @@
     --basic-padding: 2rem;
     --basic-margin: 2rem;
     --flex-gap: 2rem;
+    --side-nav-width: 18.3125rem;
+    --calendar-width: 20.8125rem;
+    --top-nav-height: 6.55rem;
   }
 
   * {

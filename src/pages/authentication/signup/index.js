@@ -10,6 +10,7 @@ import { Hrworkplace } from "../../../assets";
 import { SignUpimg } from "../../../assets";
 import { Column } from "../../../components/flex/styled";
 import { Google } from "../../../assets";
+import { SignUpWrapper } from "./styled";
 
 export const SignUp = () => {
     return (

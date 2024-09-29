@@ -79,14 +79,14 @@ export const SignUpWrapper = styled(Row)(() => {
         //     },
         // },
 
-        // "@media screen and (max-width: 425px)": {
-        //     ".reg-form,": {
-        //         padding: "calc(var(--basic-padding) * 1.5)",
-        //     },
-        //     ".reg-image":{
-        //         display: "none",
-        //     },
-        // },
+        "@media screen and (max-width: 425px)": {
+            ".reg-form,": {
+                padding: "calc(var(--basic-padding) * 1.5)",
+            },
+            ".reg-image":{
+                display: "none",
+            },
+        },
     }
 });
 
