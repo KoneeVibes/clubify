@@ -7,6 +7,7 @@ import { Membership } from './containers/membership';
 // import { Facilities } from './containers/facilities';
 // import { Services } from './containers/services';
 // import { Billings } from './containers/billings';
+import { SignIn } from './pages/authentication/signin';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path='/facilities' element={<Facilities />} />
         <Route path='/services' element={<Services />} />
         <Route path='/billings' element={<Billings />} /> */}
+        <Route path='/signin' element={<SignIn />} />
       </Routes>
     </BrowserRouter>
   );

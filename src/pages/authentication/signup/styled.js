@@ -25,7 +25,7 @@ export const SignUpWrapper = styled(Row)(() => {
             textAlign: "center",
             padding: "0 calc(var(--basic-padding)*3)",
         },
-        ".regform-text H3": {
+        ".regform-text H1": {
             color:"#4B95FF",
         },
         "A":{
@@ -48,6 +48,15 @@ export const SignUpWrapper = styled(Row)(() => {
             flexDirection: "column",
 
         },
+        ".user-roles": {
+            display: "flex",
+            justifyContent: "space-around",
+            width: "100%",
+            "BaseFieldSet": {
+                display: "flex", 
+                gap: "0.5rem",
+            },
+          },
 
         ".reg-image>svg": {
            width: "100%",
@@ -56,8 +65,12 @@ export const SignUpWrapper = styled(Row)(() => {
             paddingLeft: " calc(var(--basic-padding)*3)",
         },
         ".google-btn": {
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: 'var(--flex-gap)',
             color: "#000000",
-            border: "1px solid black",
+            border: '1px solid #000',
             borderRadius: "1rem",
             padding: "calc(var(--basic-padding)/2) var(--basic-padding)",
         },
@@ -80,11 +93,14 @@ export const SignUpWrapper = styled(Row)(() => {
         // },
 
         "@media screen and (max-width: 425px)": {
-            ".reg-form,": {
-                padding: "calc(var(--basic-padding) * 1.5)",
-            },
             ".reg-image":{
                 display: "none",
+            },
+            ".regform-img":{
+                display: 'flex',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                gap: 'var(--flex-gap)',
             },
         },
     }
