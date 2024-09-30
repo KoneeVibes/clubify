@@ -1,5 +1,6 @@
 import { faCalendarDay, faGear, faGrip, faHouse, faListUl, faMoneyCheck, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import AdOne from "./assets/adone.svg";
 
 export const sideNavLinks = [
     {
@@ -37,5 +38,27 @@ export const sideNavLinks = [
         icon: <FontAwesomeIcon icon={faGear} />,
         url: "/settings"
     },
+];
 
+export const adverts = [
+    {
+        tag: "World Class Service",
+        bg: AdOne,
+        url: ""
+    },
+    {
+        tag: "World Class Service",
+        bg: AdOne,
+        url: ""
+    },
+    {
+        tag: "World Class Service",
+        bg: AdOne,
+        url: ""
+    },
+    {
+        tag: "World Class Service",
+        bg: AdOne,
+        url: ""
+    },
 ]
