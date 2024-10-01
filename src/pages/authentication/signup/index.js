@@ -7,8 +7,8 @@ import { BaseButton } from "../../../components/button/styled";
 // import { faHouse } from "@fortawesome/free-solid-svg-icons";
 import { CMS } from "../../../assets";
 import { Hrworkplace } from "../../../assets";
-import { SignUpimg } from "../../../assets";
-import { Column } from "../../../components/flex/styled";
+import signupimg from "../../../assets/images/signup.svg";
+import { Column, Row } from "../../../components/flex/styled";
 import { Google } from "../../../assets";
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -38,14 +38,22 @@ export const SignUp = () => {
     return (
         <SignUpWrapper tocolumn={true}>
             <Column className="reg-form">
-                <div className="regform-img">
+                <Row className="regform-title">
                     <CMS />
-                    <div className="regform-text">
-                        <H1>Register</H1>
-                        <P>Your club adventure begins here</P>
-                    </div>
-                </div>
-
+                    {step === 1 && (
+                        <div className="regform-text">
+                            <H1>Register</H1>
+                            <P>Your club adventure begins here</P>
+                        </div>
+                    )}
+                    {step === 2 && (
+                        <div className="regform-text">
+                            <H1>Register</H1>
+                            <P>Your club adventure begins here</P>
+                            {/* Introduce the svg here */}
+                        </div>
+                    )}
+                </Row>
                 <form>
                     {step === 1 && (
                         <Fragment>
@@ -123,7 +131,7 @@ export const SignUp = () => {
                     {step === 2 && (
                         <Fragment>
                             {/* Form for step 2 including the previous and next buttons */}
-                            
+
                             <Label>DOB</Label>
                             <BaseInput
                                 type="date"
@@ -177,7 +185,6 @@ export const SignUp = () => {
                             </SignUpRow>
                         </Fragment>
                     )}
-                    
                     <BaseButton backgroundcolor={"#ffffff"} className="google-btn">
                         <Google />Sign Up with Google
                     </BaseButton>
@@ -189,7 +196,7 @@ export const SignUp = () => {
 
             </Column>
             <div className="reg-image">
-                <SignUpimg />
+                <img src={signupimg} alt="A man taking a selfie" />
             </div>
         </SignUpWrapper>
     )

@@ -3,38 +3,43 @@ import { Row } from "../../../components/flex/styled";
 
 export const SignUpWrapper = styled(Row)(() => {
     return {
-        margin: "calc(var(--basic-margin) * 2) 0",
-        padding: "0 var(--basic-padding)",
-        ".reg-form": {
+        gap: "calc(var(--flex-gap) * 1.5)",
+        "& .reg-form": {
             flex: 1,
-
-            "form": {
+            overflow: "hidden",
+            padding: "calc(var(--basic-padding)) 0 calc(var(--basic-padding) * 2) calc(var(--basic-padding) * 2)",
+            "& form": {
                 display: "flex",
                 flexDirection: "column",
-                padding: "0 calc(var(--basic-padding)*3)",
-                // alignItems: "center",
-                // justifyContent: "center",
                 gap: "calc(var(--flex-gap)/2)",
-
             },
         },
-        ".regform-img": {
-            display: "flex",
+        "& .regform-title": {
+            "& svg": {
+                position: "absolute"
+            }
         },
-        ".regform-text": {
+        "& .regform-text": {
+            marginLeft: "auto",
+            marginRight: "auto"
+        },
+        "& .regform-text h1": {
+            color: "#4B95FF",
             textAlign: "center",
-            padding: "0 calc(var(--basic-padding)*3)",
+            marginBlock: 0,
         },
-        ".regform-text H1": {
-            color:"#4B95FF",
+        "& .regform-text p": {
+            color: "#666666",
+            textAlign: "center",
         },
-        "A":{
-            color: "#000000",  
+        "& a": {
+            color: "#000000",
             textDecoration: "none",
         },
-        
-        ".reg-image": {
+        "& .reg-image": {
             flex: 1,
+            overflow: "hidden",
+            padding: "calc(var(--basic-padding) * 2) calc(var(--basic-padding) * 2) calc(var(--basic-padding) * 2) 0",
         },
         "& .reg-form input": {
             padding: "calc(var(--basic-padding) / 5) calc(var(--basic-padding)/5)",
@@ -46,61 +51,60 @@ export const SignUpWrapper = styled(Row)(() => {
             overflow: "hidden",
             display: "flex",
             flexDirection: "column",
-
+            flex: 1,
         },
-        ".user-roles": {
+        "& .user-roles": {
             display: "flex",
             justifyContent: "space-around",
             width: "100%",
             "BaseFieldSet": {
-                display: "flex", 
+                display: "flex",
                 gap: "0.5rem",
             },
-          },
-
-        ".reg-image>svg": {
-           width: "100%",
         },
-        ".regform-img>svg": {
-            paddingLeft: " calc(var(--basic-padding)*3)",
+        "& .reg-image>img": {
+            objectFit: "cover",
+            width: "100%",
+            height: "100%",
+            borderRadius: "2rem",
         },
-        ".google-btn": {
+        "& .google-btn": {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 'var(--flex-gap)',
+            gap: 'calc(var(--flex-gap)/4)',
+            overflow: "hidden",
             color: "#000000",
             border: '1px solid #000',
             borderRadius: "1rem",
             padding: "calc(var(--basic-padding)/2) var(--basic-padding)",
         },
-        ".sign-in-link": {
+        "& .sign-in-link": {
             textAlign: "center",
+            overflow: "hidden",
         },
-        "@media screen and (max-width: 1280px)": {
-            ".reg-form, .reg-image": {
-                padding: "calc(var(--basic-padding) * 2)",
-            },
+        "@media screen and (min-width: 1440px)": {
+            gap: "calc(var(--flex-gap) * 2)",
         },
-
-        // "@media screen and (max-width: 768px)": {
-        //     ".reg-form,": {
-        //         padding: "calc(var(--basic-padding) * 1.5)",
-        //     },
-        //     ".reg-image":{
-        //         display: "none",
-        //     },
-        // },
-
-        "@media screen and (max-width: 425px)": {
-            ".reg-image":{
+        "@media screen and (max-width: 1024px)": {
+            "& .reg-image": {
                 display: "none",
             },
-            ".regform-img":{
-                display: 'flex',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                gap: 'var(--flex-gap)',
+            "& .reg-form": {
+                padding: "var(--basic-padding)",
+            }
+        },
+        "@media screen and (max-width: 425px)": {
+            "& .regform-title": {
+                flexDirection: "column",
+                overflow: "hidden",
+                "& svg": {
+                    position: "static"
+                }
+            },
+            "& .regform-text": {
+                marginLeft: "unset",
+                marginRight: "unset"
             },
         },
     }
@@ -109,6 +113,7 @@ export const SignUpWrapper = styled(Row)(() => {
 export const SignUpRow = styled(Row)(() => {
     return {
         gap: "calc(var(--flex-gap)*1)",
+        justifyContent: "space-between",
         "@media screen and (max-width: 1280px)": {
             gap: "calc(var(--flex-gap)/1)",
             flexDirection: "column",
