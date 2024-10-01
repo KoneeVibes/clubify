@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { SignInWrapper} from './styled';
 import { H1, P, Label, Span, A } from '../../../components/typography/styled';
 import { BaseInput } from '../../../components/form/input/styled';
@@ -11,6 +12,22 @@ import { Hrworkplace } from '../../../assets';
 
 
 export const SignIn = () => {
+    const [signInDetails, setSignInDetails] = useState({
+        email:"",
+        password:"",
+    });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setSignInDetails((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(signInDetails);
+    }
     return (
         <SignInWrapper tocolumn={true}>
             <Column className="signin-form">
@@ -22,12 +39,14 @@ export const SignIn = () => {
                     </div>
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     <Label>Email</Label>
                     <BaseInput
                         type="email"
                         name="email"
                         placeholder="Enter your email"
+                        value={signInDetails.email}
+                        onChange={(e) => handleChange(e)}
                         required
                     />
                     <Label>Password</Label>
@@ -35,16 +54,20 @@ export const SignIn = () => {
                         type="password"
                         name="password"
                         placeholder="Enter your password"
+                        value={signInDetails.password}
+                        onChange={(e) => handleChange(e)}
                         required
                     />
                     <div className="signin-options">
-                        <label>
+                        <Label>
                             <input type="checkbox" name="remember" />
                             Remember me
-                        </label>
-                        <a href="#">Forgot Password</a>
+                        </Label>
+                        <A href="#">Forgot Password</A>
                     </div>
-                    <BaseButton>Sign In</BaseButton>
+                    <BaseButton>
+                        Sign In
+                    </BaseButton>
                     <BaseButton backgroundcolor={"#ffffff"} className="google-signup">
                         <Google />
                         <Span>Sign In with Google</Span>

@@ -16,7 +16,29 @@ import { useNavigate } from "react-router-dom";
 export const SignUp = () => {
     // update below with form controller
     const navigate = useNavigate();
-    const [formDetails, setFormDetails] = useState();
+    const [formDetails, setFormDetails] = useState({
+        firstname:"",
+        lastname:"",
+        email:"",
+        password:"",
+        repeatpassword:"",
+        member:"",
+        admin:"",
+        staff:"",
+        
+    });
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormDetails((prev) => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(formDetails);
+    }
     const [step, setStep] = useState(1);
 
     const handleClickNext = (e, step) => {
@@ -46,7 +68,7 @@ export const SignUp = () => {
                     </div>
                 </div>
 
-                <form>
+                <form onSubmit={handleSubmit}>
                     {step === 1 && (
                         <Fragment>
                             <SignUpRow>
@@ -55,11 +77,8 @@ export const SignUp = () => {
                                     <BaseInput
                                         type="text"
                                         name="firstname"
-                                        // style= {{
-                                        //     width: "40%",
-                                        // }}
-                                        // value={referForm.firstName}
-                                        // onChange={(e) => handleChange(e)}
+                                        value={formDetails.firstname}
+                                        onChange={(e) => handleChange(e)}
                                         required
                                     />
                                 </BaseFieldSet>
@@ -68,11 +87,8 @@ export const SignUp = () => {
                                     <BaseInput
                                         type="text"
                                         name="lastname"
-                                        // style= {{
-                                        //     width: "40%",
-                                        // }}
-                                        // value={referForm.lastName}
-                                        // onChange={(e) => handleChange(e)}
+                                        value={formDetails.lastname}
+                                        onChange={(e) => handleChange(e)}
                                         required
                                     />
                                 </BaseFieldSet>
@@ -85,32 +101,32 @@ export const SignUp = () => {
                                 style={{
                                     width: "-webkit-fill-available",
                                 }}
-                                // value={referForm.companyEmail}
-                                // onChange={(e) => handleChange(e)}
+                                value={formDetails.email}
+                                onChange={(e) => handleChange(e)}
                                 required
                             />
                             <Label>Password</Label>
                             <BaseInput
                                 type="password"
-                                name=""
+                                name="password"
                                 placeholder=""
                                 style={{
                                     width: "-webkit-fill-available",
                                 }}
-                                // value={referForm.companyEmail}
-                                // onChange={(e) => handleChange(e)}
+                                value={formDetails.password}
+                                onChange={(e) => handleChange(e)}
                                 required
                             />
                             <Label>Repeat Password</Label>
                             <BaseInput
                                 type="password"
-                                name=""
+                                name="repeatpassword"
                                 placeholder=""
                                 style={{
                                     width: "-webkit-fill-available",
                                 }}
-                                // value={referForm.companyEmail}
-                                // onChange={(e) => handleChange(e)}
+                                value={formDetails.repeatpassword}
+                                onChange={(e) => handleChange(e)}
                                 required
                             />
                             <BaseButton
@@ -131,8 +147,8 @@ export const SignUp = () => {
                                 style={{
                                     width: "-webkit-fill-available",
                                 }}
-                                // value={referForm.companyEmail}
-                                // onChange={(e) => handleChange(e)}
+                                value={formDetails.dob}
+                                onChange={(e) => handleChange(e)}
                                 required
                             />
                             <Label>Phone</Label>
@@ -142,23 +158,38 @@ export const SignUp = () => {
                                 style={{
                                     width: "-webkit-fill-available",
                                 }}
-                                // value={referForm.companyEmail}
-                                // onChange={(e) => handleChange(e)}
+                                value={formDetails.phone}
+                                onChange={(e) => handleChange(e)}
                                 required
                             />
                             <Label>Sign up as:</Label>
                             <SignUpRow className="user-roles">
                                 <BaseFieldSet>
-                                    <input type="radio" id="member" name="role" value="Member" />
-                                    <label htmlFor="member">Member</label>
+                                    <input 
+                                        type="radio" 
+                                        name="member" 
+                                        value={formDetails.member}
+                                        onChange={(e) => handleChange(e)}
+                                     />
+                                    <Label htmlFor="member">Member</Label>
                                 </BaseFieldSet>
                                 <BaseFieldSet>
-                                    <input type="radio" id="admin" name="role" value="Admin" />
-                                    <label htmlFor="admin">Admin</label>
+                                    <input 
+                                        type="radio" 
+                                        name="admin"  
+                                        value={formDetails.admin}
+                                        onChange={(e) => handleChange(e)} 
+                                    />
+                                    <Label htmlFor="admin">Admin</Label>
                                 </BaseFieldSet>
                                 <BaseFieldSet>
-                                    <input type="radio" id="staff" name="role" value="Staff" />
-                                    <label htmlFor="staff">Staff</label>
+                                    <input 
+                                        type="radio" 
+                                        name="staff"  
+                                        value={formDetails.staff}
+                                        onChange={(e) => handleChange(e)} 
+                                    />
+                                    <Label htmlFor="staff">Staff</Label>
                                 </BaseFieldSet>
                             </SignUpRow>
 
