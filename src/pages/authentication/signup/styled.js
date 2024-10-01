@@ -53,7 +53,10 @@ export const SignUpWrapper = styled(Row)(() => {
             flexDirection: "column",
             flex: 1,
         },
-        "& .user-roles": {
+        "& .reg-form lable":{
+            color: "#000000",
+        },
+        ".user-roles": {
             display: "flex",
             justifyContent: "space-around",
             width: "100%",
