@@ -16,8 +16,12 @@ export const SignUpWrapper = styled(Row)(() => {
         },
         "& .regform-title": {
             "& svg": {
-                position: "absolute"
-            }
+                position: "absolute",
+            },
+            "& img":{
+                overflow:"hidden",
+                paddingLeft:"7rem",
+            },
         },
         "& .regform-text": {
             marginLeft: "auto",
@@ -47,6 +51,9 @@ export const SignUpWrapper = styled(Row)(() => {
             border: "1px solid black",
             borderRadius: "8px",
         },
+        "&. reg-form label":{
+            color:"#000000",
+        },
         "& .reg-form fieldset": {
             overflow: "hidden",
             display: "flex",
@@ -54,10 +61,10 @@ export const SignUpWrapper = styled(Row)(() => {
             flex: 1,
         },
         "& .user-roles": {
-            display: "flex",
+            // display: "flex",
             justifyContent: "space-around",
             width: "100%",
-            "BaseFieldSet": {
+            "&.fieldSet": {
                 display: "flex",
                 gap: "0.5rem",
             },
@@ -79,9 +86,16 @@ export const SignUpWrapper = styled(Row)(() => {
             borderRadius: "1rem",
             padding: "calc(var(--basic-padding)/2) var(--basic-padding)",
         },
+        "& .signin-button":{
+            overflow: "hidden",
+        },
         "& .sign-in-link": {
             textAlign: "center",
             overflow: "hidden",
+        },
+        "& .userrole-radio":{
+            flexDirection: "row !important",
+            alignItems: "center"
         },
         "@media screen and (min-width: 1440px)": {
             gap: "calc(var(--flex-gap) * 2)",
@@ -106,6 +120,10 @@ export const SignUpWrapper = styled(Row)(() => {
                 marginLeft: "unset",
                 marginRight: "unset"
             },
+            "& .user-roles":{
+            flexDirection: "column !important",
+            alignItems: "flex-start"
+        },
         },
     }
 });

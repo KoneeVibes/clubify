@@ -10,6 +10,7 @@ import { Hrworkplace } from "../../../assets";
 import signupimg from "../../../assets/images/signup.svg";
 import { Column, Row } from "../../../components/flex/styled";
 import { Google } from "../../../assets";
+import  User from "../../../assets/images/User icon.svg";
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -70,13 +71,13 @@ export const SignUp = () => {
                     )}
                     {step === 2 && (
                         <div className="regform-text">
-                            <H1>Register</H1>
+                            <H1>You’re almost done!</H1>
                             <P>Your club adventure begins here</P>
-                            {/* Introduce the svg here */}
+                            <img src={User} alt="A man taking a selfie" />
                         </div>
                     )}
                 </Row>
-                <form>
+                <form> onSubmit={handleSubmit}
                     {step === 1 && (
                         <Fragment>
                             <SignUpRow>
@@ -101,43 +102,50 @@ export const SignUp = () => {
                                     />
                                 </BaseFieldSet>
                             </SignUpRow>
-                            <Label>Email</Label>
-                            <BaseInput
-                                type="email"
-                                name="email"
-                                placeholder="Enter email here"
-                                style={{
-                                    width: "-webkit-fill-available",
-                                }}
-                                value={formDetails.email}
-                                onChange={(e) => handleChange(e)}
-                                required
-                            />
-                            <Label>Password</Label>
-                            <BaseInput
-                                type="password"
-                                name="password"
-                                placeholder=""
-                                style={{
-                                    width: "-webkit-fill-available",
-                                }}
-                                value={formDetails.password}
-                                onChange={(e) => handleChange(e)}
-                                required
-                            />
-                            <Label>Repeat Password</Label>
-                            <BaseInput
-                                type="password"
-                                name="repeatpassword"
-                                placeholder=""
-                                style={{
-                                    width: "-webkit-fill-available",
-                                }}
-                                value={formDetails.repeatpassword}
-                                onChange={(e) => handleChange(e)}
-                                required
-                            />
+                            <BaseFieldSet>
+                                <Label>Email</Label>
+                                <BaseInput
+                                    type="email"
+                                    name="email"
+                                    placeholder="Enter email here"
+                                    style={{
+                                        width: "-webkit-fill-available",
+                                    }}
+                                    value={formDetails.email}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
+                            </BaseFieldSet>
+                            <BaseFieldSet>
+                                <Label>Password</Label>
+                                <BaseInput
+                                    type="password"
+                                    name="password"
+                                    placeholder=""
+                                    style={{
+                                        width: "-webkit-fill-available",
+                                    }}
+                                    value={formDetails.password}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
+                            </BaseFieldSet>
+                            <BaseFieldSet>
+                                <Label>Repeat Password</Label>
+                                <BaseInput
+                                    type="password"
+                                    name="repeatpassword"
+                                    placeholder=""
+                                    style={{
+                                        width: "-webkit-fill-available",
+                                    }}
+                                    value={formDetails.repeatpassword}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
+                            </BaseFieldSet>
                             <BaseButton
+                                className="sign-button"
                                 onClick={(e) => handleClickNext(e, step)}
                             >
                                 Next
@@ -171,37 +179,37 @@ export const SignUp = () => {
                                 required
                             />
                             <Label>Sign up as:</Label>
-                            <SignUpRow className="user-roles">
-                                <BaseFieldSet>
+                            <Row className="user-roles">
+                                <BaseFieldSet className="userrole-radio">
                                     <input 
                                         type="radio" 
                                         name="member" 
                                         value={formDetails.member}
                                         onChange={(e) => handleChange(e)}
                                      />
-                                    <Label htmlFor="member">Member</Label>
+                                    <Label>Member</Label>
                                 </BaseFieldSet>
-                                <BaseFieldSet>
+                                <BaseFieldSet className="userrole-radio">
                                     <input 
                                         type="radio" 
                                         name="admin"  
                                         value={formDetails.admin}
                                         onChange={(e) => handleChange(e)} 
                                     />
-                                    <Label htmlFor="admin">Admin</Label>
+                                    <Label>Admin</Label>
                                 </BaseFieldSet>
-                                <BaseFieldSet>
+                                <BaseFieldSet className="userrole-radio">
                                     <input 
                                         type="radio" 
                                         name="staff"  
                                         value={formDetails.staff}
                                         onChange={(e) => handleChange(e)} 
                                     />
-                                    <Label htmlFor="staff">Staff</Label>
+                                    <Label>Staff</Label>
                                 </BaseFieldSet>
-                            </SignUpRow>
+                            </Row>
 
-                            <SignUpRow>
+                            <SignUpRow className="signin-button">
                                 <BaseButton
                                     onClick={(e) => handleClickPrevious(e, step)}
                                 >

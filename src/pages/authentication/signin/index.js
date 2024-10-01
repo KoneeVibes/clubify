@@ -4,11 +4,12 @@ import { SignInWrapper} from './styled';
 import { H1, P, Label, Span, A } from '../../../components/typography/styled';
 import { BaseInput } from '../../../components/form/input/styled';
 import { BaseButton } from '../../../components/button/styled';
-import { Column } from '../../../components/flex/styled';
+import { Column, Row } from '../../../components/flex/styled';
 import { CMS } from '../../../assets';
 import { Google } from '../../../assets';
-import { Login } from '../../../assets';
+import Login from '../../../assets/images/login.svg';
 import { Hrworkplace } from '../../../assets';
+import { BaseFieldSet } from '../../../components/form/fieldset/styled';
 
 
 export const SignIn = () => {
@@ -31,33 +32,36 @@ export const SignIn = () => {
     return (
         <SignInWrapper tocolumn={true}>
             <Column className="signin-form">
-                <div className="signin-header">
-                    <CMS />
-                    <div className="signin-text">
-                        <H1>Welcome back</H1>
-                        <P>Your club adventure begins here</P>
-                    </div>
-                </div>
-
+                <Row className="signin-header">
+                        <CMS />
+                        <div className="signin-text">
+                            <H1>Welcome back</H1>
+                            <P>Your club adventure begins here</P>
+                        </div>
+                </Row>
                 <form onSubmit={handleSubmit}>
-                    <Label>Email</Label>
-                    <BaseInput
-                        type="email"
-                        name="email"
-                        placeholder="Enter your email"
-                        value={signInDetails.email}
-                        onChange={(e) => handleChange(e)}
-                        required
-                    />
-                    <Label>Password</Label>
-                    <BaseInput
-                        type="password"
-                        name="password"
-                        placeholder="Enter your password"
-                        value={signInDetails.password}
-                        onChange={(e) => handleChange(e)}
-                        required
-                    />
+                    <BaseFieldSet>
+                        <Label>Email</Label>
+                        <BaseInput
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            value={signInDetails.email}
+                            onChange={(e) => handleChange(e)}
+                            required
+                        />
+                    </BaseFieldSet>
+                    <BaseFieldSet>
+                        <Label>Password</Label>
+                        <BaseInput
+                            type="password"
+                            name="password"
+                            placeholder="Enter your password"
+                            value={signInDetails.password}
+                            onChange={(e) => handleChange(e)}
+                            required
+                        />
+                    </BaseFieldSet>
                     <div className="signin-options">
                         <Label>
                             <input type="checkbox" name="remember" />
@@ -65,13 +69,13 @@ export const SignIn = () => {
                         </Label>
                         <A href="#">Forgot Password</A>
                     </div>
-                    <BaseButton>
-                        Sign In
-                    </BaseButton>
-                    <BaseButton backgroundcolor={"#ffffff"} className="google-signup">
-                        <Google />
-                        <Span>Sign In with Google</Span>
-                    </BaseButton>
+                        <BaseButton className='signin-button'>
+                            Sign In
+                        </BaseButton>
+                        <BaseButton backgroundcolor={"#ffffff"} className="google-signup">
+                            <Google />
+                            <Span>Sign In with Google</Span>
+                        </BaseButton>
                     <div className="sign-in-link">
                         <P> Don’t have an account? <A href="/sign-in">Sign In</A></P>
                         <Hrworkplace />
@@ -79,7 +83,7 @@ export const SignIn = () => {
                 </form>
             </Column>
             <div className="signin-image">
-                <Login/>
+                <img src={Login} alt="A girl in a swimsuit" />
             </div>
         </SignInWrapper>
     );

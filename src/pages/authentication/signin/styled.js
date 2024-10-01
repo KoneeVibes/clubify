@@ -3,21 +3,43 @@ import { Row } from '../../../components/flex/styled';
 
 export const SignInWrapper = styled(Row)(() => {
     return {
-        margin: 'var(--basic-margin)',
-        padding: 'var(--basic-padding)',
-        gap: 'var(--flex-gap)',
-        ".signin-form, .signin-image": {
+        gap: "calc(var(--flex-gap) * 1.5)",
+        "& .signin-form": {
             flex: 1,
+            overflow: "hidden",
+            padding: "calc(var(--basic-padding)) 0 calc(var(--basic-padding) * 2) calc(var(--basic-padding) * 2)",
+            "& form": {
+                display: "flex",
+                flexDirection: "column",
+                gap: "calc(var(--flex-gap)/2)",
+            },
         },
-       
-        "form": {
-            display: "flex",
-            flexDirection: "column",
-            padding: "0 calc(var(--basic-padding)*3)",
-                    // alignItems: "center",
-                    // justifyContent: "center",
-            gap: "calc(var(--flex-gap)/2)",
-
+        "& .signin-header": {
+            "& svg": {
+                position: "absolute",
+            }
+        },
+        "& .signin-text": {
+            marginLeft: "auto",
+            marginRight: "auto"
+        },
+        "& .signin-text h1": {
+            color: "#4B95FF",
+            textAlign: "center",
+            marginBlock: 0,
+        },
+        "& .signin-text p": {
+            color: "#666666",
+            textAlign: "center",
+        },
+        "& a": {
+            color: "#000000",
+            textDecoration: "none",
+        },
+        "& .signin-image": {
+            flex: 1,
+            overflow: "hidden",
+            padding: "calc(var(--basic-padding) * 2) calc(var(--basic-padding) * 2) calc(var(--basic-padding) * 2) 0",
         },
         "& .signin-form input": {
             padding: "calc(var(--basic-padding) / 5) calc(var(--basic-padding)/5)",
@@ -25,58 +47,69 @@ export const SignInWrapper = styled(Row)(() => {
             border: "1px solid black",
             borderRadius: "8px",
         },
-        
-        // ".signin-form": {
-        //     display: 'flex',
-        //     flexDirection: 'column',
-        //     justifyContent: 'center',
-        //     alignItems: 'center',
-        //     gap: 'var(--flex-gap)',
-        //     padding: 'var(--flex-gap)',
-        // },
-        ".signin-options": {
+        "& .signin-form fieldset": {
+            overflow: "hidden",
+            display: "flex",
+            flexDirection: "column",
+            flex: 1,
+        },
+        "& .signin-image>img": {
+            objectFit: "cover",
+            width: "100%",
+            height: "100%",
+            borderRadius: "2rem",
+        },
+        "& .signin-options": {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
             paddingBottom:'var(--flex-gap)',
+            overflow:'hidden',
         },
-        ".signin-header": {
-            display: 'flex',
-            justifyContent: 'flex-start',
-            alignItems: 'center',
-            justifyContent: 'center',
-            gap: 'var(--flex-gap)',
+        "&. signin-button":{
+            overflow:"hidden",
         },
-        ".google-signup": {
+        
+        "& .google-signup": {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            gap: 'var(--flex-gap)',
+            gap: 'calc(var(--flex-gap)/4)',
             color: "#000000",
             border: '1px solid #000',
             borderRadius: '20px',
-            
+            overflow: "hidden",
         },
-        ".signin-image": {
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-        },
-        ".sign-in-link": {
+        
+        
+        "& .sign-in-link": {
             textAlign: "center",
+            overflow: "hidden",
         },
-        "A":{
-            color: "#000000",  
-            textDecoration: "none",
-            gap: 'var(--flex-gap)',
-        },
-        "H1":{
-            color:"#4B95FF",
+       "@media screen and (min-width: 1440px)": {
+            gap: "calc(var(--flex-gap) * 2)",
         },
         "@media screen and (max-width: 1024px)": {
-            ".signin-image":{
+            "& .signin-image": {
                 display: "none",
-            }
-        }
+            },
+            "& .signin-form": {
+                padding: "var(--basic-padding)",
+            },
+        },
+        "@media screen and (max-width: 425px)": {
+            "& .signin-header": {
+                flexDirection: "column",
+                overflow: "hidden",
+                "& svg": {
+                    position: "static"
+                }
+            },
+            "& .signin-text": {
+                marginLeft: "unset",
+                marginRight: "unset"
+            },
+        },
+
     };
 });
