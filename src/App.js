@@ -20,7 +20,7 @@ function App() {
         <Route path='/events' element={<Events />} />
         <Route path='/facilities' element={<Facilities />} />
         <Route path='/services' element={<Services />} />
-        <Route path='/billings' element={<Billings />} />
+        <Route path='/billing' element={<Billing />} />
       </Routes>
     </BrowserRouter>
   );
