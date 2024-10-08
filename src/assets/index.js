@@ -5,3 +5,5 @@ export { ReactComponent as Hrworkplace} from "./images/hrworkplacePlusFooter .sv
 export { ReactComponent as Login} from "./images/login.svg";
 export { ReactComponent as User} from "./images/User icon.svg";
 export { ReactComponent as Logo } from "./logo.svg";
+export { ReactComponent as Banner } from "./banner.svg";
+export { ReactComponent as ProfileIcon } from "./profileicon.svg";

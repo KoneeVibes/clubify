@@ -8,16 +8,13 @@ import { Context } from "../../../context";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { BaseButton } from "../../button/styled";
+import { useNavigate } from "react-router-dom";
 
 export const SideNavigation = () => {
+    const navigate = useNavigate();
     const sideNavigationRef = useRef(null);
     const { isSideNavigationOpen, setIsSideNavigationOpen } = useContext(Context);
     useEffect(() => {
-        // if (open) {
-        //     document.body.style.overflow = "hidden";
-        // } else {
-        //     document.body.style.overflow = "auto";
-        // }
         const handleClickOutside = (e) => {
             if (isSideNavigationOpen && sideNavigationRef.current && !sideNavigationRef.current.contains(e.target)) {
                 setIsSideNavigationOpen(false);
@@ -25,7 +22,6 @@ export const SideNavigation = () => {
         };
         window.addEventListener("click", handleClickOutside);
         return () => {
-            document.body.style.overflow = "auto";
             window.removeEventListener("click", handleClickOutside);
         };
     }, [isSideNavigationOpen, setIsSideNavigationOpen]);
@@ -60,6 +56,7 @@ export const SideNavigation = () => {
                         <Row
                             key={index}
                             className="nav-link"
+                            onClick={() => navigate(sideNavLinks.url)}
                         >
                             <Fragment>{sideNavLinks.icon}</Fragment>
                             <P>{sideNavLinks.name}</P>
