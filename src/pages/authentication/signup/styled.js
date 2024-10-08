@@ -122,7 +122,7 @@ export const SignUpWrapper = styled(Row)(() => {
             },
             "& .user-roles":{
             flexDirection: "column !important",
-            alignItems: "flex-start"
+            alignItems: "flexstart",
         },
         },
     }
