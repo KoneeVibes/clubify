@@ -13,6 +13,7 @@ import { Google } from "../../../assets";
 import User from "../../../assets/images/User icon.svg";
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { authenticateUser } from "../../../utils/apis/authUser";
 
 export const SignUp = () => {
     // update below with form controller
@@ -36,15 +37,28 @@ export const SignUp = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formDetails);
+        try {
+            const response = await authenticateUser("register", formDetails);
+            if (response.status === "success") {
+                // cookies.set("TOKEN", response.token, {
+                //     path: "/",
+                // })
+            } else {
+                // setIsLoading(false);
+                // setError('Authentication failed. Please check your credentials and try again.');
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
     }
     const [step, setStep] = useState(1);
 
-    const handleClickNext = (e, step) => {
+    const handleClickNext = async (e, step) => {
         if (step === 2) {
-            // submitting signup form.
+            await handleSubmit();
             return navigate("/signin");
         };
         setStep((prev) => {
