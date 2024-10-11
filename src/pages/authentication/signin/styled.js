@@ -36,6 +36,9 @@ export const SignInWrapper = styled(Row)(() => {
             color: "#000000",
             textDecoration: "none",
         },
+        "& .remember-label": {
+            fontSize: "18px",
+        },
         "& .signin-image": {
             flex: 1,
             overflow: "hidden",
@@ -63,13 +66,12 @@ export const SignInWrapper = styled(Row)(() => {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            paddingBottom:'var(--flex-gap)',
-            overflow:'hidden',
+            paddingBottom: 'var(--flex-gap)',
+            overflow: 'hidden',
         },
-        "&. signin-button":{
-            overflow:"hidden",
+        "&. signin-button": {
+            overflow: "hidden",
         },
-        
         "& .google-signup": {
             display: 'flex',
             alignItems: 'center',
@@ -80,13 +82,15 @@ export const SignInWrapper = styled(Row)(() => {
             borderRadius: '20px',
             overflow: "hidden",
         },
-        
-        
+        "& .button-column": {
+            gap: "calc(var(--flex-gap)/2)",
+            overflow: "hidden",
+        },
         "& .sign-in-link": {
             textAlign: "center",
             overflow: "hidden",
         },
-       "@media screen and (min-width: 1440px)": {
+        "@media screen and (min-width: 1440px)": {
             gap: "calc(var(--flex-gap) * 2)",
         },
         "@media screen and (max-width: 1024px)": {

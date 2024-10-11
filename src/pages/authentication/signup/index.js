@@ -10,7 +10,7 @@ import { Hrworkplace } from "../../../assets";
 import signupimg from "../../../assets/images/signup.svg";
 import { Column, Row } from "../../../components/flex/styled";
 import { Google } from "../../../assets";
-import  User from "../../../assets/images/User icon.svg";
+import User from "../../../assets/images/User icon.svg";
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -18,15 +18,15 @@ export const SignUp = () => {
     // update below with form controller
     const navigate = useNavigate();
     const [formDetails, setFormDetails] = useState({
-        firstname:"",
-        lastname:"",
-        email:"",
-        password:"",
-        repeatpassword:"",
-        member:"",
-        admin:"",
-        staff:"",
-        
+        firstname: "",
+        lastname: "",
+        email: "",
+        password: "",
+        repeatpassword: "",
+        member: "",
+        admin: "",
+        staff: "",
+
     });
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -77,7 +77,10 @@ export const SignUp = () => {
                         </div>
                     )}
                 </Row>
-                <form> onSubmit={handleSubmit}
+                <form
+                    onSubmit={handleSubmit}
+                    style={{ overflow: "hidden" }}
+                >
                     {step === 1 && (
                         <Fragment>
                             <SignUpRow>
@@ -144,18 +147,19 @@ export const SignUp = () => {
                                     required
                                 />
                             </BaseFieldSet>
-                            <BaseButton
-                                className="sign-button"
-                                onClick={(e) => handleClickNext(e, step)}
-                            >
-                                Next
-                            </BaseButton>
+                            <div className="button-box">
+                                <BaseButton
+                                    className="sign-button"
+                                    onClick={(e) => handleClickNext(e, step)}
+                                >
+                                    Next
+                                </BaseButton>
+                            </div>
                         </Fragment>
                     )}
                     {step === 2 && (
                         <Fragment>
                             {/* Form for step 2 including the previous and next buttons */}
-
                             <Label>DOB</Label>
                             <BaseInput
                                 type="date"
@@ -181,29 +185,29 @@ export const SignUp = () => {
                             <Label>Sign up as:</Label>
                             <Row className="user-roles">
                                 <BaseFieldSet className="userrole-radio">
-                                    <input 
-                                        type="radio" 
-                                        name="member" 
+                                    <input
+                                        type="radio"
+                                        name="member"
                                         value={formDetails.member}
                                         onChange={(e) => handleChange(e)}
-                                     />
+                                    />
                                     <Label>Member</Label>
                                 </BaseFieldSet>
                                 <BaseFieldSet className="userrole-radio">
-                                    <input 
-                                        type="radio" 
-                                        name="admin"  
+                                    <input
+                                        type="radio"
+                                        name="admin"
                                         value={formDetails.admin}
-                                        onChange={(e) => handleChange(e)} 
+                                        onChange={(e) => handleChange(e)}
                                     />
                                     <Label>Admin</Label>
                                 </BaseFieldSet>
                                 <BaseFieldSet className="userrole-radio">
-                                    <input 
-                                        type="radio" 
-                                        name="staff"  
+                                    <input
+                                        type="radio"
+                                        name="staff"
                                         value={formDetails.staff}
-                                        onChange={(e) => handleChange(e)} 
+                                        onChange={(e) => handleChange(e)}
                                     />
                                     <Label>Staff</Label>
                                 </BaseFieldSet>
@@ -224,9 +228,11 @@ export const SignUp = () => {
                             </SignUpRow>
                         </Fragment>
                     )}
-                    <BaseButton backgroundcolor={"#ffffff"} className="google-btn">
-                        <Google />Sign Up with Google
-                    </BaseButton>
+                    <div className="button-box">
+                        <BaseButton backgroundcolor={"#ffffff"} className="google-btn">
+                            <Google />Sign Up with Google
+                        </BaseButton>
+                    </div>
                     <div className="sign-in-link">
                         <P>Already have an account? <A href="/sign-in">Sign In</A></P>
                         <Hrworkplace />

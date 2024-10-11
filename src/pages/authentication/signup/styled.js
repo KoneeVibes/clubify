@@ -18,9 +18,9 @@ export const SignUpWrapper = styled(Row)(() => {
             "& svg": {
                 position: "absolute",
             },
-            "& img":{
-                overflow:"hidden",
-                paddingLeft:"7rem",
+            "& img": {
+                overflow: "hidden",
+                paddingLeft: "7rem",
             },
         },
         "& .regform-text": {
@@ -51,8 +51,8 @@ export const SignUpWrapper = styled(Row)(() => {
             border: "1px solid black",
             borderRadius: "8px",
         },
-        "&. reg-form label":{
-            color:"#000000",
+        "&. reg-form label": {
+            color: "#000000",
         },
         "& .reg-form fieldset": {
             overflow: "hidden",
@@ -61,7 +61,7 @@ export const SignUpWrapper = styled(Row)(() => {
             flex: 1,
         },
         "& .user-roles": {
-            // display: "flex",
+            overflow: "hidden",
             justifyContent: "space-around",
             width: "100%",
             "&.fieldSet": {
@@ -75,6 +75,9 @@ export const SignUpWrapper = styled(Row)(() => {
             height: "100%",
             borderRadius: "2rem",
         },
+        "& .button-box": {
+            overflow: "hidden",
+        },
         "& .google-btn": {
             display: 'flex',
             alignItems: 'center',
@@ -86,14 +89,14 @@ export const SignUpWrapper = styled(Row)(() => {
             borderRadius: "1rem",
             padding: "calc(var(--basic-padding)/2) var(--basic-padding)",
         },
-        "& .signin-button":{
+        "& .signin-button": {
             overflow: "hidden",
         },
         "& .sign-in-link": {
             textAlign: "center",
             overflow: "hidden",
         },
-        "& .userrole-radio":{
+        "& .userrole-radio": {
             flexDirection: "row !important",
             alignItems: "center"
         },
@@ -120,10 +123,10 @@ export const SignUpWrapper = styled(Row)(() => {
                 marginLeft: "unset",
                 marginRight: "unset"
             },
-            "& .user-roles":{
-            flexDirection: "column !important",
-            alignItems: "flexstart",
-        },
+            "& .user-roles": {
+                flexDirection: "column !important",
+                alignItems: "flex-start"
+            },
         },
     }
 });
