@@ -16,18 +16,21 @@ import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../../utils/apis/authUser";
 
 export const SignUp = () => {
-    // update below with form controller
     const navigate = useNavigate();
+    const [step, setStep] = useState(1);
     const [formDetails, setFormDetails] = useState({
         firstname: "",
         lastname: "",
         email: "",
         password: "",
-        repeatpassword: "",
-        member: "",
-        admin: "",
-        staff: "",
-
+        dob: "",
+        gender: "male",
+        phone: "",
+        displayPicture: "http://bit.ju/fChGFao3f29gOzzFKuQ0aCvr_h",
+        // repeatpassword: "",
+        // member: "",
+        // admin: "",
+        // staff: "",
     });
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,42 +39,36 @@ export const SignUp = () => {
             [name]: value
         }));
     };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(formDetails);
         try {
             const response = await authenticateUser("register", formDetails);
-            if (response.status === "success") {
-                // cookies.set("TOKEN", response.token, {
-                //     path: "/",
-                // })
+            if (response.status) {
+                navigate("/signin");
             } else {
                 // setIsLoading(false);
                 // setError('Authentication failed. Please check your credentials and try again.');
+                console.log("The api call failed");
             }
         } catch (error) {
             console.error('Login failed:', error);
         }
     }
-    const [step, setStep] = useState(1);
-
     const handleClickNext = async (e, step) => {
         if (step === 2) {
-            await handleSubmit();
-            return navigate("/signin");
+            await handleSubmit(e);
         };
         setStep((prev) => {
             return prev + 1;
         });
     };
-
     const handleClickPrevious = () => {
         setStep((prev) => {
             return prev - 1;
         })
     };
-
+    
     return (
         <SignUpWrapper tocolumn={true}>
             <Column className="reg-form">
@@ -92,7 +89,6 @@ export const SignUp = () => {
                     )}
                 </Row>
                 <form
-                    onSubmit={handleSubmit}
                     style={{ overflow: "hidden" }}
                 >
                     {step === 1 && (
@@ -147,7 +143,7 @@ export const SignUp = () => {
                                     required
                                 />
                             </BaseFieldSet>
-                            <BaseFieldSet>
+                            {/* <BaseFieldSet>
                                 <Label>Repeat Password</Label>
                                 <BaseInput
                                     type="password"
@@ -160,7 +156,7 @@ export const SignUp = () => {
                                     onChange={(e) => handleChange(e)}
                                     required
                                 />
-                            </BaseFieldSet>
+                            </BaseFieldSet> */}
                             <div className="button-box">
                                 <BaseButton
                                     className="sign-button"
@@ -197,7 +193,7 @@ export const SignUp = () => {
                                 required
                             />
                             <Label>Sign up as:</Label>
-                            <Row className="user-roles">
+                            {/* <Row className="user-roles">
                                 <BaseFieldSet className="userrole-radio">
                                     <input
                                         type="radio"
@@ -225,8 +221,7 @@ export const SignUp = () => {
                                     />
                                     <Label>Staff</Label>
                                 </BaseFieldSet>
-                            </Row>
-
+                            </Row> */}
                             <SignUpRow className="signin-button">
                                 <BaseButton
                                     onClick={(e) => handleClickPrevious(e, step)}
@@ -252,7 +247,6 @@ export const SignUp = () => {
                         <Hrworkplace />
                     </div>
                 </form>
-
             </Column>
             <div className="reg-image">
                 <img src={signupimg} alt="A man taking a selfie" />

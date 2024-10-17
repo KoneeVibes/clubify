@@ -2,6 +2,7 @@ import { BASE_ENDPOINT } from "../endpoint";
 
 export const authenticateUser = async (action, authDetails) => {
     try {
+        console.log(BASE_ENDPOINT);
         const response = await fetch(`${BASE_ENDPOINT}/auth/${action}`, {
             method: 'POST',
             headers: {
