@@ -10,7 +10,7 @@ import { Google } from '../../../assets';
 import Login from '../../../assets/images/login.svg';
 import { Hrworkplace } from '../../../assets';
 import { BaseFieldSet } from '../../../components/form/fieldset/styled';
-
+import { signinUser } from '../../../utils/apis/signinUser';
 
 export const SignIn = () => {
     const [signInDetails, setSignInDetails] = useState({
@@ -28,6 +28,20 @@ export const SignIn = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(signInDetails);
+        try {
+            const response = await signinUser("register", signInDetails);
+            if (response.status === "true") {
+                // cookies.set("TOKEN", response.token, {
+                //     path: "/",
+                // })
+                navigate("/dashboard");
+            } else {
+                // setIsLoading(false);
+                // setError('Authentication failed. Please check your credentials and try again.');
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
     }
     return (
         <SignInWrapper tocolumn={true}>

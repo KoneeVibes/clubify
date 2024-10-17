@@ -42,10 +42,11 @@ export const SignUp = () => {
         console.log(formDetails);
         try {
             const response = await authenticateUser("register", formDetails);
-            if (response.status === "success") {
+            if (response.status === "true") {
                 // cookies.set("TOKEN", response.token, {
                 //     path: "/",
                 // })
+                navigate("/signin");
             } else {
                 // setIsLoading(false);
                 // setError('Authentication failed. Please check your credentials and try again.');
