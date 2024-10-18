@@ -10,9 +10,11 @@ import { Google } from '../../../assets';
 import Login from '../../../assets/images/login.svg';
 import { Hrworkplace } from '../../../assets';
 import { BaseFieldSet } from '../../../components/form/fieldset/styled';
-
+import { authenticateUser } from '../../../utils/apis/authUser';
+import { useNavigate } from "react-router-dom";
 
 export const SignIn = () => {
+    const navigate = useNavigate();
     const [signInDetails, setSignInDetails] = useState({
         email: "",
         password: "",
@@ -25,9 +27,21 @@ export const SignIn = () => {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(signInDetails);
+        try {
+            const response = await authenticateUser("login", signInDetails);
+            if (response.status) {
+                navigate("/dashboard");
+            } else {
+                // setIsLoading(false);
+                // setError('Authentication failed. Please check your credentials and try again.');
+                console.log("The api call failed");
+            }
+        } catch (error) {
+            console.error('Login failed:', error);
+        }
     }
     return (
         <SignInWrapper tocolumn={true}>
