@@ -243,7 +243,7 @@ export const SignUp = () => {
                         </BaseButton>
                     </div>
                     <div className="sign-in-link">
-                        <P>Already have an account? <A href="/sign-in">Sign In</A></P>
+                        <P>Already have an account? <A href="/signin">Sign In</A></P>
                         <Hrworkplace />
                     </div>
                 </form>

@@ -1,9 +1,9 @@
-import { Calendar } from "../../components/calendar";
+import { Calendar } from "../calendar";
 import { SideNavigation } from "../../components/navigation/sidenavigation";
 import { TopNavigation } from "../../components/navigation/topnavigation";
 import { LayoutWrapper, MainAreaWrapper } from "./styled";
 
-export const Layout = ({ children, title, subTitle }) => {
+export const Layout = ({ children, title, subTitle, fullName, plan }) => {
     return (
         <LayoutWrapper>
             <SideNavigation />
@@ -14,7 +14,10 @@ export const Layout = ({ children, title, subTitle }) => {
             <MainAreaWrapper>
                 {children}
             </MainAreaWrapper>
-            <Calendar />
+            <Calendar
+                fullName={fullName}
+                plan={plan}
+            />
         </LayoutWrapper>
     )
 }

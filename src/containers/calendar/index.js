@@ -1,10 +1,10 @@
 import { ProfileIcon } from "../../assets";
-import { BaseButton } from "../button/styled";
-import { Column } from "../flex/styled";
-import { A, H3, Span } from "../typography/styled";
+import { BaseButton } from "../../components/button/styled";
+import { Column } from "../../components/flex/styled";
+import { A, H3, Span } from "../../components/typography/styled";
 import { CalendarWrapper } from "./styled";
 
-export const Calendar = () => {
+export const Calendar = ({ fullName, plan }) => {
     return (
         <CalendarWrapper>
             <div
@@ -25,14 +25,14 @@ export const Calendar = () => {
                         <ProfileIcon />
                     </div>
                     <Column className="user-details">
-                        <H3>Adewale Sarah</H3>
+                        <H3>{fullName}</H3>
                         <A>Update Profile</A>
                         <div>
                             <BaseButton
                                 backgroundcolor={"#3C1985"}
                                 className="membership-button"
                             >
-                                <Span>Gold</Span>
+                                <Span>{plan}</Span>
                                 <Span>Member</Span>
                             </BaseButton>
                         </div>

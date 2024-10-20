@@ -12,13 +12,16 @@ import { Hrworkplace } from '../../../assets';
 import { BaseFieldSet } from '../../../components/form/fieldset/styled';
 import { authenticateUser } from '../../../utils/apis/authUser';
 import { useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
 
 export const SignIn = () => {
+    const cookies = new Cookies();
     const navigate = useNavigate();
     const [signInDetails, setSignInDetails] = useState({
         email: "",
         password: "",
     });
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignInDetails((prev) => ({
@@ -34,15 +37,20 @@ export const SignIn = () => {
             const response = await authenticateUser("login", signInDetails);
             if (response.status) {
                 navigate("/dashboard");
+                cookies.set("token", response.data, {
+                    path: "/",
+                    maxAge: 1000000,
+                })
             } else {
                 // setIsLoading(false);
                 // setError('Authentication failed. Please check your credentials and try again.');
-                console.log("The api call failed");
+                console.log("Authentication failed. Please check your credentials and try again.");
             }
         } catch (error) {
             console.error('Login failed:', error);
         }
     }
+
     return (
         <SignInWrapper tocolumn={true}>
             <Column className="signin-form">

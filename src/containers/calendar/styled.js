@@ -29,6 +29,7 @@ export const CalendarWrapper = styled("div")(() => {
                     color: "#FFC00E",
                     fontWeight: 600,
                     fontSize: "15px",
+                    textTransform: "capitalize",
                 },
                 "& span:nth-child(2)": {
                     color: "#FFFFFF",
