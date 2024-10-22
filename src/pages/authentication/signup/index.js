@@ -18,6 +18,7 @@ import { authenticateUser } from "../../../utils/apis/authUser";
 export const SignUp = () => {
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
+    const [isSignedUpAsMember, setIsSignedUpAsMember] = useState(true);
     const [formDetails, setFormDetails] = useState({
         firstname: "",
         lastname: "",
@@ -26,24 +27,37 @@ export const SignUp = () => {
         dob: "",
         gender: "male",
         phone: "",
+        address: "",
         displayPicture: "http://bit.ju/fChGFao3f29gOzzFKuQ0aCvr_h",
-        // repeatpassword: "",
-        // member: "",
-        // admin: "",
-        // staff: "",
+        role: "member",
     });
     const handleChange = (e) => {
         const { name, value } = e.target;
+        if (name === "role") {
+            if (value === "member") {
+                setIsSignedUpAsMember(true);
+            } else {
+                setIsSignedUpAsMember(false);
+            };
+        };
         setFormDetails((prev) => ({
             ...prev,
-            [name]: value
+            [name]: value,
         }));
     };
     const handleSubmit = async (e) => {
+        let payload;
         e.preventDefault();
-        console.log(formDetails);
+        if (isSignedUpAsMember) {
+            const { role, address, ...rest } = formDetails;
+            payload = { ...rest };
+        } else {
+            const { displayPicture, ...rest } = formDetails;
+            payload = { ...rest };
+        }
+        console.log(payload);
         try {
-            const response = await authenticateUser("register", formDetails);
+            const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", formDetails);
             if (response.status) {
                 navigate("/signin");
             } else {
@@ -54,10 +68,10 @@ export const SignUp = () => {
         } catch (error) {
             console.error('Login failed:', error);
         }
-    }
+    };
     const handleClickNext = async (e, step) => {
         if (step === 2) {
-            await handleSubmit(e);
+            return await handleSubmit(e);
         };
         setStep((prev) => {
             return prev + 1;
@@ -68,7 +82,7 @@ export const SignUp = () => {
             return prev - 1;
         })
     };
-    
+
     return (
         <SignUpWrapper tocolumn={true}>
             <Column className="reg-form">
@@ -99,6 +113,7 @@ export const SignUp = () => {
                                     <BaseInput
                                         type="text"
                                         name="firstname"
+                                        placeholder="Enter your first name"
                                         value={formDetails.firstname}
                                         onChange={(e) => handleChange(e)}
                                         required
@@ -109,6 +124,7 @@ export const SignUp = () => {
                                     <BaseInput
                                         type="text"
                                         name="lastname"
+                                        placeholder="Enter your last name"
                                         value={formDetails.lastname}
                                         onChange={(e) => handleChange(e)}
                                         required
@@ -120,10 +136,7 @@ export const SignUp = () => {
                                 <BaseInput
                                     type="email"
                                     name="email"
-                                    placeholder="Enter email here"
-                                    style={{
-                                        width: "-webkit-fill-available",
-                                    }}
+                                    placeholder="Enter your email"
                                     value={formDetails.email}
                                     onChange={(e) => handleChange(e)}
                                     required
@@ -134,29 +147,12 @@ export const SignUp = () => {
                                 <BaseInput
                                     type="password"
                                     name="password"
-                                    placeholder=""
-                                    style={{
-                                        width: "-webkit-fill-available",
-                                    }}
+                                    placeholder="Enter a Password"
                                     value={formDetails.password}
                                     onChange={(e) => handleChange(e)}
                                     required
                                 />
                             </BaseFieldSet>
-                            {/* <BaseFieldSet>
-                                <Label>Repeat Password</Label>
-                                <BaseInput
-                                    type="password"
-                                    name="repeatpassword"
-                                    placeholder=""
-                                    style={{
-                                        width: "-webkit-fill-available",
-                                    }}
-                                    value={formDetails.repeatpassword}
-                                    onChange={(e) => handleChange(e)}
-                                    required
-                                />
-                            </BaseFieldSet> */}
                             <div className="button-box">
                                 <BaseButton
                                     className="sign-button"
@@ -170,65 +166,76 @@ export const SignUp = () => {
                     {step === 2 && (
                         <Fragment>
                             {/* Form for step 2 including the previous and next buttons */}
-                            <Label>DOB</Label>
-                            <BaseInput
-                                type="date"
-                                name="dob"
-                                style={{
-                                    width: "-webkit-fill-available",
-                                }}
-                                value={formDetails.dob}
-                                onChange={(e) => handleChange(e)}
-                                required
-                            />
-                            <Label>Phone</Label>
-                            <BaseInput
-                                type="tel"
-                                name="phone"
-                                style={{
-                                    width: "-webkit-fill-available",
-                                }}
-                                value={formDetails.phone}
-                                onChange={(e) => handleChange(e)}
-                                required
-                            />
+                            <BaseFieldSet>
+                                <Label>Address</Label>
+                                <BaseInput
+                                    name="address"
+                                    placeholder="Enter your address"
+                                    value={formDetails.address}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
+                            </BaseFieldSet>
+                            <BaseFieldSet>
+                                <Label>DOB</Label>
+                                <BaseInput
+                                    type="date"
+                                    name="dob"
+                                    value={formDetails.dob}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
+                            </BaseFieldSet>
+                            <BaseFieldSet>
+                                <Label>Phone</Label>
+                                <BaseInput
+                                    type="tel"
+                                    name="phone"
+                                    placeholder="Enter your phone number"
+                                    value={formDetails.phone}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
+                            </BaseFieldSet>
                             <Label>Sign up as:</Label>
-                            {/* <Row className="user-roles">
+                            <Row className="user-roles">
                                 <BaseFieldSet className="userrole-radio">
-                                    <input
+                                    <BaseInput
                                         type="radio"
-                                        name="member"
-                                        value={formDetails.member}
+                                        name="role"
+                                        value={"member"}
+                                        checked={formDetails.role === "member"}
                                         onChange={(e) => handleChange(e)}
                                     />
                                     <Label>Member</Label>
                                 </BaseFieldSet>
                                 <BaseFieldSet className="userrole-radio">
-                                    <input
+                                    <BaseInput
                                         type="radio"
-                                        name="admin"
-                                        value={formDetails.admin}
+                                        name="role"
+                                        value={"admin"}
+                                        checked={formDetails.role === "admin"}
                                         onChange={(e) => handleChange(e)}
                                     />
                                     <Label>Admin</Label>
                                 </BaseFieldSet>
                                 <BaseFieldSet className="userrole-radio">
-                                    <input
+                                    <BaseInput
                                         type="radio"
-                                        name="staff"
-                                        value={formDetails.staff}
+                                        name="role"
+                                        value={"staff"}
+                                        checked={formDetails.role === "staff"}
                                         onChange={(e) => handleChange(e)}
                                     />
                                     <Label>Staff</Label>
                                 </BaseFieldSet>
-                            </Row> */}
+                            </Row>
                             <SignUpRow className="signin-button">
                                 <BaseButton
                                     onClick={(e) => handleClickPrevious(e, step)}
                                 >
                                     Previous
                                 </BaseButton>
-
                                 <BaseButton
                                     onClick={(e) => handleClickNext(e, step)}
                                 >
