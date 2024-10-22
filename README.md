@@ -1,2 +1,2 @@
 # clubify
-Club management system
+Club Manaement System

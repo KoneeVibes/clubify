@@ -21,7 +21,7 @@ function App() {
         <Route path='/billing' element={<Billing />} />
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
 export default App;
