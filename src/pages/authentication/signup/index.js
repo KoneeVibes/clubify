@@ -14,6 +14,7 @@ import User from "../../../assets/images/User icon.svg";
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../../utils/apis/authUser";
+import { DotLoader } from "react-spinners";
 
 export const SignUp = () => {
     const navigate = useNavigate();
@@ -31,6 +32,8 @@ export const SignUp = () => {
         displayPicture: "http://bit.ju/fChGFao3f29gOzzFKuQ0aCvr_h",
         role: "member",
     });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === "role") {
@@ -56,16 +59,21 @@ export const SignUp = () => {
             payload = { ...rest };
         }
         console.log(payload);
+        setError(null);
+        setLoading(true);
         try {
-            const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", formDetails);
+            const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", payload);
             if (response.status) {
+                setLoading(false);
                 navigate("/signin");
             } else {
-                // setIsLoading(false);
-                // setError('Authentication failed. Please check your credentials and try again.');
+                setLoading(false);
+                setError('Authentication failed. Please check your credentials and try again.');
                 console.log("The api call failed");
             }
         } catch (error) {
+            setLoading(false);
+            setError(`Login failed. ${error.message}`);
             console.error('Login failed:', error);
         }
     };
@@ -239,7 +247,14 @@ export const SignUp = () => {
                                 <BaseButton
                                     onClick={(e) => handleClickNext(e, step)}
                                 >
-                                    Sign up
+                                    {loading ?
+                                        <DotLoader
+                                            size={20}
+                                            color="white"
+                                            className='dotLoader'
+                                        />
+                                        : "Sign up"
+                                    }
                                 </BaseButton>
                             </SignUpRow>
                         </Fragment>
@@ -249,6 +264,7 @@ export const SignUp = () => {
                             <Google />Sign Up with Google
                         </BaseButton>
                     </div>
+                    {error && <P style={{ color: 'red' }}>{error}</P>}
                     <div className="sign-in-link">
                         <P>Already have an account? <A href="/signin">Sign In</A></P>
                         <Hrworkplace />
