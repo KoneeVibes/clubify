@@ -12,6 +12,7 @@ import { Hrworkplace } from '../../../assets';
 import { BaseFieldSet } from '../../../components/form/fieldset/styled';
 import { authenticateUser } from '../../../utils/apis/authUser';
 import { useNavigate } from "react-router-dom";
+import { DotLoader } from "react-spinners";
 import Cookies from 'universal-cookie';
 
 export const SignIn = () => {
@@ -21,6 +22,8 @@ export const SignIn = () => {
         email: "",
         password: "",
     });
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,20 +36,25 @@ export const SignIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(signInDetails);
+        setLoading(true);
+        setError(null);
         try {
             const response = await authenticateUser("login", signInDetails);
             if (response.status) {
+                setLoading(false);
                 navigate("/dashboard");
                 cookies.set("token", response.data, {
                     path: "/",
                     maxAge: 1000000,
                 })
             } else {
-                // setIsLoading(false);
-                // setError('Authentication failed. Please check your credentials and try again.');
+                setLoading(false);
+                setError('Authentication failed. Please check your credentials and try again.');
                 console.log("Authentication failed. Please check your credentials and try again.");
             }
         } catch (error) {
+            setLoading(false);
+            setError(`Login failed. ${error.message}`);
             console.error('Login failed:', error);
         }
     }
@@ -92,16 +100,27 @@ export const SignIn = () => {
                         <A href="#">Forgot Password</A>
                     </div>
                     <Column className='button-column'>
-                        <BaseButton className='signin-button'>
-                            Sign In
+                        <BaseButton
+                            type='submit'
+                            className='signin-button'
+                        >
+                            {loading ?
+                                <DotLoader
+                                    size={20}
+                                    color="white"
+                                    className='dotLoader'
+                                />
+                                : "Sign In"
+                            }
                         </BaseButton>
                         <BaseButton backgroundcolor={"#ffffff"} className="google-signup">
                             <Google />
                             <Span>Sign In with Google</Span>
                         </BaseButton>
                     </Column>
+                    {error && <P style={{ color: 'red' }}>{error}</P>}
                     <div className="sign-in-link">
-                        <P> Don’t have an account? <A href="/sign-in">Sign In</A></P>
+                        <P> Don’t have an account? <A href="/">Sign Up</A></P>
                         <Hrworkplace />
                     </div>
                 </form>
