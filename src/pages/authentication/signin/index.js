@@ -12,6 +12,7 @@ import { Hrworkplace } from '../../../assets';
 import { BaseFieldSet } from '../../../components/form/fieldset/styled';
 import { authenticateUser } from '../../../utils/apis/authUser';
 import { useNavigate } from "react-router-dom";
+import { DotLoader } from "react-spinners";
 
 export const SignIn = () => {
     const navigate = useNavigate();
@@ -19,6 +20,7 @@ export const SignIn = () => {
         email: "",
         password: "",
     });
+    const [loading, setLoading] = useState(false);
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignInDetails((prev) => ({
@@ -30,16 +32,20 @@ export const SignIn = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log(signInDetails);
+        setLoading(true);
         try {
             const response = await authenticateUser("login", signInDetails);
             if (response.status) {
+                setLoading(false);
                 navigate("/dashboard");
             } else {
+                setLoading(false);
                 // setIsLoading(false);
                 // setError('Authentication failed. Please check your credentials and try again.');
                 console.log("The api call failed");
             }
         } catch (error) {
+            setLoading(false);
             console.error('Login failed:', error);
         }
     }
@@ -84,8 +90,13 @@ export const SignIn = () => {
                         <A href="#">Forgot Password</A>
                     </div>
                     <Column className='button-column'>
-                        <BaseButton className='signin-button'>
-                            Sign In
+                        <BaseButton >
+                                {loading ?
+                                <DotLoader
+                                    size={20}
+                                    color="white"
+                                    className='signin-button dotLoader' 
+                                /> : "Sign IN"}
                         </BaseButton>
                         <BaseButton backgroundcolor={"#ffffff"} className="google-signup">
                             <Google />

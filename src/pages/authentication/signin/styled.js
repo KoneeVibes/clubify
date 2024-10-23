@@ -90,6 +90,11 @@ export const SignInWrapper = styled(Row)(() => {
             textAlign: "center",
             overflow: "hidden",
         },
+        "& .dotLoader": {
+            marginLeft: "auto",
+            marginRight: "auto",
+    },
+
         "@media screen and (min-width: 1440px)": {
             gap: "calc(var(--flex-gap) * 2)",
         },

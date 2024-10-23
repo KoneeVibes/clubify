@@ -14,6 +14,7 @@ import User from "../../../assets/images/User icon.svg";
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../../utils/apis/authUser";
+import { DotLoader } from "react-spinners";
 
 export const SignUp = () => {
     const navigate = useNavigate();
@@ -32,6 +33,7 @@ export const SignUp = () => {
         // admin: "",
         // staff: "",
     });
+    const [loading, setLoading] = useState(false);
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormDetails((prev) => ({
@@ -45,13 +47,16 @@ export const SignUp = () => {
         try {
             const response = await authenticateUser("register", formDetails);
             if (response.status) {
+                setLoading(false);
                 navigate("/signin");
             } else {
+                setLoading(false);
                 // setIsLoading(false);
                 // setError('Authentication failed. Please check your credentials and try again.');
                 console.log("The api call failed");
             }
         } catch (error) {
+            setLoading(false);
             console.error('Login failed:', error);
         }
     }
@@ -193,7 +198,7 @@ export const SignUp = () => {
                                 required
                             />
                             <Label>Sign up as:</Label>
-                            {/* <Row className="user-roles">
+                            <Row className="user-roles">
                                 <BaseFieldSet className="userrole-radio">
                                     <input
                                         type="radio"
@@ -221,7 +226,7 @@ export const SignUp = () => {
                                     />
                                     <Label>Staff</Label>
                                 </BaseFieldSet>
-                            </Row> */}
+                            </Row>
                             <SignUpRow className="signin-button">
                                 <BaseButton
                                     onClick={(e) => handleClickPrevious(e, step)}
@@ -229,10 +234,15 @@ export const SignUp = () => {
                                     Previous
                                 </BaseButton>
 
-                                <BaseButton
-                                    onClick={(e) => handleClickNext(e, step)}
-                                >
-                                    Sign up
+                                <BaseButton>
+                                    {loading ?
+                                        <DotLoader
+                                            size={20}
+                                            color="white"
+                                            className='dotLoader'
+                                            onClick={(e) => handleClickNext(e, step)} 
+                                        /> : "Sign up"}
+                                     
                                 </BaseButton>
                             </SignUpRow>
                         </Fragment>
@@ -243,7 +253,7 @@ export const SignUp = () => {
                         </BaseButton>
                     </div>
                     <div className="sign-in-link">
-                        <P>Already have an account? <A href="/sign-in">Sign In</A></P>
+                        <P>Already have an account? <A href="/signin">Sign In</A></P>
                         <Hrworkplace />
                     </div>
                 </form>
