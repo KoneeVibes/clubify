@@ -20,6 +20,7 @@ export const Dashboard = () => {
         getProfile(token)
             .then((detail) => {
                 setProfileDetails(detail);
+                cookies.set("profile", detail)
             })
             .catch((err) => {
                 console.error("Failed to fetch projects:", err);
@@ -45,7 +46,7 @@ export const Dashboard = () => {
                 >
                     <div className="cards-box">
                         <Card
-                            bgColor={"#D9D9D9"}
+                            bgcolor={"#D9D9D9"}
                         >
                             <Row className="card-title">
                                 <H3>Recently Booked</H3>
@@ -53,14 +54,14 @@ export const Dashboard = () => {
                             </Row>
                         </Card>
                         <Card
-                            bgColor={"#D9D9D9"}
+                            bgcolor={"#D9D9D9"}
                         >
                             <Row className="card-title">
                                 <H3>Event Attendance</H3>
                             </Row>
                         </Card>
                         <Card
-                            bgColor={"#D9D9D9"}
+                            bgcolor={"#D9D9D9"}
                         >
                             <Row className="card-title">
                                 <H3>Billing History</H3>

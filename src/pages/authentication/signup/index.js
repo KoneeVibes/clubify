@@ -15,12 +15,9 @@ import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../../utils/apis/authUser";
 import { DotLoader } from "react-spinners";
-import Cookies from "universal-cookie";
 
 export const SignUp = () => {
     const navigate = useNavigate();
-    const cookies = new Cookies();
-    const token = cookies.get("token");
     const [step, setStep] = useState(1);
     const [isSignedUpAsMember, setIsSignedUpAsMember] = useState(true);
     const [formDetails, setFormDetails] = useState({
@@ -37,6 +34,7 @@ export const SignUp = () => {
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         if (name === "role") {
@@ -51,6 +49,7 @@ export const SignUp = () => {
             [name]: value,
         }));
     };
+
     const handleSubmit = async (e) => {
         let payload;
         e.preventDefault();
@@ -61,7 +60,6 @@ export const SignUp = () => {
             const { displayPicture, ...rest } = formDetails;
             payload = { ...rest };
         }
-        console.log(payload);
         setError(null);
         setLoading(true);
         try {
@@ -72,15 +70,17 @@ export const SignUp = () => {
             } else {
                 setLoading(false);
                 setError('Authentication failed. Please check your credentials and try again.');
-                console.log("The api call failed");
+                console.error("Authentication failed. Please check your credentials and try again.");
             }
         } catch (error) {
             setLoading(false);
-            setError(`Login failed. ${error.message}`);
-            console.error('Login failed:', error);
+            setError(`Signup failed. ${error.message}`);
+            console.error('Signup failed:', error);
         }
     };
+
     const handleClickNext = async (e, step) => {
+        setError(null);
         if (step === 2) {
             return await handleSubmit(e);
         };
@@ -88,7 +88,9 @@ export const SignUp = () => {
             return prev + 1;
         });
     };
+
     const handleClickPrevious = () => {
+        setError(null);
         setStep((prev) => {
             return prev - 1;
         })
@@ -267,9 +269,9 @@ export const SignUp = () => {
                             <Google />Sign Up with Google
                         </BaseButton>
                     </div>
-                    {error && <P style={{ color: 'red' }}>{error}</P>}
+                    {error && <P style={{ color: 'red', fontSize: "18px" }}>{error}</P>}
                     <div className="sign-in-link">
-                        <P>Already have an account? <A href="/signin">Sign In</A></P>
+                        <P>Already have an account? <A href="/">Sign In</A></P>
                         <Hrworkplace />
                     </div>
                 </form>

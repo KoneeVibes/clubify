@@ -35,7 +35,6 @@ export const SignIn = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(signInDetails);
         setLoading(true);
         setError(null);
         try {
@@ -50,7 +49,7 @@ export const SignIn = () => {
             } else {
                 setLoading(false);
                 setError('Authentication failed. Please check your credentials and try again.');
-                console.log("Authentication failed. Please check your credentials and try again.");
+                console.error("Authentication failed. Please check your credentials and try again.");
             }
         } catch (error) {
             setLoading(false);
@@ -118,9 +117,9 @@ export const SignIn = () => {
                             <Span>Sign In with Google</Span>
                         </BaseButton>
                     </Column>
-                    {error && <P style={{ color: 'red' }}>{error}</P>}
+                    {error && <P style={{ color: 'red', fontSize: "18px" }}>{error}</P>}
                     <div className="sign-in-link">
-                        <P> Don’t have an account? <A href="/">Sign Up</A></P>
+                        <P> Don’t have an account? <A href="/signup">Sign Up</A></P>
                         <Hrworkplace />
                     </div>
                 </form>
