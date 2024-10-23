@@ -8,16 +8,33 @@ import { Layout } from "../../containers/layout";
 import { DashboardWrapper } from "./styled";
 import { adverts } from "../../config";
 import { BaseButton } from "../../components/button/styled";
+import { useEffect, useState } from "react";
+import { getProfile } from "../../utils/apis/getProfile";
+import Cookies from "universal-cookie";
 
 export const Dashboard = () => {
+    const cookies = new Cookies();
+    const token = cookies.get("token");
+    const [profileDetails, setProfileDetails] = useState({});
+    useEffect(() => {
+        getProfile(token)
+            .then((detail) => {
+                setProfileDetails(detail);
+            })
+            .catch((err) => {
+                console.error("Failed to fetch projects:", err);
+            })
+    });
     return (
         <Layout
-            title={"Hello Sarah"}
+            title={`Hello ${profileDetails?.member?.firstname || ""}`}
             subTitle={new Date().toLocaleDateString('en-US', {
                 day: 'numeric',
                 month: 'long',
                 weekday: 'long'
             })}
+            plan={profileDetails?.plan?.planName}
+            fullName={`${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""}`}
         >
             <DashboardWrapper>
                 <div className="banner-box">

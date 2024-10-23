@@ -12,6 +12,11 @@
     --top-nav-height: 6.55rem;
   }
 
+  .dotLoader {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   * {
     /* outline: 1px red solid; */
   }

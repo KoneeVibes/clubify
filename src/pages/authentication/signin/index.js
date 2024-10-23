@@ -13,14 +13,17 @@ import { BaseFieldSet } from '../../../components/form/fieldset/styled';
 import { authenticateUser } from '../../../utils/apis/authUser';
 import { useNavigate } from "react-router-dom";
 import { DotLoader } from "react-spinners";
+import Cookies from 'universal-cookie';
 
 export const SignIn = () => {
+    const cookies = new Cookies();
     const navigate = useNavigate();
     const [signInDetails, setSignInDetails] = useState({
         email: "",
         password: "",
     });
     const [loading, setLoading] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setSignInDetails((prev) => ({
@@ -38,17 +41,21 @@ export const SignIn = () => {
             if (response.status) {
                 setLoading(false);
                 navigate("/dashboard");
+                cookies.set("token", response.data, {
+                    path: "/",
+                    maxAge: 1000000,
+                })
             } else {
                 setLoading(false);
-                // setIsLoading(false);
                 // setError('Authentication failed. Please check your credentials and try again.');
-                console.log("The api call failed");
+                console.log("Authentication failed. Please check your credentials and try again.");
             }
         } catch (error) {
             setLoading(false);
             console.error('Login failed:', error);
         }
     }
+
     return (
         <SignInWrapper tocolumn={true}>
             <Column className="signin-form">
@@ -90,13 +97,18 @@ export const SignIn = () => {
                         <A href="#">Forgot Password</A>
                     </div>
                     <Column className='button-column'>
-                        <BaseButton >
-                                {loading ?
+                        <BaseButton
+                            type='submit'
+                            className='signin-button'
+                        >
+                            {loading ?
                                 <DotLoader
                                     size={20}
                                     color="white"
-                                    className='signin-button dotLoader' 
-                                /> : "Sign IN"}
+                                    className='dotLoader'
+                                />
+                                : "Sign In"
+                            }
                         </BaseButton>
                         <BaseButton backgroundcolor={"#ffffff"} className="google-signup">
                             <Google />
@@ -104,7 +116,7 @@ export const SignIn = () => {
                         </BaseButton>
                     </Column>
                     <div className="sign-in-link">
-                        <P> Don’t have an account? <A href="/sign-in">Sign In</A></P>
+                        <P> Don’t have an account? <A href="/">Sign Up</A></P>
                         <Hrworkplace />
                     </div>
                 </form>
