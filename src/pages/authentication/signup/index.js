@@ -14,9 +14,12 @@ import User from "../../../assets/images/User icon.svg";
 import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../../utils/apis/authUser";
+import Cookies from "universal-cookie";
 
 export const SignUp = () => {
     const navigate = useNavigate();
+    const cookies = new Cookies();
+    const token = cookies.get("token");
     const [step, setStep] = useState(1);
     const [isSignedUpAsMember, setIsSignedUpAsMember] = useState(true);
     const [formDetails, setFormDetails] = useState({
@@ -57,7 +60,8 @@ export const SignUp = () => {
         }
         console.log(payload);
         try {
-            const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", formDetails);
+            console.log(token);
+            const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", payload);
             if (response.status) {
                 navigate("/signin");
             } else {
