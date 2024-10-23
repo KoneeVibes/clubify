@@ -23,6 +23,7 @@ export const SignIn = () => {
         password: "",
     });
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -36,6 +37,7 @@ export const SignIn = () => {
         e.preventDefault();
         console.log(signInDetails);
         setLoading(true);
+        setError(null);
         try {
             const response = await authenticateUser("login", signInDetails);
             if (response.status) {
@@ -47,11 +49,12 @@ export const SignIn = () => {
                 })
             } else {
                 setLoading(false);
-                // setError('Authentication failed. Please check your credentials and try again.');
+                setError('Authentication failed. Please check your credentials and try again.');
                 console.log("Authentication failed. Please check your credentials and try again.");
             }
         } catch (error) {
             setLoading(false);
+            setError(`Login failed. ${error.message}`);
             console.error('Login failed:', error);
         }
     }
@@ -115,6 +118,7 @@ export const SignIn = () => {
                             <Span>Sign In with Google</Span>
                         </BaseButton>
                     </Column>
+                    {error && <P style={{ color: 'red' }}>{error}</P>}
                     <div className="sign-in-link">
                         <P> Don’t have an account? <A href="/">Sign Up</A></P>
                         <Hrworkplace />
