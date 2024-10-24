@@ -8,13 +8,14 @@ import { Events } from './containers/events';
 import { Facilities } from './containers/facilities';
 import { Services } from './containers/services';
 import { Billing } from './containers/billing';
+import { Allmembers } from './containers/allmembers';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<SignUp />} />
-        <Route path='/signin' element={<SignIn />} />
+        <Route path='/' element={<SignIn />} />
+        <Route path='/signup' element={<SignUp />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/membership' element={<Membership />} />
         <Route path='/events' element={<Events />} />

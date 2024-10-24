@@ -51,6 +51,9 @@ export const SignUpWrapper = styled(Row)(() => {
             border: "1px solid black",
             borderRadius: "8px",
         },
+        "& .reg-form input[type='radio']": {
+            width: "auto",
+        },
         "&. reg-form label": {
             color: "#000000",
         },
@@ -91,6 +94,7 @@ export const SignUpWrapper = styled(Row)(() => {
         },
         "& .signin-button": {
             overflow: "hidden",
+            gap: "calc(var(--flex-gap)/2)",
         },
         "& .sign-in-link": {
             textAlign: "center",

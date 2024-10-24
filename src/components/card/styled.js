@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const CardWrapper = styled("div")(({ bgColor, radius }) => {
+export const CardWrapper = styled("div")(({ bgcolor, radius }) => {
     return {
-        backgroundColor: bgColor || "transparent",
+        backgroundColor: bgcolor || "transparent",
         borderRadius: radius || "10px",
         padding: "var(--basic-padding)",
         width: "-webkit-fill-available",

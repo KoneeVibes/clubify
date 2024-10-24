@@ -1,9 +1,9 @@
 import { CardWrapper } from "./styled";
 
-export const Card = ({ children, bgColor, radius }) => {
+export const Card = ({ children, bgcolor, radius }) => {
     return (
         <CardWrapper
-            bgColor={bgColor}
+            bgcolor={bgcolor}
             radius={radius}
             className="card"
         >
