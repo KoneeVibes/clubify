@@ -8,6 +8,7 @@ import { Events } from './containers/events';
 import { Facilities } from './containers/facilities';
 import { Services } from './containers/services';
 import { Billing } from './containers/billing';
+import { Allmembers } from './containers/allmembers';
 
 function App() {
   return (
@@ -21,9 +22,10 @@ function App() {
         <Route path='/facilities' element={<Facilities />} />
         <Route path='/services' element={<Services />} />
         <Route path='/billing' element={<Billing />} />
+        <Route path='/allmembers' element={<Allmembers />} />
       </Routes>
     </BrowserRouter>
-  );
+  )
 }
 
 export default App;
