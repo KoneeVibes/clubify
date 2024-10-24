@@ -9,8 +9,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { BaseButton } from "../../button/styled";
 import { useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 export const SideNavigation = () => {
+    const cookies = new Cookies();
+    const profileDetails = cookies.get("profile");
+    const roleBasedSideNavLinks = profileDetails?.member
+        ? sideNavLinks
+        : sideNavLinks.filter((link) => link.name !== "All Members");
     const navigate = useNavigate();
     const sideNavigationRef = useRef(null);
     const { isSideNavigationOpen, setIsSideNavigationOpen } = useContext(Context);
@@ -51,7 +57,7 @@ export const SideNavigation = () => {
             <Column
                 className="nav-links-box"
             >
-                {sideNavLinks.map((sideNavLinks, index) => {
+                {roleBasedSideNavLinks.map((sideNavLinks, index) => {
                     return (
                         <Row
                             key={index}

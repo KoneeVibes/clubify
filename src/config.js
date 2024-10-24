@@ -1,4 +1,4 @@
-import { faCalendarDay, faGear, faGrip, faHouse, faListUl, faMoneyCheck, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDay, faGear, faGrip, faHouse, faListUl, faMoneyCheck, faPeopleArrows, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import AdOne from "./assets/adone.svg";
 
@@ -38,6 +38,11 @@ export const sideNavLinks = [
         icon: <FontAwesomeIcon icon={faGear} />,
         url: "/settings"
     },
+    {
+        name: "All Members",
+        icon: <FontAwesomeIcon icon={faPeopleArrows} />,
+        url: "/allmembers"
+    }
 ];
 
 export const adverts = [
