@@ -52,7 +52,7 @@ export const SideNavigationWrapper = styled(Column)(() => {
             }
         },
         "& .nav-links-box": {
-            overflow: "hidden",
+            // overflow: "hidden",
         },
         "@media screen and (min-width: 360px)": {
             width: "var(--side-nav-width)",

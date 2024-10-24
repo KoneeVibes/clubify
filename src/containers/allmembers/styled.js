@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AllmembersWrapper = styled("div")(() => {
+export const AllMembersWrapper = styled("div")(() => {
     return {
 
     }
