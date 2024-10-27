@@ -3,8 +3,9 @@ import { Layout } from "../layout/index";
 import Cookies from "universal-cookie";
 import { Column, BaseFlex, Row } from "../../components/flex/styled";
 import { H2, H3, P, Span } from "../../components/typography/styled";
-import { FaUpload } from "react-icons/fa";
 import { CardWrapper } from "../../components/card/styled";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload } from "@fortawesome/free-solid-svg-icons";
 // import { BaseInput } from "../../components/form/input/styled";
 
 export const Membership = () => {
@@ -19,9 +20,8 @@ export const Membership = () => {
         weekday: "long",
       })}
       plan={profileDetails?.plan?.planName}
-      fullName={`${profileDetails?.member?.firstname || ""} ${
-        profileDetails?.member?.lastname || ""
-      }`}
+      fullName={`${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""
+        }`}
     >
       <MembershipWrapper>
         {/* Newton, your html goes in here */}
@@ -66,7 +66,7 @@ export const Membership = () => {
                 </Column>
                 {/* <InputRow> */}
                 {/* <BaseInput /> */}
-                <FaUpload className="icon" />
+                <FontAwesomeIcon icon={faUpload} />
                 {/* </InputRow> */}
               </BaseFlex>
               <hr></hr>
