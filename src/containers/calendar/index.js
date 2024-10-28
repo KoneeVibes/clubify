@@ -21,7 +21,7 @@ export const Calendar = ({ fullName, plan }) => {
                 </BaseButton>
                 <br />
                 <Column className="user-profile">
-                    <div className="profile-icon-container">
+                    <div>
                         <ProfileIcon />
                     </div>
                     <Column className="user-details">
@@ -29,6 +29,7 @@ export const Calendar = ({ fullName, plan }) => {
                         <A>Update Profile</A>
                         <div>
                             <BaseButton
+                                borderradius={"5px"}
                                 backgroundcolor={"#3C1985"}
                                 className="membership-button"
                             >
