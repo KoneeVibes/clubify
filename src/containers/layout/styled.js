@@ -15,6 +15,7 @@ export const MainAreaWrapper = styled("div")(() => {
             bottom: 0,
             left: "var(--side-nav-width)",
             right: "var(--calendar-width)",
+            height: "max-content",
         },
         "@media screen and (min-width: 768px) and (max-width: 1024px)": {
             left: 0,
