@@ -3,7 +3,7 @@ import { SideNavigation } from "../../components/navigation/sidenavigation";
 import { TopNavigation } from "../../components/navigation/topnavigation";
 import { LayoutWrapper, MainAreaWrapper } from "./styled";
 
-export const Layout = ({ children, title, subTitle, fullName, plan }) => {
+export const Layout = ({ children, title, subTitle, fullName, plan, role }) => {
     return (
         <LayoutWrapper>
             <SideNavigation />
@@ -15,8 +15,9 @@ export const Layout = ({ children, title, subTitle, fullName, plan }) => {
                 {children}
             </MainAreaWrapper>
             <Calendar
-                fullName={fullName}
                 plan={plan}
+                role={role}
+                fullName={fullName}
             />
         </LayoutWrapper>
     )

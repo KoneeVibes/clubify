@@ -41,11 +41,12 @@ export const SignIn = () => {
             const response = await authenticateUser("login", signInDetails);
             if (response.status) {
                 setLoading(false);
-                navigate("/dashboard");
-                cookies.set("token", response.data, {
+                console.log(response);
+                cookies.set("data", response.data, {
                     path: "/",
                     maxAge: 1000000,
-                })
+                });
+                navigate("/dashboard");
             } else {
                 setLoading(false);
                 setError('Authentication failed. Please check your credentials and try again.');

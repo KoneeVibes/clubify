@@ -8,18 +8,19 @@ import { H3, Span } from "../../components/typography/styled";
 
 export const AllMembers = () => {
     const cookies = new Cookies();
-    const profileDetails = cookies.get("profile");
+    const { profile } = cookies.getAll();
 
     return (
         <Layout
-            title={`Hello ${profileDetails?.member?.firstname || ""}`}
+            role={profile?.role}
+            title={`Hello ${profile.role === "administrator" ? profile?.firstname || "" : profile?.member?.firstname || ""}`}
             subTitle={new Date().toLocaleDateString('en-US', {
                 day: 'numeric',
                 month: 'long',
                 weekday: 'long'
             })}
-            plan={profileDetails?.plan?.planName}
-            fullName={`${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""}`}
+            plan={profile?.plan?.planName || ""}
+            fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
         >
             <AllMembersWrapper>
                 {Array.from({ length: 9 }).map((_, index) => {
@@ -31,14 +32,14 @@ export const AllMembers = () => {
                             <div>
                                 <ProfileIcon />
                             </div>
-                            <H3>{`${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""}`}</H3>
+                            <H3>{`${profile.firstname || ""} ${profile.lastname || ""}`}</H3>
                             <div>
                                 <BaseButton
                                     borderradius={"5px"}
                                     backgroundcolor={"#3C1985"}
                                     className="membership-button"
                                 >
-                                    <Span>{profileDetails?.plan?.planName}</Span>
+                                    {/* <Span>{profile.planName}</Span> */}
                                     <Span>Admin</Span>
                                 </BaseButton>
                             </div>

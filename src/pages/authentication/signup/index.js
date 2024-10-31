@@ -63,10 +63,11 @@ export const SignUp = () => {
         setError(null);
         setLoading(true);
         try {
+            console.log(payload);
             const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", payload);
             if (response.status) {
                 setLoading(false);
-                navigate("/signin");
+                navigate("/");
             } else {
                 setLoading(false);
                 setError('Authentication failed. Please check your credentials and try again.');
@@ -226,8 +227,8 @@ export const SignUp = () => {
                                     <BaseInput
                                         type="radio"
                                         name="role"
-                                        value={"admin"}
-                                        checked={formDetails.role === "admin"}
+                                        value={"administrator"}
+                                        checked={formDetails.role === "administrator"}
                                         onChange={(e) => handleChange(e)}
                                     />
                                     <Label>Admin</Label>

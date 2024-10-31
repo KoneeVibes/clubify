@@ -8,21 +8,21 @@ import { Card } from "../../components/card";
 
 export const Membership = () => {
   const cookies = new Cookies();
-  const profileDetails = cookies.get("profile");
+  const { profile } = cookies.getAll();
+
   return (
     <Layout
-      title={`Hello ${profileDetails?.member?.firstname || ""}`}
-      subTitle={new Date().toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "long",
-        weekday: "long",
+      role={profile?.role}
+      title={`Hello ${profile.role === "administrator" ? profile?.firstname || "" : profile?.member?.firstname || ""}`}
+      subTitle={new Date().toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'long',
+        weekday: 'long'
       })}
-      plan={profileDetails?.plan?.planName}
-      fullName={`${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""
-        }`}
+      plan={profile?.plan?.planName || ""}
+      fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
     >
       <MembershipWrapper>
-        {/* Newton, your html goes in here */}
         <div className="membership-plan">
           <H2>Membership Plan</H2>
           <Card
@@ -34,7 +34,7 @@ export const Membership = () => {
               justifycontent={"space-between"}
             >
               <Span>Plan Name</Span>
-              <Span className="highlight-yellow">Gold</Span>
+              {/* <Span className="highlight-yellow">{profileDetails?.plan?.planName}</Span> */}
             </Row>
             <Row
               className="membership-detail even-row"
