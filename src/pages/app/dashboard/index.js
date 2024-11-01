@@ -1,24 +1,24 @@
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Banner } from "../../assets";
-import { Card } from "../../components/card";
-import { Column, Row } from "../../components/flex/styled";
-import { H2, H3, P, Span } from "../../components/typography/styled";
-import { Layout } from "../../containers/layout";
-import { DashboardWrapper } from "./styled";
-import { adverts } from "../../config";
-import { BaseButton } from "../../components/button/styled";
-import { useEffect, useMemo, useState } from "react";
-import { getProfile } from "../../utils/apis/getProfile";
 import Cookies from "universal-cookie";
+import { Banner } from "../../../assets";
+import { Card } from "../../../components/card";
+import { Column, Row } from "../../../components/flex/styled";
+import { H2, H3, P, Span } from "../../../components/typography/styled";
+import { Layout } from "../../../containers/layout";
+import { DashboardWrapper } from "./styled";
+import { adverts } from "../../../config";
+import { BaseButton } from "../../../components/button/styled";
+import { useEffect, useMemo, useState } from "react";
+import { getProfile } from "../../../utils/apis/getProfile";
 
 export const Dashboard = () => {
     const cookies = useMemo(() => new Cookies(), []);
-    const { role, token } = cookies.get("data");
+    const { profile, data } = cookies.getAll();
     const [profileDetails, setProfileDetails] = useState({});
-    
+
     useEffect(() => {
-        getProfile(token, role)
+        getProfile(data.token, data.role)
             .then((detail) => {
                 setProfileDetails(detail);
                 cookies.set("profile", detail);
@@ -26,19 +26,19 @@ export const Dashboard = () => {
             .catch((err) => {
                 console.error("Failed to fetch projects:", err);
             })
-    }, [cookies, token, role]);
+    }, [cookies, data]);
 
     return (
         <Layout
-            role={profileDetails?.role}
-            title={`Hello ${role === "administrator" ? profileDetails?.firstname || "" : profileDetails?.member?.firstname || ""}`}
+            role={profileDetails?.role || profile?.role || ""}
+            title={`Hello ${data.role === "administrator" ? profileDetails?.firstname || profile?.firstname || "" : profileDetails?.member?.firstname || profile?.member?.firstname || ""}`}
             subTitle={new Date().toLocaleDateString('en-US', {
                 day: 'numeric',
                 month: 'long',
                 weekday: 'long'
             })}
-            plan={profileDetails?.plan?.planName || ""}
-            fullName={role === "administrator" ? `${profileDetails?.firstname || ""} ${profileDetails?.lastname || ""}` : `${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""}`}
+            plan={profileDetails?.plan?.planName || profile?.plan?.planName || ""}
+            fullName={data.role === "administrator" ? `${profileDetails?.firstname || profile?.firstname || ""} ${profileDetails?.lastname || profile?.lastname || ""}` : `${profileDetails?.member?.firstname || profile?.member?.firstname || ""} ${profileDetails?.member?.lastname || profile?.member?.lastname || ""}`}
         >
             <DashboardWrapper>
                 <div className="banner-box">

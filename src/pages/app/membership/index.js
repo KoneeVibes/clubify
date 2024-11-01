@@ -1,11 +1,10 @@
 import { MembershipWrapper } from "./styled";
-import { Layout } from "../layout/index";
+import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
-import { Row } from "../../components/flex/styled";
-import { BaseInput } from "../../components/form/input/styled";
-import { H2, P, Span } from "../../components/typography/styled";
-import { Card } from "../../components/card";
-import { AllMembersWrapper } from "../allmembers/styled";
+import { Row } from "../../../components/flex/styled";
+import { BaseInput } from "../../../components/form/input/styled";
+import { H2, P, Span } from "../../../components/typography/styled";
+import { Card } from "../../../components/card";
 
 export const Membership = () => {
   const cookies = new Cookies();
