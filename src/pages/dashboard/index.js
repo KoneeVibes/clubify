@@ -8,34 +8,37 @@ import { Layout } from "../../containers/layout";
 import { DashboardWrapper } from "./styled";
 import { adverts } from "../../config";
 import { BaseButton } from "../../components/button/styled";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { getProfile } from "../../utils/apis/getProfile";
 import Cookies from "universal-cookie";
 
 export const Dashboard = () => {
-    const cookies = new Cookies();
-    const token = cookies.get("token");
+    const cookies = useMemo(() => new Cookies(), []);
+    const { role, token } = cookies.get("data");
     const [profileDetails, setProfileDetails] = useState({});
+    
     useEffect(() => {
-        getProfile(token)
+        getProfile(token, role)
             .then((detail) => {
                 setProfileDetails(detail);
-                cookies.set("profile", detail)
+                cookies.set("profile", detail);
             })
             .catch((err) => {
                 console.error("Failed to fetch projects:", err);
             })
-    });
+    }, [cookies, token, role]);
+
     return (
         <Layout
-            title={`Hello ${profileDetails?.member?.firstname || ""}`}
+            role={profileDetails?.role}
+            title={`Hello ${role === "administrator" ? profileDetails?.firstname || "" : profileDetails?.member?.firstname || ""}`}
             subTitle={new Date().toLocaleDateString('en-US', {
                 day: 'numeric',
                 month: 'long',
                 weekday: 'long'
             })}
-            plan={profileDetails?.plan?.planName}
-            fullName={`${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""}`}
+            plan={profileDetails?.plan?.planName || ""}
+            fullName={role === "administrator" ? `${profileDetails?.firstname || ""} ${profileDetails?.lastname || ""}` : `${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""}`}
         >
             <DashboardWrapper>
                 <div className="banner-box">

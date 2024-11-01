@@ -4,7 +4,7 @@ import { Column } from "../../components/flex/styled";
 import { A, H3, Span } from "../../components/typography/styled";
 import { CalendarWrapper } from "./styled";
 
-export const Calendar = ({ fullName, plan }) => {
+export const Calendar = ({ fullName, plan, role }) => {
     return (
         <CalendarWrapper>
             <div
@@ -21,7 +21,7 @@ export const Calendar = ({ fullName, plan }) => {
                 </BaseButton>
                 <br />
                 <Column className="user-profile">
-                    <div className="profile-icon-container">
+                    <div>
                         <ProfileIcon />
                     </div>
                     <Column className="user-details">
@@ -29,11 +29,12 @@ export const Calendar = ({ fullName, plan }) => {
                         <A>Update Profile</A>
                         <div>
                             <BaseButton
+                                borderradius={"5px"}
                                 backgroundcolor={"#3C1985"}
                                 className="membership-button"
                             >
-                                <Span>{plan}</Span>
-                                <Span>Member</Span>
+                                {plan && <Span>{plan}</Span>}
+                                <Span>{role === "administrator" ? "Administrator" : "Member"}</Span>
                             </BaseButton>
                         </div>
                     </Column>
