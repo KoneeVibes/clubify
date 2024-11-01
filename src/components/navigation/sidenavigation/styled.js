@@ -33,17 +33,19 @@ export const SideNavigationWrapper = styled(Column)(() => {
                 "& svg, & p": {
                     color: "#FFFFFF",
                 }
-            }
+            },
         },
         "& .logo-box": {
             alignItems: "center",
             justifyContent: "space-between",
-            overflow: "hidden",
             "& .close-side-navigation-button": {
                 width: "fit-content",
                 padding: "0.5rem",
                 borderRadius: "0.3rem",
                 backgroundColor: "#3C1985",
+            },
+            "@media screen and (max-width: 150px)": {
+                overflow: "hidden",
             },
             "@media screen and (min-width: 1025px)": {
                 "& .close-side-navigation-button": {
@@ -51,8 +53,10 @@ export const SideNavigationWrapper = styled(Column)(() => {
                 }
             }
         },
-        "& .nav-links-box": {
-            // overflow: "hidden",
+        "@media screen and (max-width: 150px)": {
+            "& .nav-links-box": {
+                overflow: "hidden",
+            },
         },
         "@media screen and (min-width: 360px)": {
             width: "var(--side-nav-width)",
