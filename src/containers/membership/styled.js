@@ -31,6 +31,7 @@ export const MembershipWrapper = styled("div")(() => {
     },
     "& .highlight-yellow": {
       color: "#FFC00E",
+      textTransform: "capitalize",
     },
     "& .highlight-red": {
       color: "#AD1E1E",

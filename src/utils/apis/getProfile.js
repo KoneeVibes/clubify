@@ -1,8 +1,8 @@
 import { BASE_ENDPOINT } from "../endpoint";
 
-export const getProfile = async (token) => {
+export const getProfile = async (token, role) => {
     try {
-        const response = await fetch(`${BASE_ENDPOINT}/api/v1/members/me`, {
+        const response = await fetch(`${BASE_ENDPOINT}/api/v1/${role === "administrator" ? 'staff' : 'members'}/me`, {
             method: 'GET',
             headers: {
                 'Authorization': token,

@@ -38,6 +38,7 @@ export const SideNavigationWrapper = styled(Column)(() => {
         "& .logo-box": {
             alignItems: "center",
             justifyContent: "space-between",
+            // overflow: "hidden",
             "& .close-side-navigation-button": {
                 width: "fit-content",
                 padding: "0.5rem",
