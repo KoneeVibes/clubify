@@ -1,14 +1,14 @@
 import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { SignUp } from './pages/authentication/signup';
-import { Dashboard } from './pages/dashboard';
-import { Membership } from './containers/membership';
+import { Dashboard } from './pages/app/dashboard';
+import { Membership } from './pages/app/membership';
 import { SignIn } from './pages/authentication/signin';
-import { Events } from './containers/events';
-import { Facilities } from './containers/facilities';
-import { Services } from './containers/services';
-import { Billing } from './containers/billing';
-import { AllMembers } from './containers/allmembers';
+import { Events } from './pages/app/events';
+import { Facilities } from './pages/app/facilities';
+import { Services } from './pages/app/services';
+import { Billing } from './pages/app/billing';
+import { AllMembers } from './pages/app/allmembers';
 
 function App() {
   return (

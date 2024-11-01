@@ -1,10 +1,10 @@
 import { AllMembersWrapper } from "./styled";
-import { Layout } from "../layout/index";
+import { Layout } from "../../../containers/layout";
 import Cookies from "universal-cookie";
-import { Card } from "../../components/card";
-import { ProfileIcon } from "../../assets";
-import { BaseButton } from "../../components/button/styled";
-import { H3, Span } from "../../components/typography/styled";
+import { Card } from "../../../components/card";
+import { ProfileIcon } from "../../../assets";
+import { BaseButton } from "../../../components/button/styled";
+import { H3, Span } from "../../../components/typography/styled";
 
 export const AllMembers = () => {
     const cookies = new Cookies();

@@ -1,23 +1,22 @@
+import { useState } from "react";
 import { FacilitiesWrapper } from "./styled";
-import { Layout } from "../layout/index";
-import { useEffect, useState } from "react";
-import { getProfile } from "../../utils/apis/getProfile";
-import { H1, Label, Li, H3, P, H2, Span } from "../../components/typography/styled";
+import { Layout } from "../../../containers/layout/index";
+import { H1, Label, Li, H3, P, H2, Span } from "../../../components/typography/styled";
 import { FacilitiesRow } from "./styled";
 import { Sidebar } from "./styled";
 import { Schedule } from "./styled";
 import { TimeSlot } from "./styled";
 import Cookies from "universal-cookie";
-import { BaseFieldSet } from "../../components/form/fieldset/styled";
-import { BaseInput } from "../../components/form/input/styled";
-import { BaseButton } from "../../components/button/styled";
-import { Row } from "../../components/flex/styled";
-//import styled from "styled-components";
+import { BaseFieldSet } from "../../../components/form/fieldset/styled";
+import { BaseInput } from "../../../components/form/input/styled";
+import { BaseButton } from "../../../components/button/styled";
+import { Row } from "../../../components/flex/styled";
 
 export const Facilities = () => {
     const cookies = new Cookies();
-    const token = cookies.get("token");
-    const [profileDetails, setProfileDetails] = useState({});
+    const { profile } = cookies.getAll();
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
     const [selectedDay, setSelectedDay] = useState('Monday');
     const [schedules, setSchedules] = useState({
         Monday: [
@@ -41,17 +40,6 @@ export const Facilities = () => {
             { time: '2pm', interviewee: '', interviewer: '' },
         ],
     });
-
-    useEffect(() => {
-        getProfile(token)
-            .then((detail) => {
-                setProfileDetails(detail);
-                cookies.set("profile", detail);
-            })
-            .catch((err) => {
-                console.error("Failed to fetch projects:", err);
-            });
-    }, [token]);
 
     const handleDaySelection = (day) => setSelectedDay(day);
 
@@ -81,53 +69,64 @@ export const Facilities = () => {
         });
     };
 
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-
     return (
         <Layout
-            title={`Hello ${profileDetails?.member?.firstname || ""}`}
+            role={profile?.role}
+            title={`Hello ${profile.role === "administrator" ? profile?.firstname || "" : profile?.member?.firstname || ""}`}
             subTitle={new Date().toLocaleDateString('en-US', {
                 day: 'numeric',
                 month: 'long',
                 weekday: 'long'
             })}
-            plan={profileDetails?.plan?.planName}
-            fullName={`${profileDetails?.member?.firstname || ""} ${profileDetails?.member?.lastname || ""}`}
+            plan={profile?.plan?.planName || ""}
+            fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
         >
             <FacilitiesWrapper>
                 <div className="facility-booking">
                     <H1>Meeting Room</H1>
-                    <div className="details-list">
+                    <ul className="details-list">
                         <Li className="detail">
-                            <Row alignItems={"center"}>
+                            <Row
+                                className="list-item"
+                            >
                                 <H3>Location</H3>
                                 <P>Wing B, 3rd Floor</P>
                             </Row>
                         </Li>
                         <Li>
-                            <Row alignItems={"center"}>
+                            <Row
+                                className="list-item"
+                            >
                                 <H3>Capacity</H3>
                                 <P>25</P>
                             </Row>
                         </Li>
                         <Li>
-                            <Row alignItems={"center"}>
+                            <Row
+                                className="list-item"
+                            >
                                 <H3>Fee</H3>
                                 <P>₦2500/hr</P>
                             </Row>
                         </Li>
-                    </div>
+                    </ul>
                     <FacilitiesRow>
                         <BaseFieldSet>
                             <Label>Start Date</Label>
-                            <BaseInput />
+                            <BaseInput
+                                type="date"
+                            />
                         </BaseFieldSet>
                         <BaseFieldSet>
                             <Label>End Date</Label>
-                            <BaseInput />
+                            <BaseInput
+                                type="date"
+                            />
                         </BaseFieldSet>
                     </FacilitiesRow>
-                    <div className="scheduler-image-container">
+                    <Row
+                        gap={"0"}
+                    >
                         <Sidebar>
                             <H2>Interview Scheduler</H2>
                             {days.map((day) => (
@@ -170,7 +169,7 @@ export const Facilities = () => {
                                 +
                             </BaseButton>
                         </Schedule>
-                    </div>
+                    </Row>
                 </div>
                 <BaseButton className="proceed-button">Proceed to payment</BaseButton>
             </FacilitiesWrapper>

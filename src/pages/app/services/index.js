@@ -1,5 +1,5 @@
 import { ServicesWrapper } from "./styled";
-import { Layout } from "../layout/index";
+import { Layout } from "../../../containers/layout/index";
 
 export const Services = () => {
     return (

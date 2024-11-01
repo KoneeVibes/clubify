@@ -1,47 +1,45 @@
-// style.js
 import styled from "styled-components";
-import { Row } from "../../components/flex/styled";
+import { Row } from "../../../components/flex/styled";
 
-// Wrapper for the Facilities component
 export const FacilitiesWrapper = styled("div")(() => ({
   ".facility-booking": {
-    maxWidth: "100%",
-    margin: "0 auto",
-    padding: "calc(var(--basic-padding)* 1.7)",
-    border: "3px solid #000000",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
-    borderRadius: "1rem",
-    gap: "calc(var(--flex-gap)*1.5)",
+    padding: "calc(var(--basic-padding) * 1)",
+    border: "1px solid #000000",
+    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+    borderRadius: "10px",
+
+    "& h1": {
+      fontSize: "40px",
+      marginBlock: 0,
+    }
   },
 
   "& .details-list": {
     display: "flex",
-    gap: "calc(var(--flex-gap)*1.5)",
-    padding: "0",
-  },
-
-  "& .details-list li": {
-    overflow: "unset",
-    display: "flex",
-  },
-
-  "& .details-list details": {
-    listStyle: "none",
-  },
-
-  "& .facility-booking input": {
-    padding: "calc(var(--basic-padding) / 2) var(--basic-padding)",
-    border: "3px solid #000000",
-    backgroundColor: "#FFFFFF",
-  },
-
-  "& .facility-booking fieldset": {
-    flex: 1,
-    overflow: "hidden",
-    display: "flex",
-    gap: "calc(var(--flex-gap)/8)",
-    flexDirection: "column",
+    gap: "calc(var(--flex-gap) / 2)",
+    alignItems: "center",
     justifyContent: "space-between",
+    overflow: "hidden",
+    padding: 0,
+    marginBlock: "calc(var(--basic-margin)/2)",
+  },
+
+  "& .details-list .list-item": {
+    alignItems: "center",
+  },
+
+  "& .details-list h3": {
+    marginBlock: 0,
+    fontSize: "14px",
+  },
+
+  "& .details-list p": {
+    marginBlock: 0,
+  },
+
+  "& .details-list .detail": {
+    overflow: "unset",
+    fontSize: "unset",
   },
 
   "& .proceed-button": {
@@ -63,15 +61,61 @@ export const FacilitiesWrapper = styled("div")(() => ({
     padding: "calc(var(--basic-padding) / 2) var(--basic-padding)",
   },
 
-  "& . scheduler-image-container":{
-    display:"flex",
-  }
+  "@media screen and (max-width: 480px)": {
+    "& .details-list": {
+      alignItems: "flex-start",
+      flexDirection: "column",
+    },
+
+    "& .details-list .list-item": {
+      alignItems: "flex-start",
+    },
+  },
+
+  "@media screen and (max-width: 1440px)": {
+    "& .details-list div": {
+      gap: 0,
+      flexDirection: "column",
+    },
+  },
+
+  "@media screen and (min-width: 1025px) and (max-width: 1096px)": {
+    "& .details-list": {
+      alignItems: "flex-start",
+      flexDirection: "column",
+    },
+
+    "& .details-list .list-item": {
+      alignItems: "flex-start",
+    },
+  },
 }));
 
 export const FacilitiesRow = styled(Row)(() => ({
   justifyContent: "space-between",
+  marginBlockStart: "calc(var(--basic-margin)/2)",
+  marginBlockEnd: "var(--basic-margin)",
+
+  "& fieldset": {
+    flex: 1,
+    overflow: "hidden",
+    display: "flex",
+    gap: "calc(var(--flex-gap)/8)",
+    flexDirection: "column",
+    justifyContent: "space-between",
+
+    "& input": {
+      padding: "calc(var(--basic-padding) / 2) var(--basic-padding)",
+      border: "1px solid #000000",
+    },
+
+    "& label": {
+      fontWeight: 500,
+      fontSize: "22px",
+    }
+  },
+
   "@media screen and (max-width: 1280px)": {
-    gap: "calc(var(--flex-gap)*1.5)",
     flexDirection: "column",
   },
 }));
