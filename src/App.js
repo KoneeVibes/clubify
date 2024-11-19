@@ -9,6 +9,7 @@ import { Booking } from './pages/app/booking';
 import { Services } from './pages/app/services';
 import { Billing } from './pages/app/billing';
 import { AllMembers } from './pages/app/allmembers';
+import { Facilities } from './pages/app/facilities';
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
         <Route path='/membership' element={<Membership />} />
         <Route path='/events' element={<Events />} />
         {/* route for facilities goes under here */}
-
+        <Route path='/facilities' element={<Facilities/>} />
         <Route path='/facilities/booking' element={<Booking />} />
         <Route path='/services' element={<Services />} />
         <Route path='/billing' element={<Billing />} />
