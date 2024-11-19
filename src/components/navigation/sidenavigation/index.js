@@ -15,7 +15,7 @@ export const SideNavigation = () => {
     const cookies = new Cookies();
     const { profile } = cookies.getAll();
 
-    const roleBasedSideNavLinks = profile.role === "administrator"
+    const roleBasedSideNavLinks = profile?.role === "administrator"
         ? sideNavLinks
         : sideNavLinks.filter((link) => link.name !== "All Members");
 
