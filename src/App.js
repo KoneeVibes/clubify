@@ -21,8 +21,8 @@ function App() {
         <Route path='/membership' element={<Membership />} />
         <Route path='/events' element={<Events />} />
         {/* route for facilities goes under here */}
-        <Route path='/facilities' element={<Facilities/>} />
-        <Route path='/facilities/booking' element={<Booking />} />
+        <Route path='/facilities' element={<Facilities />} />
+        <Route path='/facilities/booking/:id' element={<Booking />} />
         <Route path='/services' element={<Services />} />
         <Route path='/billing' element={<Billing />} />
         <Route path='/allmembers' element={<AllMembers />} />

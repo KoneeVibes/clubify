@@ -152,10 +152,12 @@ export const Booking = () => {
                         <Schedule>
                             {schedules[selectedDay].map((slot, index) => (
                                 <TimeSlot key={index}>
-                                    <div className="time">{slot.time}</div>
+                                    <div className="time">
+                                        <Span>{slot.time}</Span>
+                                    </div>
                                     <Column
                                         gap={"0"}
-                                        style={{ flex: 1, width: "100%" }}
+                                        className="input-fields"
                                     >
                                         <BaseInput
                                             type="text"
@@ -170,14 +172,16 @@ export const Booking = () => {
                                             onChange={(e) => handleInputChange(index, 'interviewer', e.target.value)}
                                         />
                                     </Column>
-                                    <BaseButton
-                                        width={"auto"}
-                                        color={"#CCCCCC"}
-                                        backgroundcolor={"#2C3E50"}
-                                        onClick={() => handleRemoveSlot(index)}
-                                    >
-                                        -
-                                    </BaseButton>
+                                    <div className="remove-slot-button">
+                                        <BaseButton
+                                            width={"auto"}
+                                            color={"#CCCCCC"}
+                                            backgroundcolor={"#2C3E50"}
+                                            onClick={() => handleRemoveSlot(index)}
+                                        >
+                                            -
+                                        </BaseButton>
+                                    </div>
                                 </TimeSlot>
                             ))}
                             <BaseButton
