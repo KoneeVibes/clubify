@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Row } from "../../../components/flex/styled";
+import { Row } from "../../../../components/flex/styled";
 
 export const BookingWrapper = styled("div")(() => ({
   overflow: "hidden",

@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { BookingWrapper } from "./styled";
-import { Layout } from "../../../containers/layout/index";
-import { H1, Label, Li, H3, P, H2, Span } from "../../../components/typography/styled";
+import { Layout } from "../../../../containers/layout/index";
+import { H1, Label, Li, H3, P, H2, Span } from "../../../../components/typography/styled";
 import { BookingRow } from "./styled";
 import { Sidebar } from "./styled";
 import { Schedule } from "./styled";
 import { TimeSlot } from "./styled";
 import Cookies from "universal-cookie";
-import { BaseFieldSet } from "../../../components/form/fieldset/styled";
-import { BaseInput } from "../../../components/form/input/styled";
-import { BaseButton } from "../../../components/button/styled";
-import { Column, Row } from "../../../components/flex/styled";
+import { BaseFieldSet } from "../../../../components/form/fieldset/styled";
+import { BaseInput } from "../../../../components/form/input/styled";
+import { BaseButton } from "../../../../components/button/styled";
+import { Column, Row } from "../../../../components/flex/styled";
 
 export const Booking = () => {
     const cookies = new Cookies();
