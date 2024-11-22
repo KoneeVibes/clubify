@@ -14,7 +14,7 @@ import { getProfile } from "../../../utils/apis/getProfile";
 
 export const Dashboard = () => {
     const cookies = useMemo(() => new Cookies(), []);
-    const { profile, data } = cookies.getAll();
+    const { profile, data } = cookies.getAll() ?? {};
     const [profileDetails, setProfileDetails] = useState({});
 
     useEffect(() => {

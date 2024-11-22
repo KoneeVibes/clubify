@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Row } from "../../../components/flex/styled";
+import { Row } from "../../../../components/flex/styled";
 
 export const BookingWrapper = styled("div")(() => ({
   overflow: "hidden",
@@ -127,10 +127,11 @@ export const BookingRow = styled(Row)(() => ({
 export const Sidebar = styled(Row)(() => ({
   backgroundColor: "#2C3E50",
   color: "#F9F9F9",
-  padding: "calc(var(--basic-padding) * 1.5) 0",
   display: "flex",
   gap: "var(--flex-gap)",
   overflow: "auto",
+  padding: "calc(var(--basic-padding) * 1.5) 0",
+  paddingRight: "calc(var(--basic-padding) * 1.5)",
 
   "& h2": {
     fontSize: "18px",
@@ -158,6 +159,7 @@ export const Sidebar = styled(Row)(() => ({
 
   "@media screen and (min-width: 1441px)": {
     minWidth: "200px",
+    padding: "calc(var(--basic-padding) * 1.5) 0",
     flexDirection: "column",
 
     "& .days-container": {
@@ -179,6 +181,12 @@ export const Schedule = styled("div")(() => ({
     padding: "calc(var(--basic-padding) * 1.25)",
   },
 
+  "@media screen and (max-width: 1296px)": {
+    "& .remove-slot-button": {
+      overflow: "hidden",
+      width: "100%",
+    },
+  },
 }));
 
 export const TimeSlot = styled(Row)(() => ({
@@ -192,8 +200,15 @@ export const TimeSlot = styled(Row)(() => ({
   overflow: "hidden",
 
   "& .time": {
-    fontSize: "14px",
-    fontWeight: 700,
+    "& span": {
+      fontSize: "14px",
+      fontWeight: 700,
+      display: "block"
+    },
+    "@media screen and (max-width: 1296px)": {
+      width: "100%",
+      overflow: "hidden",
+    },
   },
 
   "& .details": {
@@ -205,8 +220,17 @@ export const TimeSlot = styled(Row)(() => ({
     justifyContent: "center",
   },
 
+  "& .input-fields": {
+    flex: 1,
+    overflow: "hidden",
+  },
+
   "@media screen and (max-width: 1296px)": {
     flexDirection: "column",
     alignItems: "flex-start",
+
+    "& .input-fields": {
+      width: "100%",
+    },
   },
 }))

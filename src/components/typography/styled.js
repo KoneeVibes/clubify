@@ -91,7 +91,7 @@ export const Label = styled.label(() => {
 export const Td = styled.td(() => {
     return `
     font-family: Inter;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
     line-height: normal;
     overflow: hidden;

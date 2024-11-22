@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { BookingWrapper } from "./styled";
-import { Layout } from "../../../containers/layout/index";
-import { H1, Label, Li, H3, P, H2, Span } from "../../../components/typography/styled";
+import { Layout } from "../../../../containers/layout/index";
+import { H1, Label, Li, H3, P, H2, Span } from "../../../../components/typography/styled";
 import { BookingRow } from "./styled";
 import { Sidebar } from "./styled";
 import { Schedule } from "./styled";
 import { TimeSlot } from "./styled";
 import Cookies from "universal-cookie";
-import { BaseFieldSet } from "../../../components/form/fieldset/styled";
-import { BaseInput } from "../../../components/form/input/styled";
-import { BaseButton } from "../../../components/button/styled";
-import { Column, Row } from "../../../components/flex/styled";
+import { BaseFieldSet } from "../../../../components/form/fieldset/styled";
+import { BaseInput } from "../../../../components/form/input/styled";
+import { BaseButton } from "../../../../components/button/styled";
+import { Column, Row } from "../../../../components/flex/styled";
 
 export const Booking = () => {
     const cookies = new Cookies();
@@ -152,10 +152,12 @@ export const Booking = () => {
                         <Schedule>
                             {schedules[selectedDay].map((slot, index) => (
                                 <TimeSlot key={index}>
-                                    <div className="time">{slot.time}</div>
+                                    <div className="time">
+                                        <Span>{slot.time}</Span>
+                                    </div>
                                     <Column
                                         gap={"0"}
-                                        style={{ flex: 1, width: "100%" }}
+                                        className="input-fields"
                                     >
                                         <BaseInput
                                             type="text"
@@ -170,14 +172,16 @@ export const Booking = () => {
                                             onChange={(e) => handleInputChange(index, 'interviewer', e.target.value)}
                                         />
                                     </Column>
-                                    <BaseButton
-                                        width={"auto"}
-                                        color={"#CCCCCC"}
-                                        backgroundcolor={"#2C3E50"}
-                                        onClick={() => handleRemoveSlot(index)}
-                                    >
-                                        -
-                                    </BaseButton>
+                                    <div className="remove-slot-button">
+                                        <BaseButton
+                                            width={"auto"}
+                                            color={"#CCCCCC"}
+                                            backgroundcolor={"#2C3E50"}
+                                            onClick={() => handleRemoveSlot(index)}
+                                        >
+                                            -
+                                        </BaseButton>
+                                    </div>
                                 </TimeSlot>
                             ))}
                             <BaseButton

@@ -41,7 +41,6 @@ export const SignIn = () => {
             const response = await authenticateUser("login", signInDetails);
             if (response.status) {
                 setLoading(false);
-                console.log(response);
                 cookies.set("data", response.data, {
                     path: "/",
                     maxAge: 1000000,
