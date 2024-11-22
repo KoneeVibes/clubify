@@ -13,13 +13,16 @@ import Cookies from "universal-cookie";
 
 export const SideNavigation = () => {
     const cookies = new Cookies();
-    const profileDetails = cookies.get("profile");
-    const roleBasedSideNavLinks = profileDetails?.member
+    const { profile } = cookies.getAll();
+
+    const roleBasedSideNavLinks = profile.role === "administrator"
         ? sideNavLinks
         : sideNavLinks.filter((link) => link.name !== "All Members");
+
     const navigate = useNavigate();
     const sideNavigationRef = useRef(null);
     const { isSideNavigationOpen, setIsSideNavigationOpen } = useContext(Context);
+
     useEffect(() => {
         const handleClickOutside = (e) => {
             if (isSideNavigationOpen && sideNavigationRef.current && !sideNavigationRef.current.contains(e.target)) {

@@ -66,4 +66,4 @@ export const adverts = [
         bg: AdOne,
         url: ""
     },
-]
+];
