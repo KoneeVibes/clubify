@@ -3,6 +3,8 @@ import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
 
 export const Settings = () => {
+  const cookies = new Cookies();
+  const { profile } = cookies.getAll();
 
     return (
         <Layout

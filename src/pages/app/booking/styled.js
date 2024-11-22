@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import { Row } from "../../../components/flex/styled";
 
-export const FacilitiesWrapper = styled("div")(() => ({
-  ".facility-booking": {
+export const BookingWrapper = styled("div")(() => ({
+  overflow: "hidden",
+  ".booking": {
     padding: "calc(var(--basic-padding) * 1)",
     border: "1px solid #000000",
     boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
@@ -43,7 +44,7 @@ export const FacilitiesWrapper = styled("div")(() => ({
   },
 
   "& .proceed-button": {
-    backgroundColor: "#4b0082",
+    backgroundColor: "#4B0082",
     color: "#ffffff",
     fontSize: "16px",
     border: "none",
@@ -53,9 +54,7 @@ export const FacilitiesWrapper = styled("div")(() => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    width: "auto",
     overflow: "hidden",
-    margin: "0 auto",
     marginTop: "var(--basic-margin)",
     marginBottom: "var(--basic-margin)",
     padding: "calc(var(--basic-padding) / 2) var(--basic-padding)",
@@ -77,6 +76,11 @@ export const FacilitiesWrapper = styled("div")(() => ({
       gap: 0,
       flexDirection: "column",
     },
+
+    "& .facilty-scheduler": {
+      overflow: "hidden",
+      flexDirection: "column",
+    }
   },
 
   "@media screen and (min-width: 1025px) and (max-width: 1096px)": {
@@ -91,7 +95,7 @@ export const FacilitiesWrapper = styled("div")(() => ({
   },
 }));
 
-export const FacilitiesRow = styled(Row)(() => ({
+export const BookingRow = styled(Row)(() => ({
   justifyContent: "space-between",
   marginBlockStart: "calc(var(--basic-margin)/2)",
   marginBlockEnd: "var(--basic-margin)",
@@ -120,98 +124,89 @@ export const FacilitiesRow = styled(Row)(() => ({
   },
 }));
 
-// Wrapper for the Interview Scheduler component
-export const InterviewSchedulerWrapper = styled.div`
-  display: flex;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-`;
+export const Sidebar = styled(Row)(() => ({
+  backgroundColor: "#2C3E50",
+  color: "#F9F9F9",
+  padding: "calc(var(--basic-padding) * 1.5) 0",
+  display: "flex",
+  gap: "var(--flex-gap)",
+  overflow: "auto",
 
-export const Sidebar = styled.div`
-  background-color: #2c3e50;
-  color: #f9f9f9;
-  padding: 20px;
-  width: 200px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  "& h2": {
+    fontSize: "18px",
+    marginBlock: 0,
+    padding: "calc(var(--basic-padding)/2) calc(var(--basic-padding)/1.25)",
+  },
 
-  h2 {
-    font-size: 18px;
-    margin-bottom: 20px;
+  "& .day": {
+    display: "flex",
+    justifyContent: "space-between",
+    padding: "calc(var(--basic-padding)/2) calc(var(--basic-padding)/1.25)",
+    fontSize: "14px",
+    color: "#CCCCCC",
+    cursor: "pointer",
+  },
+
+  "& .day:hover, & .selected-day": {
+    backgroundColor: "#ECF0F1",
+    color: "#333333",
+  },
+
+  "& .days-container": {
+    flexDirection: "row",
+  },
+
+  "@media screen and (min-width: 1441px)": {
+    minWidth: "200px",
+    flexDirection: "column",
+
+    "& .days-container": {
+      flexDirection: "column",
+    }
   }
+}));
 
-  .day {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    font-size: 14px;
-    color: #ccc;
-    cursor: pointer;
-  }
+export const Schedule = styled("div")(() => ({
+  flex: 1,
+  padding: "calc(var(--basic-padding) / 2)",
+  display: "flex",
+  flexDirection: "column",
+  gap: "1rem",
+  overflow: "hidden",
+  backgroundColor: "#F5F5F5",
 
-  .selected-day {
-    background-color: #ecf0f1;
-    color: #333;
-    padding: 8px 10px;
-    border-radius: 5px;
-    font-weight: bold;
-  }
-`;
+  "@media screen and (min-width: 425px)": {
+    padding: "calc(var(--basic-padding) * 1.25)",
+  },
 
-export const Schedule = styled.div`
-  flex: 1;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: #f5f5f5;
-`;
+}));
 
-export const TimeSlot = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fff;
-  color: #666;
+export const TimeSlot = styled(Row)(() => ({
+  alignItems: "center",
+  justifyContent: "space-between",
+  padding: "calc(var(--basic-padding)/1.25)",
+  border: "1px solid #ddd",
+  borderRadius: "8px",
+  backgroundColor: "#FFFFFF",
+  color: "#666666",
+  overflow: "hidden",
 
-  .time {
-    font-size: 14px;
-    font-weight: bold;
-  }
+  "& .time": {
+    fontSize: "14px",
+    fontWeight: 700,
+  },
 
-  .details {
-    flex: 1;
-    padding-left: 20px;
-    color: #3498db;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-  }
+  "& .details": {
+    flex: 1,
+    color: "#3498DB",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    justifyContent: "center",
+  },
 
-  .add-button,
-  .remove-button {
-    width: 32px;
-    height: 32px;
-    font-size: 24px;
-    color: #7f8c8d;
-    background-color: #ecf0f1;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .add-button:hover,
-  .remove-button:hover {
-    background-color: #bdc3c7;
-  }
-`;
+  "@media screen and (max-width: 1296px)": {
+    flexDirection: "column",
+    alignItems: "flex-start",
+  },
+}))

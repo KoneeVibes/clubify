@@ -5,10 +5,12 @@ import { Dashboard } from './pages/app/dashboard';
 import { Membership } from './pages/app/membership';
 import { SignIn } from './pages/authentication/signin';
 import { Events } from './pages/app/events';
-import { Facilities } from './pages/app/facilities';
+import { Booking } from './pages/app/booking';
 import { Services } from './pages/app/services';
 import { Billing } from './pages/app/billing';
 import { AllMembers } from './pages/app/allmembers';
+import { Settings } from './pages/app/settings';
+
 
 function App() {
   return (
@@ -19,11 +21,14 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/membership' element={<Membership />} />
         <Route path='/events' element={<Events />} />
-        <Route path='/facilities' element={<Facilities />} />
+        {/* route for facilities goes under here */}
+
+        <Route path='/facilities/booking' element={<Booking />} />
         <Route path='/services' element={<Services />} />
         <Route path='/billing' element={<Billing />} />
         <Route path='/allmembers' element={<AllMembers />} />
-      </Routes>
+        <Route path='/settings' element={<Settings />} />
+        </Routes>
     </BrowserRouter>
   )
 }
