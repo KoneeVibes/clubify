@@ -31,6 +31,7 @@ function App() {
         <Route path='/billing' element={<Billing />} />
         <Route path='/allmembers' element={<AllMembers />} />
         <Route path='/settings' element={<Settings />} />
+        <Route path='/events' element={<Events />} />
         </Routes>
     </BrowserRouter>
   )
