@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { FacilitiesWrapper } from "./styled";
 import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
@@ -21,6 +22,21 @@ const facilitiesData = [
 ];
 
 export const Facilities = () => {
+    const [filter, setFilter] = useState({
+        location: "",
+        capacity: "",
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFilter((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
+    };
+
+    useEffect(() => console.log(filter), [filter]);
+
     const cookies = new Cookies();
     const { profile } = cookies.getAll();
 
@@ -59,15 +75,25 @@ export const Facilities = () => {
                         <Filter />
                         <Span>Filter</Span>
                         <BaseFieldSet>
-                            <BaseSelect name="location">
+                            <BaseSelect
+                                name="location"
+                                onChange={handleChange}
+                                value={filter.location}
+                            >
                                 <option value="">Location</option>
-                                {/* Add additional location options here */}
+                                <option value="1">Location 1</option>
+                                <option value="2">Location 2</option>
                             </BaseSelect>
                         </BaseFieldSet>
                         <BaseFieldSet>
-                            <BaseSelect name="capacity">
+                            <BaseSelect
+                                name="capacity"
+                                onChange={handleChange}
+                                value={filter.capacity}
+                            >
                                 <option value="">Capacity</option>
-                                {/* Add additional capacity options here */}
+                                <option value="1">Capacity 1</option>
+                                <option value="2">Capacity 2</option>
                             </BaseSelect>
                         </BaseFieldSet>
                     </Row>
