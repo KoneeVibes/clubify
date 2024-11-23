@@ -12,6 +12,8 @@ import { AllMembers } from './pages/app/allmembers';
 import { Facilities } from './pages/app/facilities';
 import { BookingHistory } from './pages/app/facilities/bookinghistory';
 import { Settings } from './pages/app/settings';
+import { EventDetails } from './pages/app/events/eventdetails';
+import { EventsHistory } from './pages/app/events/eventhistory';
 
 
 function App() {
@@ -32,6 +34,8 @@ function App() {
         <Route path='/allmembers' element={<AllMembers />} />
         <Route path='/settings' element={<Settings />} />
         <Route path='/events' element={<Events />} />
+        <Route path='/events/details' element={<EventDetails />} />
+        <Route path='/events/history' element={<EventsHistory />} />
         </Routes>
     </BrowserRouter>
   )
