@@ -6,8 +6,8 @@ export const EventsHistory = () => {
   const cookies = new Cookies();
   const { profile } = cookies.getAll();
 
-    return (
-        <Layout
+  return (
+    <Layout
       role={profile?.role}
       title={`Hello ${profile.role === "administrator" ? profile?.firstname || "" : profile?.member?.firstname || ""}`}
       subTitle={new Date().toLocaleDateString('en-US', {
@@ -18,9 +18,9 @@ export const EventsHistory = () => {
       plan={profile?.plan?.planName || ""}
       fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
     >
-            <EventsHistoryWrapper>
+      <EventsHistoryWrapper>
 
-            </EventsHistoryWrapper>
-        </Layout>
-    )
+      </EventsHistoryWrapper>
+    </Layout>
+  )
 }

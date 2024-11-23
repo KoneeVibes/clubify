@@ -34,9 +34,9 @@ function App() {
         <Route path='/allmembers' element={<AllMembers />} />
         <Route path='/settings' element={<Settings />} />
         <Route path='/events' element={<Events />} />
-        <Route path='/events/details' element={<EventDetails />} />
+        <Route path='/events/detail/:id' element={<EventDetails />} />
         <Route path='/events/history' element={<EventsHistory />} />
-        </Routes>
+      </Routes>
     </BrowserRouter>
   )
 }
