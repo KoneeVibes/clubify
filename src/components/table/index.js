@@ -33,6 +33,14 @@ export const Table = ({ columnTitles, rowItems, location }) => {
                                     <Td>{rowItem.status || ""}</Td>
                                 </Fragment>
                             )}
+                            {(location === "event-history") && (
+                                <Fragment>
+                                    <Td>{rowItem.eventName || ""}</Td>
+                                    <Td>{rowItem.date || ""}</Td>
+                                    <Td>{rowItem.location || ""}</Td>
+                                    <Td>{rowItem.RSVP || ""}</Td>
+                                </Fragment>
+                            )}
                         </tr>
                     )
                 })}
