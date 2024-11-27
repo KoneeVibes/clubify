@@ -11,14 +11,16 @@ import { adverts } from "../../../config";
 import { BaseButton } from "../../../components/button/styled";
 import { useEffect, useMemo, useState } from "react";
 import { getProfile } from "../../../utils/apis/getProfile";
+import { jwtDecode } from "jwt-decode";
 
 export const Dashboard = () => {
     const cookies = useMemo(() => new Cookies(), []);
     const { profile, data } = cookies.getAll() ?? {};
+    const { role } = jwtDecode(data.token)
     const [profileDetails, setProfileDetails] = useState({});
 
     useEffect(() => {
-        getProfile(data.token, data.role)
+        getProfile(data.token, role)
             .then((detail) => {
                 setProfileDetails(detail);
                 cookies.set("profile", detail);
@@ -26,7 +28,7 @@ export const Dashboard = () => {
             .catch((err) => {
                 console.error("Failed to fetch projects:", err);
             })
-    }, [cookies, data]);
+    }, [cookies, data, role]);
 
     return (
         <Layout

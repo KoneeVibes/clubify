@@ -1,10 +1,10 @@
-import { BillingWrapper } from "./styled";
+import { SettingsWrapper } from "./styled";
 import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
 
-export const Billing = () => {
-    const cookies = new Cookies();
-    const { profile } = cookies.getAll();
+export const Settings = () => {
+  const cookies = new Cookies();
+  const { profile } = cookies.getAll();
 
     return (
         <Layout
@@ -18,9 +18,9 @@ export const Billing = () => {
       plan={profile?.plan?.planName || ""}
       fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
     >
-            <BillingWrapper>
+            <SettingsWrapper>
 
-            </BillingWrapper>
+            </SettingsWrapper>
         </Layout>
     )
 }
