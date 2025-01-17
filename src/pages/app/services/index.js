@@ -1,6 +1,6 @@
-import { ServicesWrapper } from "./styled";
 import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
+import { ServicesWrapper } from "./styled";
 import { Row } from "../../../components/flex/styled";
 import { H1, Span } from "../../../components/typography/styled";
 import { Filter } from "../../../assets";
@@ -39,9 +39,15 @@ export const Services = () => {
                         <Filter />
                         <Span>Filter</Span>
                         <BaseFieldSet>
-                            <BaseSelect name="service">
-                                <option value="">Service Type</option>
+                            <BaseSelect name="location">
+                                <option value="">Location</option>
                                 {/* Add additional location options here */}
+                            </BaseSelect>
+                        </BaseFieldSet>
+                        <BaseFieldSet>
+                            <BaseSelect name="capacity">
+                                <option value="">Capacity</option>
+                                {/* Add additional capacity options here */}
                             </BaseSelect>
                         </BaseFieldSet>
                     </Row>
