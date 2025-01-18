@@ -3,7 +3,7 @@ import Cookies from "universal-cookie";
 import { ServicesWrapper } from "./styled";
 import { Row } from "../../../components/flex/styled";
 import { H1, Span } from "../../../components/typography/styled";
-import { Filter } from "../../../assets";
+import { Banner, Filter } from "../../../assets";
 import { BaseFieldSet } from "../../../components/form/fieldset/styled";
 import { BaseSelect } from "../../../components/form/select/styled";
 
@@ -24,13 +24,6 @@ export const Services = () => {
             fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
         >
             <ServicesWrapper>
-<<<<<<< HEAD
-                
-                
-                 
-                 
-
-=======
                 <Row
                     className="header"
                     alignitems="center"
@@ -47,19 +40,15 @@ export const Services = () => {
                         <Span>Filter</Span>
                         <BaseFieldSet>
                             <BaseSelect name="location">
-                                <option value="">Location</option>
+                                <option value="">Service type</option>
                                 {/* Add additional location options here */}
-                            </BaseSelect>
-                        </BaseFieldSet>
-                        <BaseFieldSet>
-                            <BaseSelect name="capacity">
-                                <option value="">Capacity</option>
-                                {/* Add additional capacity options here */}
                             </BaseSelect>
                         </BaseFieldSet>
                     </Row>
                 </Row>
->>>>>>> de2488d29f4a19cbd4498958a8cb096b48973126
+                <div className="banner-box">
+                    <Banner />
+                </div>
             </ServicesWrapper>
         </Layout>
     )

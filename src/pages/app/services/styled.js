@@ -53,5 +53,9 @@ export const ServicesWrapper = styled("div")(() => {
                 flexDirection: "column",
             },
         },
+        "& .banner-box>svg": {
+            width: "100%",
+            height: "auto",
+        },
     }
 })
