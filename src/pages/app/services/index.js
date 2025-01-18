@@ -1,9 +1,9 @@
 import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
 import { ServicesWrapper } from "./styled";
-import { Row } from "../../../components/flex/styled";
-import { H1, Span } from "../../../components/typography/styled";
-import { Banner, Filter } from "../../../assets";
+import { Column, Row } from "../../../components/flex/styled";
+import { H1, H2, P, Span } from "../../../components/typography/styled";
+import { Filter } from "../../../assets";
 import { BaseFieldSet } from "../../../components/form/fieldset/styled";
 import { BaseSelect } from "../../../components/form/select/styled";
 
@@ -46,9 +46,53 @@ export const Services = () => {
                         </BaseFieldSet>
                     </Row>
                 </Row>
-                <div className="banner-box">
-                    <Banner />
-                </div>
+                <Column
+                    className="services-box"
+                >
+                    <div
+                        className="service-box"
+                    >
+                        <div
+                            className="service-box-header bars-and-kitchen"
+                        >
+                            <H2>Bars and Kitchen</H2>
+                            <P>Sip, Savor, and Socialize</P>
+                        </div>
+                        <div
+                            className="service-box-details"
+                        >
+
+                        </div>
+                    </div>
+                    <div
+                        className="service-box"
+                    >
+                        <div
+                            className="service-box-header"
+                        >
+
+                        </div>
+                        <div
+                            className="service-box-details"
+                        >
+
+                        </div>
+                    </div>
+                    <div
+                        className="service-box"
+                    >
+                        <div
+                            className="service-box-header"
+                        >
+
+                        </div>
+                        <div
+                            className="service-box-details"
+                        >
+
+                        </div>
+                    </div>
+                </Column>
             </ServicesWrapper>
         </Layout>
     )

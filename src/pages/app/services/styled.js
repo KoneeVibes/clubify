@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import barsandkitchen from "../../../assets/images/barsandkitchen.svg";
 
 export const ServicesWrapper = styled("div")(() => {
     return {
@@ -39,7 +40,6 @@ export const ServicesWrapper = styled("div")(() => {
                 flexDirection: "column",
             },
         },
-
         "& .header .filter": {
             gap: "8px",
             "& span": {
@@ -56,6 +56,27 @@ export const ServicesWrapper = styled("div")(() => {
         "& .banner-box>svg": {
             width: "100%",
             height: "auto",
+        },
+        "& .service-box-header": {
+            backgroundColor: "#3C1985",
+            color: "#FFFFFF",
+            borderRadius: "15px",
+            padding: "var(--basic-padding)",
+            backgroundSize: "auto 100%",
+            backgroundPosition: "right",
+            backgroundRepeat: "no-repeat",
+            "& h2": {
+                fontSize: "42px",
+                marginBlock: 0
+            },
+            "& p": {
+                fontSize: "22px",
+                fontWeight: 500,
+                marginBlock: 0
+            }
+        },
+        "& .bars-and-kitchen": {
+            backgroundImage: `url(${barsandkitchen})`,
         },
     }
 })
