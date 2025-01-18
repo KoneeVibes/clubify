@@ -2,7 +2,7 @@ import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
 import { ServicesWrapper } from "./styled";
 import { Column, Row } from "../../../components/flex/styled";
-import { H1, H2, P, Span } from "../../../components/typography/styled";
+import { H1, H2, Li, P, Span } from "../../../components/typography/styled";
 import { Filter } from "../../../assets";
 import { BaseFieldSet } from "../../../components/form/fieldset/styled";
 import { BaseSelect } from "../../../components/form/select/styled";
@@ -49,7 +49,7 @@ export const Services = () => {
                 <Column
                     className="services-box"
                 >
-                    <div
+                    <Column
                         className="service-box"
                     >
                         <div
@@ -58,12 +58,101 @@ export const Services = () => {
                             <H2>Bars and Kitchen</H2>
                             <P>Sip, Savor, and Socialize</P>
                         </div>
-                        <div
+                        <Column
                             className="service-box-details"
                         >
-
-                        </div>
-                    </div>
+                            <div
+                                className="service-box-detail"
+                            >
+                                <ul
+                                    className="service-title"
+                                >
+                                    <Li>Main Bar</Li>
+                                </ul>
+                                <Column
+                                    className="service-details"
+                                >
+                                    <Row
+                                        tocolumn={true}
+                                        gap={"calc(var(--flex-gap)/4)"}
+                                        justifycontent={"space-between"}
+                                    >
+                                        <div
+                                            className="service-detail"
+                                        >
+                                            <P>Location</P>
+                                        </div>
+                                        <div
+                                            className="service-detail"
+                                        >
+                                            <P>Ground Floor</P>
+                                        </div>
+                                    </Row>
+                                    <Row
+                                        tocolumn={true}
+                                        gap={"calc(var(--flex-gap)/4)"}
+                                        justifycontent={"space-between"}
+                                    >
+                                        <div
+                                            className="service-detail"
+                                        >
+                                            <P>Operating Hours</P>
+                                        </div>
+                                        <div
+                                            className="service-detail"
+                                        >
+                                            <P>Always Open</P>
+                                        </div>
+                                    </Row>
+                                </Column>
+                            </div>
+                            <div
+                                className="service-box-detail"
+                            >
+                                <ul
+                                    className="service-title"
+                                >
+                                    <Li>33 Restaurant</Li>
+                                </ul>
+                                <Column
+                                    className="service-details"
+                                >
+                                    <Row
+                                        tocolumn={true}
+                                        gap={"calc(var(--flex-gap)/4)"}
+                                        justifycontent={"space-between"}
+                                    >
+                                        <div
+                                            className="service-detail"
+                                        >
+                                            <P>Location</P>
+                                        </div>
+                                        <div
+                                            className="service-detail"
+                                        >
+                                            <P>Ground Floor</P>
+                                        </div>
+                                    </Row>
+                                    <Row
+                                        tocolumn={true}
+                                        gap={"calc(var(--flex-gap)/4)"}
+                                        justifycontent={"space-between"}
+                                    >
+                                        <div
+                                            className="service-detail"
+                                        >
+                                            <P>Operating Hours</P>
+                                        </div>
+                                        <div
+                                            className="service-detail"
+                                        >
+                                            <P>Always Open</P>
+                                        </div>
+                                    </Row>
+                                </Column>
+                            </div>
+                        </Column>
+                    </Column>
                     <div
                         className="service-box"
                     >

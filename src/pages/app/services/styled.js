@@ -62,9 +62,9 @@ export const ServicesWrapper = styled("div")(() => {
         "& .service-box-header": {
             backgroundColor: "#3C1985",
             color: "#FFFFFF",
-            borderRadius: "25px",
+            borderRadius: "15px",
             padding: "var(--basic-padding)",
-            backgroundSize: "auto 100%",
+            backgroundSize: "40% auto",
             backgroundPosition: "right",
             backgroundRepeat: "no-repeat",
             "& h2": {
@@ -75,18 +75,33 @@ export const ServicesWrapper = styled("div")(() => {
                 fontSize: "22px",
                 fontWeight: 500,
                 marginBlock: 0
+            },
+        },
+        "& .service-box-details": {
+            paddingInlineStart: "var(--basic-padding)",
+            "& .service-title": {
+                paddingInlineStart: 0,
+                marginBlockStart: 0,
+                listStylePosition: "inside",
+            },
+            "& .service-details": {
+                gap: "calc(var(--flex-gap)/4)",
+                paddingInlineStart: "var(--basic-padding)",
+                "& .service-detail>p": {
+                    marginBlock: 0,
+                    fontWeight: 500,
+                    fontSize: "18px"
+                }
             }
         },
         "& .bars-and-kitchen": {
-            backgroundImage:  `url(${barsandkitchen})`
-
-            
+            backgroundImage: `url(${barsandkitchen})`
         },
-        "& .massage-and-beauty":{
+        "& .massage-and-beauty": {
             backgroundImage: `url(${massageandbeauty})`,
         },
-        "& .gymnasium":{
-            backgroundImage  : `url(${gymnasium})`,
+        "& .gymnasium": {
+            backgroundImage: `url(${gymnasium})`,
         }
     }
 })
