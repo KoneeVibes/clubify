@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import barsandkitchen from "../../../assets/images/barsandkitchen.svg";
+import massageandbeauty from "../../../assets/images/massageandbeauty.svg"
+import gymnasium from "../../../assets/images/gymnasium.svg"
 
 export const ServicesWrapper = styled("div")(() => {
     return {
@@ -60,7 +62,7 @@ export const ServicesWrapper = styled("div")(() => {
         "& .service-box-header": {
             backgroundColor: "#3C1985",
             color: "#FFFFFF",
-            borderRadius: "15px",
+            borderRadius: "25px",
             padding: "var(--basic-padding)",
             backgroundSize: "auto 100%",
             backgroundPosition: "right",
@@ -76,7 +78,15 @@ export const ServicesWrapper = styled("div")(() => {
             }
         },
         "& .bars-and-kitchen": {
-            backgroundImage: `url(${barsandkitchen})`,
+            backgroundImage:  `url(${barsandkitchen})`
+
+            
         },
+        "& .massage-and-beauty":{
+            backgroundImage: `url(${massageandbeauty})`,
+        },
+        "& .gymnasium":{
+            backgroundImage  : `url(${gymnasium})`,
+        }
     }
 })

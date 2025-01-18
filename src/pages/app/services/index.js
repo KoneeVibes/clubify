@@ -68,8 +68,10 @@ export const Services = () => {
                         className="service-box"
                     >
                         <div
-                            className="service-box-header"
+                            className="service-box-header massage-and-beauty"
                         >
+                            <H2>Massage & Beauty</H2>
+                            <P>Relax, Renew, Recharge</P>
 
                         </div>
                         <div
@@ -82,9 +84,10 @@ export const Services = () => {
                         className="service-box"
                     >
                         <div
-                            className="service-box-header"
+                            className="service-box-header gymnasium"
                         >
-
+                            <H2>Gymnasium </H2>
+                            <P>Fitness Redefined: Embrace the Challenge</P>
                         </div>
                         <div
                             className="service-box-details"
