@@ -1,13 +1,13 @@
-import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
-import { ServicesWrapper } from "./styled";
-import { Row } from "../../../components/flex/styled";
-import { H1, Span } from "../../../components/typography/styled";
-import { Filter } from "../../../assets";
-import { BaseFieldSet } from "../../../components/form/fieldset/styled";
-import { BaseSelect } from "../../../components/form/select/styled";
+import { Layout } from "../../../../containers/layout";
+import { Row } from "../../../../components/flex/styled";
+import { ServicesHistoryWrapper } from "./styled";
+import { H1, Span } from "../../../../components/typography/styled";
+import { Filter, SortIcon } from "../../../../assets";
+import { BaseFieldSet } from "../../../../components/form/fieldset/styled";
+import { BaseSelect } from "../../../../components/form/select/styled";
 
-export const Services = () => {
+export const ServicesHistory = () => {
     const cookies = new Cookies();
     const { profile } = cookies.getAll();
 
@@ -23,36 +23,37 @@ export const Services = () => {
             plan={profile?.plan?.planName || ""}
             fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
         >
-            <ServicesWrapper>
-                <Row
+            {/* Aneminyene, your code goes under here */}
+
+            <ServicesHistoryWrapper>
+            <Row
                     className="header"
                     alignitems="center"
                     justifycontent="space-between"
                 >
-                    <div>
-                        <H1>Services</H1>
+                    <div className="title">
+                        <H1>Service History</H1>
                     </div>
                     <Row
                         className="filter"
                         alignitems="center"
                     >
-                        <Filter />
-                        <Span>Filter</Span>
+                        <SortIcon />
+                        <Span>Sort by</Span>
                         <BaseFieldSet>
-                            <BaseSelect name="location">
-                                <option value="">Location</option>
+                            <BaseSelect
+                                name="filter"
+                                value={Filter}
+                                onChange={(e) => handleChange(e)}
+                            >
+                                <option value="">Date</option>
                                 {/* Add additional location options here */}
                             </BaseSelect>
                         </BaseFieldSet>
-                        <BaseFieldSet>
-                            <BaseSelect name="capacity">
-                                <option value="">Capacity</option>
-                                {/* Add additional capacity options here */}
-                            </BaseSelect>
-                        </BaseFieldSet>
                     </Row>
-                </Row>
-            </ServicesWrapper>
+            </Row>
+            </ServicesHistoryWrapper>
+
         </Layout>
     )
 }
