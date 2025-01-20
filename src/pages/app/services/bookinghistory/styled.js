@@ -17,11 +17,12 @@ export const ServicesHistoryWrapper = styled("div")(() => {
             }
         },
         "& .history-table": {
+            display: "block",
             overflow: "auto",
-            marginBlockEnd: "calc(var(--basic-margin) * 2)",
+            marginBlockEnd: "calc(var(--basic-margin))",
         },
         "@media screen and (max-width: 523px)": {
-            "& .booking-history-header": {
+            "& .services-history-header": {
                 gap: "0",
                 flexDirection: "column",
                 alignItems: "flex-start",
@@ -32,14 +33,14 @@ export const ServicesHistoryWrapper = styled("div")(() => {
             }
         },
         "@media screen and (min-width: 768px) and (max-width: 860px)": {
-            "& .booking-history-header": {
+            "& .services-history-header": {
                 gap: "0",
                 flexDirection: "column",
                 alignItems: "flex-start"
             }
         },
         "@media screen and (min-width: 1025px) and (max-width: 1169px)": {
-            "& .booking-history-header": {
+            "& .services-history-header": {
                 gap: "0",
                 flexDirection: "column",
                 alignItems: "flex-start"

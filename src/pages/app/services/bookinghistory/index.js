@@ -3,13 +3,48 @@ import { Layout } from "../../../../containers/layout";
 import { Row } from "../../../../components/flex/styled";
 import { ServicesHistoryWrapper } from "./styled";
 import { H1, Span } from "../../../../components/typography/styled";
-import { Filter, SortIcon } from "../../../../assets";
+import { SortIcon } from "../../../../assets";
 import { BaseFieldSet } from "../../../../components/form/fieldset/styled";
 import { BaseSelect } from "../../../../components/form/select/styled";
+import { Table } from "../../../../components/table";
+import { useState } from "react";
 
 export const ServicesHistory = () => {
+    const headers = ["Service Name", "Date", "Start Time", "End Time", "Status"];
+
     const cookies = new Cookies();
     const { profile } = cookies.getAll();
+
+    const [filter, setFilter] = useState("");
+
+    const handleChange = (e) => {
+        const { value } = e.target;
+        setFilter(value);
+    }
+
+    const history = [
+        {
+            serviceName: "Massage",
+            date: "01-01-23",
+            startTime: "14:00:00",
+            endTime: "16:30:00",
+            status: "Pending",
+        },
+        {
+            serviceName: "Sauna",
+            date: "01-01-23",
+            startTime: "14:00:00",
+            endTime: "16:30:00",
+            status: "Pending",
+        },
+        {
+            serviceName: "Manicure",
+            date: "01-01-23",
+            startTime: "14:00:00",
+            endTime: "16:30:00",
+            status: "Pending",
+        },
+    ]
 
     return (
         <Layout
@@ -27,12 +62,12 @@ export const ServicesHistory = () => {
 
             <ServicesHistoryWrapper>
             <Row
-                    className="header"
+                    className="services-history-header"
                     alignitems="center"
                     justifycontent="space-between"
                 >
                     <div className="title">
-                        <H1>Service History</H1>
+                        <H1>Services History</H1>
                     </div>
                     <Row
                         className="filter"
@@ -43,7 +78,7 @@ export const ServicesHistory = () => {
                         <BaseFieldSet>
                             <BaseSelect
                                 name="filter"
-                                value={Filter}
+                                value={filter}
                                 onChange={(e) => handleChange(e)}
                             >
                                 <option value="">Date</option>
@@ -52,6 +87,15 @@ export const ServicesHistory = () => {
                         </BaseFieldSet>
                     </Row>
             </Row>
+            <div
+                className="history-table"
+            >
+                <Table
+                        columnTitles={headers}
+                        location={"services-history"}
+                        rowItems={history}
+                />
+            </div>
             </ServicesHistoryWrapper>
 
         </Layout>
