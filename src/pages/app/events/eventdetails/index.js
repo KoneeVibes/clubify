@@ -2,8 +2,10 @@ import { EventDetailsWrapper } from "./styled";
 import { Layout } from "../../../../containers/layout/index";
 import Cookies from "universal-cookie";
 import eventImage from "../../../../assets/images/eventimg.jpg";
-import { H1, H2, H3, P, Span } from "../../../../components/typography/styled";
+import { P, Span } from "../../../../components/typography/styled";
 import { Row, Column } from "../../../../components/flex/styled";
+import { BaseButton } from "../../../../components/button/styled";
+import { BaseSelect } from "../../../../components/form/select/styled";
 
 export const EventDetails = () => {
   const cookies = new Cookies();
@@ -31,11 +33,12 @@ export const EventDetails = () => {
             }`
       }
     >
-      <EventDetailsWrapper>
+      <EventDetailsWrapper tocolumn={true}>
         <Row className="heading-row" justifycontent={"space-between"}>
           <Span>Event Detail</Span>
-          <Span>Share event</Span>
+          <Span>🔗 Share event</Span>
         </Row>
+        <Row className="background">
         <div className="hero-img">
           <img src={eventImage} alt="diplomatic agreement" />
         </div>
@@ -54,6 +57,18 @@ export const EventDetails = () => {
           <br></br>
           <Span>Description</Span>
         </Column>
+        </Row>
+        <Row className="top-margin">
+          <BaseButton variant="cancel">
+            RSVP
+          </BaseButton>
+          <BaseSelect >
+            <option value="Select Company" hidden>
+              No, I will not be attending this event
+            </option>
+            <option value="company1">Company 1</option>
+          </BaseSelect>
+        </Row>
       </EventDetailsWrapper>
     </Layout>
   );
