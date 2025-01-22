@@ -21,11 +21,10 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<SignIn />} />
-        <Route path='/signup' element={<SignUp />} />
-        <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/membership' element={<Membership />} />
-        <Route path='/events' element={<Events />} />
+        <Route path="/" element={<SignIn />} />
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/membership" element={<Membership />} />
         {/* route for facilities goes under here */}
         <Route path='/facilities' element={<Facilities />} />
         <Route path='/facilities/booking/:id' element={<Booking />} />
@@ -41,7 +40,7 @@ function App() {
         <Route path='/events/history' element={<EventsHistory />} />
       </Routes>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
