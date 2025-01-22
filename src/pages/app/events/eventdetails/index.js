@@ -35,27 +35,32 @@ export const EventDetails = () => {
     >
       <EventDetailsWrapper tocolumn={true}>
         <Row className="heading-row" justifycontent={"space-between"}>
-          <Span>Event Detail</Span>
-          <Span>🔗 Share event</Span>
+          <Span className="event-detail">Event Detail</Span>
+          <Span className="share-event">🔗 Share event</Span>
         </Row>
         <Row className="background">
         <div className="hero-img">
           <img src={eventImage} alt="diplomatic agreement" />
         </div>
         <Column className="hero-text">
-          <Span>Event Name</Span>
+          <Span className="headers">Event Name</Span>
+          
           <P>Annual Business Conference</P>
           <P>2022</P>
-          <Span>Start Date</Span>
+          <br></br><br></br>
+          <Span className="headers">Start Date</Span>
+          
           <P>20, March 2022 - 10:00 AM</P>
-          <br></br>
-          <Span>End Date</Span>
+          <br></br><br></br>
+          <Span className="headers">End Date</Span>
+          
           <P>20, March 2022 - 03:00 PM</P>
-          <br></br>
-          <Span>Location</Span>
+          <br></br><br></br>
+          <Span className="headers">Location</Span>
+          
           <P>Conference Room 302</P>
-          <br></br>
-          <Span>Description</Span>
+          <br></br><br></br>
+          <Span className="headers">Description</Span>
         </Column>
         </Row>
         <Row className="top-margin">
