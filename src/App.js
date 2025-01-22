@@ -14,7 +14,8 @@ import { BookingHistory } from './pages/app/facilities/bookinghistory';
 import { Settings } from './pages/app/settings';
 import { EventDetails } from './pages/app/events/eventdetails';
 import { EventsHistory } from './pages/app/events/eventhistory';
-
+import { ServicesBooking } from './pages/app/services/booking';
+import { ServicesHistory } from './pages/app/services/bookinghistory';
 
 function App() {
   return (
@@ -29,6 +30,8 @@ function App() {
         <Route path='/facilities/booking/:id' element={<Booking />} />
         <Route path='/facilities/history' element={<BookingHistory />} />
         <Route path='/services' element={<Services />} />
+        <Route path='/services/booking/:id' element={<ServicesBooking />} />
+        <Route path='/services/history' element={<ServicesHistory />} />
         <Route path='/billing' element={<Billing />} />
         <Route path='/allmembers' element={<AllMembers />} />
         <Route path='/settings' element={<Settings />} />
