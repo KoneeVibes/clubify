@@ -102,6 +102,20 @@ export const ServicesWrapper = styled("div")(() => {
         },
         "& .gymnasium": {
             backgroundImage: `url(${gymnasium})`,
+        },
+        "& .book-service": {
+            overflow: "hidden",
+            "& button": {
+                backgroundColor: "#4B0082",
+                fontSize: "18px",
+                fontWeight: "bold",
+                borderRadius: "20px",
+                padding: "10px 20px",
+                cursor: "pointer",
+                transition: "background-color 0.3s ease, transform 0.2s ease",
+                width: "94px",
+                overflow: "hidden",
+            },
         }
     }
 })

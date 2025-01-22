@@ -6,10 +6,18 @@ import { H1, H2, Li, P, Span } from "../../../components/typography/styled";
 import { Filter } from "../../../assets";
 import { BaseFieldSet } from "../../../components/form/fieldset/styled";
 import { BaseSelect } from "../../../components/form/select/styled";
+import { BaseButton } from "../../../components/button/styled";
+import { useNavigate } from "react-router-dom";
 
 export const Services = () => {
     const cookies = new Cookies();
     const { profile } = cookies.getAll();
+      const navigate = useNavigate();
+    
+        const handleNavigateToBookService = (e, id) => {
+            e.preventDefault();
+            return navigate(`/services/booking/${id}`)
+        }
 
     return (
         <Layout
@@ -215,11 +223,28 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
+                                <Row 
+                                  justifycontent="space-between"
+                                >
+                              
+                                    
                                 <ul
                                     className="service-title"
                                 >
                                     <Li>Massage</Li>
                                 </ul>
+                                <div
+                                  className="book-service"
+                                >
+                                     <BaseButton
+                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                     >
+                                 <Span>
+                                   Book
+                               </Span>
+                                </BaseButton>
+                                 </div>
+                                </Row>
                                 <Column
                                     className="service-details"
                                 >
@@ -261,11 +286,28 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
+                                <Row 
+                                  justifycontent="space-between"
+                                >
+                              
+                                    
                                 <ul
                                     className="service-title"
                                 >
                                     <Li>Barber Shop</Li>
                                 </ul>
+                                <div
+                                  className="book-service"
+                                >
+                                     <BaseButton
+                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                     >
+                                 <Span>
+                                   Book
+                               </Span>
+                                </BaseButton>
+                                 </div>
+                                </Row>
                                 <Column
                                     className="service-details"
                                 >
