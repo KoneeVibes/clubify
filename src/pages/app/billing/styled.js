@@ -1,7 +1,10 @@
 import styled from "styled-components";
 
 export const BillingWrapper = styled("div")(() => {
-    return {
-
-    }
-})
+  return {
+    "& .event-detail": {
+      fontSize: "24px",
+      fontWeight: "500",
+    },
+  };
+});
