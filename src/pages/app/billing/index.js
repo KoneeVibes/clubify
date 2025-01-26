@@ -2,19 +2,32 @@ import { BillingWrapper } from "./styled";
 import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
 import { CMS } from "../../../assets";
-import { H1, H2, P, Span } from "../../../components/typography/styled";
+import { P, Span } from "../../../components/typography/styled";
 import { Row } from "../../../components/flex/styled";
 import { BaseButton } from "../../../components/button/styled";
+import { Table } from "../../../components/table";
 
 export const Billing = () => {
+  const headers = ["Serial", "Description", "Price", "Qty", "Total"];
+
   const cookies = new Cookies();
   const { profile } = cookies.getAll();
+
+  const history = [
+    {
+      Serial: "1",
+      Description: "Message Service",
+      Price: "20,000.00",
+      Qty: "1",
+      Total: "20,000.00",
+    },
+  ];
 
   return (
     <Layout
       role={profile?.role}
       title={`Hello ${
-        profile.role === "administrator"
+        profile?.role === "administrator"
           ? profile?.firstname || ""
           : profile?.member?.firstname || ""
       }`}
@@ -34,47 +47,66 @@ export const Billing = () => {
     >
       <BillingWrapper tocolumn={true}>
         <Row className="heading-row" justifycontent={"space-between"}>
-          <Span className="event-detail">billing</Span>
-          <Span className="share-event"> print invoice</Span>
+          <Span className="billing">Billing</Span>
+          <Span className="print-invoice"> print invoice</Span>
         </Row>
 
-        <Row className="section2" justifycontent={"space-between"}>
-          <div>
-            <H1>Invoice #1245-0001 for #20,000</H1>
-            <H2>Billing Type: One Time</H2>
-          </div>
-          <div>
+        <div className="border">
+          <Row
+            className="section1"
+            justifycontent={"space-between"}
+            alignItems={"center"}
+          >
+            <Span>Invoice #1245-0001 for #20,000</Span>
             <CMS />
+          </Row>
+          <Row
+            className="section2"
+            justifycontent={"space-between"}
+            alignItems={"center"}
+          >
+            <Span>Billing Type: One Time</Span>
             <BaseButton>Completed</BaseButton>
-          </div>
-        </Row>
-        <Row className="section3" justifycontent={"space-around"}>
-          <div>
-            <P>Issued by</P>
-            <br></br>
-            <P>Ikoye Club</P>
-            <Span>finances@Ikoyeclub.com</Span>
-          </div>
-          <div>
-            <P>Recipient</P>
-            <br></br>
-            <P>Adewale Sarah</P>
-            <Span>Sarah@example.com</Span>
-          </div>
-        </Row>
-        <Row className="section4" justifycontent={"space-around"}>
-          <div>
-            <P>Issued on</P>
-            <br></br>
-            <P>01 January, 2023</P>
-          </div>
+          </Row>
 
-          <div>
-            <P>Due on</P>
-            <br></br>
-            <P>01 January, 2023</P>
+          <div className="border2">
+            <Row className="section3" justifycontent={"space-between"}>
+              <Span>Issued by</Span>
+              <Span>Recipient</Span>
+            </Row>
+
+            <Row justifycontent={"space-between"}>
+              <Span>Ikoye Club</Span>
+              <Span>Adewale Sarah</Span>
+            </Row>
+
+            <Row justifycontent={"space-between"}>
+              <P>finances@Ikoyeclub.com</P>
+              <P>Sarah@example.com</P>
+            </Row>
+
+            <Row className="section4" justifycontent={"space-between"}>
+              <Span>Issued on</Span>
+              <Span>Due on</Span>
+            </Row>
+
+            <Row justifycontent={"space-between"}>
+              <Span>01 January, 2023</Span>
+              <Span>01 January, 2023</Span>
+            </Row>
           </div>
-        </Row>
+          <Row className="detail-section" justifycontent={"space-between"}>
+            <Span>Invoice Detail</Span>
+            <Span>Payment Method: Card</Span>
+          </Row>
+          <div className="billing-table">
+            <Table
+              columnTitles={headers}
+              location={"billing"}
+              rowItems={history}
+            />
+          </div>
+        </div>
       </BillingWrapper>
     </Layout>
   );
