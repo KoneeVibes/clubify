@@ -72,11 +72,28 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
+                                <Row 
+                                  justifycontent="space-between"
+                                >
+                              
+                                    
                                 <ul
                                     className="service-title"
                                 >
                                     <Li>Main Bar</Li>
                                 </ul>
+                                <div
+                                  className="book-service"
+                                >
+                                     <BaseButton
+                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                     >
+                                 <Span>
+                                   Book
+                               </Span>
+                                </BaseButton>
+                                 </div>
+                                </Row>
                                 <Column
                                     className="service-details"
                                 >
@@ -117,11 +134,28 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
+                                <Row 
+                                  justifycontent="space-between"
+                                >
+                              
+                                    
                                 <ul
                                     className="service-title"
                                 >
                                     <Li>33 Restaurant</Li>
                                 </ul>
+                                <div
+                                  className="book-service"
+                                >
+                                     <BaseButton
+                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                     >
+                                 <Span>
+                                   Book
+                               </Span>
+                                </BaseButton>
+                                 </div>
+                                </Row>
                                 <Column
                                     className="service-details"
                                 >
@@ -162,11 +196,28 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
+                                <Row 
+                                  justifycontent="space-between"
+                                >
+                              
+                                    
                                 <ul
                                     className="service-title"
                                 >
                                     <Li>Suya Hut</Li>
                                 </ul>
+                                <div
+                                  className="book-service"
+                                >
+                                     <BaseButton
+                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                     >
+                                 <Span>
+                                   Book
+                               </Span>
+                                </BaseButton>
+                                 </div>
+                                </Row>
                                 <Column
                                     className="service-details"
                                 >
@@ -367,11 +418,28 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
+                                <Row 
+                                  justifycontent="space-between"
+                                >
+                              
+                                    
                                 <ul
                                     className="service-title"
                                 >
-                                    <Li>Gym 1 </Li>
+                                    <Li>Gym 1</Li>
                                 </ul>
+                                <div
+                                  className="book-service"
+                                >
+                                     <BaseButton
+                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                     >
+                                 <Span>
+                                   Book
+                               </Span>
+                                </BaseButton>
+                                 </div>
+                                </Row>
                                 <Column
                                     className="service-details"
                                 >
@@ -412,11 +480,28 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
+                                <Row 
+                                  justifycontent="space-between"
+                                >
+                              
+                                    
                                 <ul
                                     className="service-title"
                                 >
                                     <Li>Gym 2</Li>
                                 </ul>
+                                <div
+                                  className="book-service"
+                                >
+                                     <BaseButton
+                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                     >
+                                 <Span>
+                                   Book
+                               </Span>
+                                </BaseButton>
+                                 </div>
+                                </Row>
                                 <Column
                                     className="service-details"
                                 >
@@ -457,11 +542,28 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
+                                <Row 
+                                  justifycontent="space-between"
+                                >
+                              
+                                    
                                 <ul
                                     className="service-title"
                                 >
-                                    <Li>Tennis Court</Li>
+                                    <Li>Tennis Court </Li>
                                 </ul>
+                                <div
+                                  className="book-service"
+                                >
+                                     <BaseButton
+                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                     >
+                                 <Span>
+                                   Book
+                               </Span>
+                                </BaseButton>
+                                 </div>
+                                </Row>
                                 <Column
                                     className="service-details"
                                 >
