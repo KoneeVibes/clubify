@@ -9,6 +9,7 @@ import { Booking } from "./pages/app/facilities/booking";
 import { Services } from "./pages/app/services";
 import { Billing } from "./pages/app/billing";
 import { BillingHistory } from "./pages/app/billinghistory";
+import { BillingSubscription } from "./pages/app/billingsubscription";
 import { AllMembers } from "./pages/app/allmembers";
 import { Facilities } from "./pages/app/facilities";
 import { BookingHistory } from "./pages/app/facilities/bookinghistory";
@@ -35,6 +36,7 @@ function App() {
         <Route path="/services/history" element={<ServicesHistory />} />
         <Route path="/billing" element={<Billing />} />
         <Route path="/billing/history" element={<BillingHistory />} />
+        <Route path="/billing/subscription" element={<BillingSubscription />} />
         <Route path="/allmembers" element={<AllMembers />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/events" element={<Events />} />
