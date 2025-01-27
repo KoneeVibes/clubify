@@ -7,44 +7,32 @@ import { SortIcon } from "../../../../assets";
 import { BaseFieldSet } from "../../../../components/form/fieldset/styled";
 import { BaseSelect } from "../../../../components/form/select/styled";
 import { Table } from "../../../../components/table";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getServiceHistory } from "../../../../utils/apis/getServicesHistory";
 
 export const ServicesHistory = () => {
     const headers = ["Service Name", "Date", "Start Time", "End Time", "Status"];
 
     const cookies = new Cookies();
-    const { profile } = cookies.getAll();
+    const { profile, data } = cookies.getAll();
 
     const [filter, setFilter] = useState("");
+    const [history, setHistory] = useState([]);
 
     const handleChange = (e) => {
         const { value } = e.target;
         setFilter(value);
-    }
+    };
 
-    const history = [
-        {
-            serviceName: "Massage",
-            date: "01-01-23",
-            startTime: "14:00:00",
-            endTime: "16:30:00",
-            status: "Pending",
-        },
-        {
-            serviceName: "Sauna",
-            date: "01-01-23",
-            startTime: "14:00:00",
-            endTime: "16:30:00",
-            status: "Pending",
-        },
-        {
-            serviceName: "Manicure",
-            date: "01-01-23",
-            startTime: "14:00:00",
-            endTime: "16:30:00",
-            status: "Pending",
-        },
-    ]
+    useEffect(() => {
+        getServiceHistory(data.token, "")
+            .then((detail) => {
+                setHistory(detail);
+            })
+            .catch((err) => {
+                console.error("Failed to fetch services:", err);
+            })
+    }, [data]);
 
     return (
         <Layout
@@ -59,9 +47,8 @@ export const ServicesHistory = () => {
             fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
         >
             {/* Aneminyene, your code goes under here */}
-
             <ServicesHistoryWrapper>
-            <Row
+                <Row
                     className="services-history-header"
                     alignitems="center"
                     justifycontent="space-between"
@@ -86,16 +73,16 @@ export const ServicesHistory = () => {
                             </BaseSelect>
                         </BaseFieldSet>
                     </Row>
-            </Row>
-            <div
-                className="history-table"
-            >
-                <Table
+                </Row>
+                <div
+                    className="history-table"
+                >
+                    <Table
                         columnTitles={headers}
                         location={"services-history"}
                         rowItems={history}
-                />
-            </div>
+                    />
+                </div>
             </ServicesHistoryWrapper>
 
         </Layout>
