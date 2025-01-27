@@ -64,7 +64,7 @@ export const ServicesWrapper = styled("div")(() => {
             color: "#FFFFFF",
             borderRadius: "15px",
             padding: "var(--basic-padding)",
-            backgroundSize: "40% auto",
+            backgroundSize: "cover",
             backgroundPosition: "right",
             backgroundRepeat: "no-repeat",
             "& h2": {
