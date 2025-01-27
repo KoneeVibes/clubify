@@ -51,7 +51,7 @@ export const Billing = () => {
         <Row className="heading-row" justifycontent={"space-between"}>
           <Span className="billing">Billing</Span>
           <button className="print-invoice">
-            <FontAwesomeIcon icon={faPrint} />
+            <FontAwesomeIcon className="print" icon={faPrint} />
             print invoice
           </button>
         </Row>
@@ -89,17 +89,17 @@ export const Billing = () => {
               justifyContent: "space-between",
               alignItems: "center",
               padding:
-                "calc(var(--basic-padding) * .7)  calc(var(--basic-padding) * 1.5) calc(var(--basic-padding) * .4)  calc(var(--basic-padding) * 1.3) ",
+                "calc(var(--basic-padding) * .7)  calc(var(--basic-padding) * 3) calc(var(--basic-padding) * .4)  calc(var(--basic-padding) * .8) ",
             }}
           >
-            <Span section3-text>Issued by</Span>
-            <Span section3-text>Recipient</Span>
+            <Span className="section3-text">Issued by</Span>
+            <Span className="section3-text">Recipient</Span>
           </Row>
 
           <div className="border2">
             <Row justifycontent={"space-between"}>
-              <Span>Ikoye Club</Span>
-              <Span>Adewale Sarah</Span>
+              <Span className="span-text">Ikoye Club</Span>
+              <Span className="span-text">Adewale Sarah</Span>
             </Row>
 
             <Row justifycontent={"space-between"}>
@@ -107,19 +107,28 @@ export const Billing = () => {
               <P>Sarah@example.com</P>
             </Row>
 
-            <Row className="section4" justifycontent={"space-between"}>
-              <Span>Issued on</Span>
-              <Span>Due on</Span>
+            <Row
+              className="section4"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                padding:
+                  "calc(var(--basic-padding) * .7)  calc(var(--basic-padding) * 3) calc(var(--basic-padding) * .4)  calc(var(--basic-padding) * .1) ",
+              }}
+            >
+              <Span className="section3-text">Issued on</Span>
+              <Span className="section3-text">Due on</Span>
             </Row>
 
             <Row justifycontent={"space-between"}>
-              <Span>01 January, 2023</Span>
-              <Span>01 January, 2023</Span>
+              <Span className="span-text">01 January, 2023</Span>
+              <Span className="span-text">01 January, 2023</Span>
             </Row>
           </div>
           <Row className="detail-section" justifycontent={"space-between"}>
-            <Span>Invoice Detail</Span>
-            <Span>Payment Method: Card</Span>
+            <Span className="detail-section-text">Invoice Detail</Span>
+            <Span className="detail-section-text">Payment Method: Card</Span>
           </Row>
           <div className="billing-table">
             <Table

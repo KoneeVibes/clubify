@@ -6,7 +6,7 @@ export const BillingWrapper = styled("div")(() => {
       marginBottom: "1rem",
     },
     "& .border": {
-      border: "2px solid black",
+      border: "1.2px solid black",
       overflow: "hidden",
       padding: "calc(var(--basic-padding) * 1) ",
       borderRadius: "1.2rem",
@@ -15,12 +15,25 @@ export const BillingWrapper = styled("div")(() => {
       padding: "0 calc(var(--basic-padding) * .8) ",
     },
     "& .section3-text": {
-      fontSize: "29px",
+      fontSize: "19px",
+      fontWeight: "500",
+    },
+    "& .span-text": {
+      fontSize: "22px",
+      fontWeight: "500",
+    },
+    "& P": {
+      color: "#454545",
+      fontSize: "16px",
       fontWeight: "500",
     },
     "& .detail-section": {
-      marginTop: "1rem",
+      marginTop: "2.5rem",
       borderBottom: "2px solid grey",
+    },
+    "& .detail-section-text": {
+      fontSize: "20px",
+      fontWeight: "500",
     },
     "& .section1": {
       "& svg": {
@@ -32,12 +45,16 @@ export const BillingWrapper = styled("div")(() => {
       fontWeight: "500",
     },
     "& .print-invoice": {
-      fontSize: "16px",
+      fontSize: "19px",
+      width: "9rem",
       fontWeight: "400",
       border: "none",
       backgroundColor: "white ",
       cursor: "pointer",
       padding: "0",
+    },
+    "& .print": {
+      marginRight: ".5rem",
     },
     "& button": {
       width: "8rem",
