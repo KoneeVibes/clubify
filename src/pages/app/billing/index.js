@@ -6,6 +6,8 @@ import { P, Span } from "../../../components/typography/styled";
 import { Row } from "../../../components/flex/styled";
 import { BaseButton } from "../../../components/button/styled";
 import { Table } from "../../../components/table";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPrint } from "@fortawesome/free-solid-svg-icons";
 
 export const Billing = () => {
   const headers = ["Serial", "Description", "Price", "Qty", "Total"];
@@ -48,33 +50,53 @@ export const Billing = () => {
       <BillingWrapper tocolumn={true}>
         <Row className="heading-row" justifycontent={"space-between"}>
           <Span className="billing">Billing</Span>
-          <Span className="print-invoice"> print invoice</Span>
+          <button className="print-invoice">
+            <FontAwesomeIcon icon={faPrint} />
+            print invoice
+          </button>
         </Row>
 
         <div className="border">
           <Row
             className="section1"
-            justifycontent={"space-between"}
-            alignItems={"center"}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
-            <Span>Invoice #1245-0001 for #20,000</Span>
+            <Span className="section1-text">
+              Invoice <Span className="color"> #1245-0001</Span> for #20,000
+            </Span>
             <CMS />
           </Row>
           <Row
             className="section2"
-            justifycontent={"space-between"}
-            alignItems={"center"}
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
           >
-            <Span>Billing Type: One Time</Span>
+            <Span className="section2-text">Billing Type: One Time</Span>
             <BaseButton>Completed</BaseButton>
           </Row>
 
-          <div className="border2">
-            <Row className="section3" justifycontent={"space-between"}>
-              <Span>Issued by</Span>
-              <Span>Recipient</Span>
-            </Row>
+          <Row
+            className="section3"
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              padding:
+                "calc(var(--basic-padding) * .7)  calc(var(--basic-padding) * 1.5) calc(var(--basic-padding) * .4)  calc(var(--basic-padding) * 1.3) ",
+            }}
+          >
+            <Span section3-text>Issued by</Span>
+            <Span section3-text>Recipient</Span>
+          </Row>
 
+          <div className="border2">
             <Row justifycontent={"space-between"}>
               <Span>Ikoye Club</Span>
               <Span>Adewale Sarah</Span>
