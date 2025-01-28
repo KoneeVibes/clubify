@@ -14,34 +14,41 @@ export const ServicesWrapper = styled("div")(() => {
                 fontWeight: "bold",
                 color: "#333",
             },
+
             "& fieldset": {
                 overflow: "hidden",
                 display: "flex",
                 flexDirection: "column",
             },
+
             "& select": {
                 padding: "calc(var(--basic-padding)/5)",
                 borderRadius: "10px",
             },
+
             "& div:first-of-type": {
                 width: "100%"
             },
+
             "@media screen and (max-width: 565px)": {
                 gap: "calc(var(--flex-gap)/3)",
                 alignItems: "flex-start",
                 flexDirection: "column",
             },
+
             "@media screen and (min-width: 768px) and (max-width: 890px)": {
                 gap: "calc(var(--flex-gap)/3)",
                 alignItems: "flex-start",
                 flexDirection: "column",
             },
+
             "@media screen and (min-width: 1024px) and (max-width: 1156px)": {
                 gap: "calc(var(--flex-gap)/3)",
                 alignItems: "flex-start",
                 flexDirection: "column",
             },
         },
+
         "& .header .filter": {
             gap: "8px",
             "& span": {
@@ -55,10 +62,12 @@ export const ServicesWrapper = styled("div")(() => {
                 flexDirection: "column",
             },
         },
+
         "& .banner-box>svg": {
             width: "100%",
             height: "auto",
         },
+
         "& .service-box-header": {
             backgroundColor: "#3C1985",
             color: "#FFFFFF",
@@ -77,23 +86,48 @@ export const ServicesWrapper = styled("div")(() => {
                 marginBlock: 0
             },
         },
+
         "& .service-box-details": {
             paddingInlineStart: "var(--basic-padding)",
+            "& .service-box-detail>div:first-of-type": {
+                marginBlockEnd: "calc(var(--basic-margin)/2)",
+                gap: 0,
+                "@media screen and (min-width:1024px)": {
+                    gap: "calc(var(--flex-gap)/4)",
+                    alignItems: "center",
+                }
+            },
             "& .service-title": {
                 paddingInlineStart: 0,
-                marginBlockStart: 0,
+                marginBlock: 0,
+                marginBlockEnd: "calc(var(--flex-gap)/4)",
                 listStylePosition: "inside",
+                flex: 1,
+                overflow: "hidden",
+                "@media screen and (min-width:1024px)": {
+                    marginBlockEnd: 0,
+                }
             },
             "& .service-details": {
                 gap: "calc(var(--flex-gap)/4)",
                 paddingInlineStart: "var(--basic-padding)",
-                "& .service-detail>p": {
-                    marginBlock: 0,
-                    fontWeight: 500,
-                    fontSize: "18px"
+                "& .service-detail": {
+                    flex: 1,
+                    overflow: "hidden",
+                    "& p": {
+                        marginBlock: 0,
+                        fontWeight: 500,
+                        fontSize: "18px",
+                    },
+                    "@media screen and (min-width: 1024px)": {
+                        "&:last-child>p": {
+                            textAlign: "right"
+                        }
+                    }
                 }
             }
         },
+
         "& .bars-and-kitchen": {
             backgroundImage: `url(${barsandkitchen})`
         },
@@ -104,18 +138,19 @@ export const ServicesWrapper = styled("div")(() => {
             backgroundImage: `url(${gymnasium})`,
         },
         "& .book-service": {
+            flex: 1,
             overflow: "hidden",
             "& button": {
-                backgroundColor: "#4B0082",
-                fontSize: "18px",
-                fontWeight: "bold",
-                borderRadius: "20px",
-                padding: "10px 20px",
-                cursor: "pointer",
-                transition: "background-color 0.3s ease, transform 0.2s ease",
-                width: "94px",
-                overflow: "hidden",
-            },
+                width: "auto",
+                "@media screen and (min-width:1024px)": {
+                    float: "right",
+                },
+                "& span": {
+                    fontSize: "18px",
+                    fontWeight: 500,
+                    transition: "background-color 0.3s ease, transform 0.2s ease",
+                },
+            }
         }
     }
 })

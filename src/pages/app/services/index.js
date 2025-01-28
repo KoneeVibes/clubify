@@ -12,12 +12,12 @@ import { useNavigate } from "react-router-dom";
 export const Services = () => {
     const cookies = new Cookies();
     const { profile } = cookies.getAll();
-      const navigate = useNavigate();
-    
-        const handleNavigateToBookService = (e, id) => {
-            e.preventDefault();
-            return navigate(`/services/booking/${id}`)
-        }
+    const navigate = useNavigate();
+
+    const handleNavigateToBookService = (e, id) => {
+        e.preventDefault();
+        return navigate(`/services/booking/${id}`)
+    };
 
     return (
         <Layout
@@ -72,27 +72,27 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
-                                <Row 
-                                  justifycontent="space-between"
+                                <Row
+                                    tocolumn
+                                    justifycontent="space-between"
                                 >
-                              
-                                    
-                                <ul
-                                    className="service-title"
-                                >
-                                    <Li>Main Bar</Li>
-                                </ul>
-                                <div
-                                  className="book-service"
-                                >
-                                     <BaseButton
-                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
-                                     >
-                                 <Span>
-                                   Book
-                               </Span>
-                                </BaseButton>
-                                 </div>
+                                    <ul
+                                        className="service-title"
+                                    >
+                                        <Li>Main Bar</Li>
+                                    </ul>
+                                    <div
+                                        className="book-service"
+                                    >
+                                        <BaseButton
+                                            backgroundcolor={"#4B0082"}
+                                            onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                        >
+                                            <Span>
+                                                Book
+                                            </Span>
+                                        </BaseButton>
+                                    </div>
                                 </Row>
                                 <Column
                                     className="service-details"
@@ -134,27 +134,27 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
-                                <Row 
-                                  justifycontent="space-between"
+                                <Row
+                                    tocolumn
+                                    justifycontent="space-between"
                                 >
-                              
-                                    
-                                <ul
-                                    className="service-title"
-                                >
-                                    <Li>33 Restaurant</Li>
-                                </ul>
-                                <div
-                                  className="book-service"
-                                >
-                                     <BaseButton
-                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
-                                     >
-                                 <Span>
-                                   Book
-                               </Span>
-                                </BaseButton>
-                                 </div>
+                                    <ul
+                                        className="service-title"
+                                    >
+                                        <Li>33 Restaurant</Li>
+                                    </ul>
+                                    <div
+                                        className="book-service"
+                                    >
+                                        <BaseButton
+                                            backgroundcolor={"#4B0082"}
+                                            onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                        >
+                                            <Span>
+                                                Book
+                                            </Span>
+                                        </BaseButton>
+                                    </div>
                                 </Row>
                                 <Column
                                     className="service-details"
@@ -196,27 +196,27 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
-                                <Row 
-                                  justifycontent="space-between"
+                                <Row
+                                    tocolumn
+                                    justifycontent="space-between"
                                 >
-                              
-                                    
-                                <ul
-                                    className="service-title"
-                                >
-                                    <Li>Suya Hut</Li>
-                                </ul>
-                                <div
-                                  className="book-service"
-                                >
-                                     <BaseButton
-                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
-                                     >
-                                 <Span>
-                                   Book
-                               </Span>
-                                </BaseButton>
-                                 </div>
+                                    <ul
+                                        className="service-title"
+                                    >
+                                        <Li>Suya Hut</Li>
+                                    </ul>
+                                    <div
+                                        className="book-service"
+                                    >
+                                        <BaseButton
+                                            backgroundcolor={"#4B0082"}
+                                            onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                        >
+                                            <Span>
+                                                Book
+                                            </Span>
+                                        </BaseButton>
+                                    </div>
                                 </Row>
                                 <Column
                                     className="service-details"
@@ -256,8 +256,7 @@ export const Services = () => {
                                 </Column>
                             </div>
                         </Column>
-                        </Column>
-    
+                    </Column>
                     <Column
                         className="service-box"
                     >
@@ -274,27 +273,27 @@ export const Services = () => {
                             <div
                                 className="service-box-detail"
                             >
-                                <Row 
-                                  justifycontent="space-between"
+                                <Row
+                                    tocolumn
+                                    justifycontent="space-between"
                                 >
-                              
-                                    
-                                <ul
-                                    className="service-title"
-                                >
-                                    <Li>Massage</Li>
-                                </ul>
-                                <div
-                                  className="book-service"
-                                >
-                                     <BaseButton
-                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
-                                     >
-                                 <Span>
-                                   Book
-                               </Span>
-                                </BaseButton>
-                                 </div>
+                                    <ul
+                                        className="service-title"
+                                    >
+                                        <Li>Massage</Li>
+                                    </ul>
+                                    <div
+                                        className="book-service"
+                                    >
+                                        <BaseButton
+                                            backgroundcolor={"#4B0082"}
+                                            onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                        >
+                                            <Span>
+                                                Book
+                                            </Span>
+                                        </BaseButton>
+                                    </div>
                                 </Row>
                                 <Column
                                     className="service-details"
@@ -333,31 +332,30 @@ export const Services = () => {
                                     </Row>
                                 </Column>
                             </div>
-
                             <div
                                 className="service-box-detail"
                             >
-                                <Row 
-                                  justifycontent="space-between"
+                                <Row
+                                    tocolumn
+                                    justifycontent="space-between"
                                 >
-                              
-                                    
-                                <ul
-                                    className="service-title"
-                                >
-                                    <Li>Barber Shop</Li>
-                                </ul>
-                                <div
-                                  className="book-service"
-                                >
-                                     <BaseButton
-                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
-                                     >
-                                 <Span>
-                                   Book
-                               </Span>
-                                </BaseButton>
-                                 </div>
+                                    <ul
+                                        className="service-title"
+                                    >
+                                        <Li>Barber Shop</Li>
+                                    </ul>
+                                    <div
+                                        className="book-service"
+                                    >
+                                        <BaseButton
+                                            backgroundcolor={"#4B0082"}
+                                            onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                        >
+                                            <Span>
+                                                Book
+                                            </Span>
+                                        </BaseButton>
+                                    </div>
                                 </Row>
                                 <Column
                                     className="service-details"
@@ -396,214 +394,212 @@ export const Services = () => {
                                     </Row>
                                 </Column>
                             </div>
-                            </Column>
-                            </Column>
-
-                    
+                        </Column>
+                    </Column>
                     <Column
-                    className="services-box"
-                >
-                    <Column
-                        className="service-box"
+                        className="services-box"
                     >
-                        <div
-                            className="service-box-header gymnasium"
-                        >
-                            <H2>Gymnasium</H2>
-                            <P>Fitness Redefined: Embrace the challenge</P>
-                        </div>
                         <Column
-                            className="service-box-details"
+                            className="service-box"
                         >
                             <div
-                                className="service-box-detail"
+                                className="service-box-header gymnasium"
                             >
-                                <Row 
-                                  justifycontent="space-between"
-                                >
-                              
-                                    
-                                <ul
-                                    className="service-title"
-                                >
-                                    <Li>Gym 1</Li>
-                                </ul>
-                                <div
-                                  className="book-service"
-                                >
-                                     <BaseButton
-                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
-                                     >
-                                 <Span>
-                                   Book
-                               </Span>
-                                </BaseButton>
-                                 </div>
-                                </Row>
-                                <Column
-                                    className="service-details"
-                                >
-                                    <Row
-                                        tocolumn={true}
-                                        gap={"calc(var(--flex-gap)/4)"}
-                                        justifycontent={"space-between"}
-                                    >
-                                        <div
-                                            className="service-detail"
-                                        >
-                                            <P>Location</P>
-                                        </div>
-                                        <div
-                                            className="service-detail"
-                                        >
-                                            <P>Ground Floor</P>
-                                        </div>
-                                    </Row>
-                                    <Row
-                                        tocolumn={true}
-                                        gap={"calc(var(--flex-gap)/4)"}
-                                        justifycontent={"space-between"}
-                                    >
-                                        <div
-                                            className="service-detail"
-                                        >
-                                            <P>Operating Hours</P>
-                                        </div>
-                                        <div
-                                            className="service-detail"
-                                        >
-                                            <P>Everyday, 7am - 5pm</P>
-                                        </div>
-                                    </Row>
-                                </Column>
+                                <H2>Gymnasium</H2>
+                                <P>Fitness Redefined: Embrace the challenge</P>
                             </div>
-                            <div
-                                className="service-box-detail"
+                            <Column
+                                className="service-box-details"
                             >
-                                <Row 
-                                  justifycontent="space-between"
-                                >
-                              
-                                    
-                                <ul
-                                    className="service-title"
-                                >
-                                    <Li>Gym 2</Li>
-                                </ul>
                                 <div
-                                  className="book-service"
-                                >
-                                     <BaseButton
-                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
-                                     >
-                                 <Span>
-                                   Book
-                               </Span>
-                                </BaseButton>
-                                 </div>
-                                </Row>
-                                <Column
-                                    className="service-details"
+                                    className="service-box-detail"
                                 >
                                     <Row
-                                        tocolumn={true}
-                                        gap={"calc(var(--flex-gap)/4)"}
-                                        justifycontent={"space-between"}
+                                        tocolumn
+                                        justifycontent="space-between"
                                     >
-                                        <div
-                                            className="service-detail"
+                                        <ul
+                                            className="service-title"
                                         >
-                                            <P>Location</P>
-                                        </div>
+                                            <Li>Gym 1</Li>
+                                        </ul>
                                         <div
-                                            className="service-detail"
+                                            className="book-service"
                                         >
-                                            <P>Beside Tennis court</P>
+                                            <BaseButton
+                                                backgroundcolor={"#4B0082"}
+                                                onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                            >
+                                                <Span>
+                                                    Book
+                                                </Span>
+                                            </BaseButton>
                                         </div>
                                     </Row>
-                                    <Row
-                                        tocolumn={true}
-                                        gap={"calc(var(--flex-gap)/4)"}
-                                        justifycontent={"space-between"}
+                                    <Column
+                                        className="service-details"
                                     >
-                                        <div
-                                            className="service-detail"
+                                        <Row
+                                            tocolumn={true}
+                                            gap={"calc(var(--flex-gap)/4)"}
+                                            justifycontent={"space-between"}
                                         >
-                                            <P>Operating Hours</P>
-                                        </div>
-                                        <div
-                                            className="service-detail"
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Location</P>
+                                            </div>
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Ground Floor</P>
+                                            </div>
+                                        </Row>
+                                        <Row
+                                            tocolumn={true}
+                                            gap={"calc(var(--flex-gap)/4)"}
+                                            justifycontent={"space-between"}
                                         >
-                                            <P>Everyday, 7am - 5pm</P>
-                                        </div>
-                                    </Row>
-                                </Column>
-                            </div>
-                            <div
-                                className="service-box-detail"
-                            >
-                                <Row 
-                                  justifycontent="space-between"
-                                >
-                              
-                                    
-                                <ul
-                                    className="service-title"
-                                >
-                                    <Li>Tennis Court </Li>
-                                </ul>
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Operating Hours</P>
+                                            </div>
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Everyday, 7am - 5pm</P>
+                                            </div>
+                                        </Row>
+                                    </Column>
+                                </div>
                                 <div
-                                  className="book-service"
-                                >
-                                     <BaseButton
-                                   onClick={(e) => handleNavigateToBookService(e, Services.id)}
-                                     >
-                                 <Span>
-                                   Book
-                               </Span>
-                                </BaseButton>
-                                 </div>
-                                </Row>
-                                <Column
-                                    className="service-details"
+                                    className="service-box-detail"
                                 >
                                     <Row
-                                        tocolumn={true}
-                                        gap={"calc(var(--flex-gap)/4)"}
-                                        justifycontent={"space-between"}
+                                        tocolumn
+                                        justifycontent="space-between"
                                     >
-                                        <div
-                                            className="service-detail"
+                                        <ul
+                                            className="service-title"
                                         >
-                                            <P>Location</P>
-                                        </div>
+                                            <Li>Gym 2</Li>
+                                        </ul>
                                         <div
-                                            className="service-detail"
+                                            className="book-service"
                                         >
-                                            <P> Outdoor</P>
+                                            <BaseButton
+                                                backgroundcolor={"#4B0082"}
+                                                onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                            >
+                                                <Span>
+                                                    Book
+                                                </Span>
+                                            </BaseButton>
                                         </div>
                                     </Row>
+                                    <Column
+                                        className="service-details"
+                                    >
+                                        <Row
+                                            tocolumn={true}
+                                            gap={"calc(var(--flex-gap)/4)"}
+                                            justifycontent={"space-between"}
+                                        >
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Location</P>
+                                            </div>
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Beside Tennis court</P>
+                                            </div>
+                                        </Row>
+                                        <Row
+                                            tocolumn={true}
+                                            gap={"calc(var(--flex-gap)/4)"}
+                                            justifycontent={"space-between"}
+                                        >
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Operating Hours</P>
+                                            </div>
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Everyday, 7am - 5pm</P>
+                                            </div>
+                                        </Row>
+                                    </Column>
+                                </div>
+                                <div
+                                    className="service-box-detail"
+                                >
                                     <Row
-                                        tocolumn={true}
-                                        gap={"calc(var(--flex-gap)/4)"}
-                                        justifycontent={"space-between"}
+                                        tocolumn
+                                        justifycontent="space-between"
                                     >
-                                        <div
-                                            className="service-detail"
+                                        <ul
+                                            className="service-title"
                                         >
-                                            <P>Operating Hours</P>
-                                        </div>
+                                            <Li>Tennis Court </Li>
+                                        </ul>
                                         <div
-                                            className="service-detail"
+                                            className="book-service"
                                         >
-                                            <P>Everyday, 7pm - 9pm</P>
+                                            <BaseButton
+                                                backgroundcolor={"#4B0082"}
+                                                onClick={(e) => handleNavigateToBookService(e, Services.id)}
+                                            >
+                                                <Span>
+                                                    Book
+                                                </Span>
+                                            </BaseButton>
                                         </div>
                                     </Row>
-                                </Column>
-                            </div>
+                                    <Column
+                                        className="service-details"
+                                    >
+                                        <Row
+                                            tocolumn={true}
+                                            gap={"calc(var(--flex-gap)/4)"}
+                                            justifycontent={"space-between"}
+                                        >
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Location</P>
+                                            </div>
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P> Outdoor</P>
+                                            </div>
+                                        </Row>
+                                        <Row
+                                            tocolumn={true}
+                                            gap={"calc(var(--flex-gap)/4)"}
+                                            justifycontent={"space-between"}
+                                        >
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Operating Hours</P>
+                                            </div>
+                                            <div
+                                                className="service-detail"
+                                            >
+                                                <P>Everyday, 7pm - 9pm</P>
+                                            </div>
+                                        </Row>
+                                    </Column>
+                                </div>
+                            </Column>
                         </Column>
-                        </Column>
-                       </Column>
+                    </Column>
                 </Column>
             </ServicesWrapper>
         </Layout>
