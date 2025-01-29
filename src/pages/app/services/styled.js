@@ -1,7 +1,4 @@
 import styled from "styled-components";
-import barsandkitchen from "../../../assets/images/barsandkitchen.svg";
-import massageandbeauty from "../../../assets/images/massageandbeauty.svg"
-import gymnasium from "../../../assets/images/gymnasium.svg"
 
 export const ServicesWrapper = styled("div")(() => {
     return {
@@ -133,15 +130,6 @@ export const ServicesWrapper = styled("div")(() => {
             }
         },
 
-        "& .bars-and-kitchen": {
-            backgroundImage: `url(${barsandkitchen})`
-        },
-        "& .massage-and-beauty": {
-            backgroundImage: `url(${massageandbeauty})`,
-        },
-        "& .gymnasium": {
-            backgroundImage: `url(${gymnasium})`,
-        },
         "& .book-service": {
             flex: 1,
             overflow: "hidden",
