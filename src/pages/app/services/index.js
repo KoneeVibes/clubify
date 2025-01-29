@@ -37,25 +37,57 @@ export const Services = () => {
                     location: "Floor 1",
                     operatingHours: "Everyday, 7am - 11pm"
                 },
+                {
+                    id: 3,
+                    name: "Suya Hut",
+                    location: "Outdoor",
+                    operatingHours: "Everyday, 7am - 12am"
+                },
             ]
         },
         {
             categoryId: 2,
-            categoryTitle: "Bars and Kitchen",
-            categorySubtitle: "Sip, Savor, and Socialize",
+            categoryTitle: "Massage & Beauty",
+            categorySubtitle: "Relax, Renew,Recharge",
             bg: massageandbeauty,
             services: [
                 {
                     id: 1,
-                    name: "Main Bar",
-                    location: "Ground Floor",
-                    operatingHours: "Always Open"
+                    name: "Massage",
+                    location: "2nd Floor",
+                    operatingHours: "Everyday, 7am - 8pm"
                 },
                 {
                     id: 2,
-                    name: "33 Restaurant",
-                    location: "Floor 1",
-                    operatingHours: "Everyday, 7am - 11pm"
+                    name: "Barber Shop",
+                    location: "2nd Floor",
+                    operatingHours: "Everyday, 7am - 8pm"
+                },
+            ]
+        },
+        {
+            categoryId: 3,
+            categoryTitle: "Gymnasium",
+            categorySubtitle: "Fitness Redefined: Embrace the Challenge",
+            bg: gymnasium,
+            services: [
+                {
+                    id: 1,
+                    name: "Gym 1",
+                    location: "Ground Floor",
+                    operatingHours: "Everyday, 7am - 5pm"
+                },
+                {
+                    id: 2,
+                    name: "Gym 2",
+                    location: "Beside Tennis court ",
+                    operatingHours: "Everyday, 7am - 5pm"
+                },
+                {
+                    id: 3,
+                    name: "Tennis Court",
+                    location: "Outdoor",
+                    operatingHours: "Everyday, 7am - 9pm"
                 },
             ]
         }
@@ -180,7 +212,7 @@ export const Services = () => {
                                                         <div
                                                             className="service-detail"
                                                         >
-                                                            <P>Aways Open</P>
+                                                            <P>{service.operatingHours}</P>
                                                         </div>
                                                     </Row>
                                                 </Column>
