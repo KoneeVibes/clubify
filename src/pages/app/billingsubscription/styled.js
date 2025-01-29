@@ -4,12 +4,31 @@ export const BillingSubscriptionWrapper = styled("div")(() => {
   return {
     "& h1": {
       fontSize: "24px",
+      fontWeight: "500",
+      lineHeight: "29.05px",
+    },
+    "& .section-text": {
+      fontSize: "31px",
+      fontWeight: "500",
+    },
+    "& .span": {
+      fontSize: "20px",
+      fontWeight: "500",
+    },
+    "& .paragraph": {
+      fontSize: "18px",
+      fontWeight: "500",
+      color: "#454545",
+    },
+    "& .section2": {
+      marginBottom: "2rem",
     },
     "& .filter": {
       gap: "calc(var(--flex-gap)/4)",
       "& span": {
         fontSize: "16px",
       },
+
       "& select": {
         fontSize: "12px",
         padding: "calc(var(--basic-padding)/5)",

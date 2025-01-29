@@ -79,10 +79,10 @@ export const BillingSubscription = () => {
             <BaseButton className="active">Active</BaseButton>
           </Row>
           <div className="column">
-            <Span>Date Created</Span>
-            <P>01 January, 2023</P>
+            <Span className="span">Date Created</Span>
+            <P className="paragraph">01 January, 2023</P>
             <Span>Amount</Span>
-            <P>₦18,000</P>
+            <P className="paragraph">₦18,000</P>
           </div>
           <Row
             style={{
@@ -91,13 +91,13 @@ export const BillingSubscription = () => {
               alignItems: "center",
             }}
           >
-            <Span>Repeat</Span>
-            <P>Update repeat days</P>
+            <Span className="span">Repeat</Span>
+            <P className="paragraph">Update repeat days</P>
           </Row>
           <div className="column1">
-            <P>2pm - 3pm, Every Mon & Wed</P>
-            <Span>Next Renewal</Span>
-            <P>03 January, 2023</P>
+            <P className="paragraph">2pm - 3pm, Every Mon & Wed</P>
+            <Span className="span">Next Renewal</Span>
+            <P className="paragraph">03 January, 2023</P>
           </div>
           <Row
             style={{
@@ -106,10 +106,10 @@ export const BillingSubscription = () => {
               alignItems: "center",
             }}
           >
-            <Span>Payment Method</Span>
-            <P>Update Payment Method</P>
+            <Span className="span">Payment Method</Span>
+            <P className="paragraph">Update Payment Method</P>
           </Row>
-          <P>Visa 8986</P>
+          <P className="paragraph">Visa 8986</P>
         </div>
         <Row className="basebutton">
           <BaseButton className="change">Change Plan</BaseButton>
