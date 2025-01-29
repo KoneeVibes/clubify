@@ -33,14 +33,13 @@ export const Table = ({ columnTitles, rowItems, location }) => {
                   <Td>{rowItem.RSVP || ""}</Td>
                 </Fragment>
               )}
-              {location === "billing-history" && (
+              {location === "services-history" && (
                 <Fragment>
-                  <Td>{rowItem.eventName || ""}</Td>
+                  <Td>{rowItem.serviceName || ""}</Td>
                   <Td>{rowItem.date || ""}</Td>
-                  <Td>{rowItem.location || ""}</Td>
-                  <Td>{rowItem.RSVP || ""}</Td>
-                  <Td>{rowItem.RSVP || ""}</Td>
-                  <Td>{rowItem.RSVP || ""}</Td>
+                  <Td>{rowItem.startTime || ""}</Td>
+                  <Td>{rowItem.endTime || ""}</Td>
+                  <Td>{rowItem.status || ""}</Td>
                 </Fragment>
               )}
             </tr>
