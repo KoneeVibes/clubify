@@ -88,11 +88,11 @@ export const ServicesWrapper = styled("div")(() => {
         },
 
         "& .service-box-details": {
-            paddingInlineStart: "var(--basic-padding)",
             "& .service-box-detail>div:first-of-type": {
                 marginBlockEnd: "calc(var(--basic-margin)/2)",
                 gap: 0,
-                "@media screen and (min-width:1024px)": {
+                alignItems: "flex-start",
+                "@media screen and (min-width:1025px)": {
                     gap: "calc(var(--flex-gap)/4)",
                     alignItems: "center",
                 }
@@ -104,7 +104,12 @@ export const ServicesWrapper = styled("div")(() => {
                 listStylePosition: "inside",
                 flex: 1,
                 overflow: "hidden",
-                "@media screen and (min-width:1024px)": {
+                width: "100%",
+                "& li": {
+                    whiteSpace: "nowrap"
+                },
+                "@media screen and (min-width:1025px)": {
+                    width: "auto",
                     marginBlockEnd: 0,
                 }
             },
@@ -119,7 +124,7 @@ export const ServicesWrapper = styled("div")(() => {
                         fontWeight: 500,
                         fontSize: "18px",
                     },
-                    "@media screen and (min-width: 1024px)": {
+                    "@media screen and (min-width: 1025px)": {
                         "&:last-child>p": {
                             textAlign: "right"
                         }
@@ -140,6 +145,10 @@ export const ServicesWrapper = styled("div")(() => {
         "& .book-service": {
             flex: 1,
             overflow: "hidden",
+            paddingInlineStart: "var(--basic-padding)",
+            "@media screen and (min-width:1025px)": {
+                paddingInlineStart: 0,
+            },
             "& button": {
                 width: "auto",
                 "@media screen and (min-width:1024px)": {
