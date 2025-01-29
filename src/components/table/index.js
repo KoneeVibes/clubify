@@ -41,6 +41,15 @@ export const Table = ({ columnTitles, rowItems, location }) => {
                                     <Td>{rowItem.RSVP || ""}</Td>
                                 </Fragment>
                             )}
+                            {(location === "services-history") && (
+                                <Fragment>
+                                    <Td>{rowItem.serviceName || ""}</Td>
+                                    <Td>{rowItem.date || ""}</Td>
+                                    <Td>{rowItem.startTime || ""}</Td>
+                                    <Td>{rowItem.endTime || ""}</Td>
+                                    <Td>{rowItem.status || ""}</Td>
+                                </Fragment>
+                            )}
                         </tr>
                     )
                 })}
