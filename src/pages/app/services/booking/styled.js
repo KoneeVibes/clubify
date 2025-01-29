@@ -2,113 +2,94 @@ import styled from "styled-components";
 import { Row } from "../../../../components/flex/styled";
 
 export const ServicesWrapper = styled("div")(() => {
-    return {
-        overflow: "hidden",
-        ".booking": {
-    padding: "calc(var(--basic-padding) * 1)",
-    border: "1px solid #000000",
-    boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
-    borderRadius: "10px",
-
-    "& h1": {
-      fontSize: "40px",
-      marginBlock: 0,
-    }
-  },
-  
-  "& .details-list": {
-    display: "flex",
-    gap: "calc(var(--flex-gap) / 2)",
-    alignItems: "center",
-    justifyContent: "space-between",
+  return {
     overflow: "hidden",
-    padding: 0,
-    marginBlock: "calc(var(--basic-margin)/2)",
-  },
+    ".booking": {
+      padding: "calc(var(--basic-padding) * 1)",
+      border: "1px solid #000000",
+      boxShadow: "0px 4px 4px 0px rgba(0, 0, 0, 0.25)",
+      borderRadius: "10px",
 
-  "& .details-list .list-item": {
-    alignItems: "center",
-  },
+      "& h1": {
+        fontSize: "40px",
+        marginBlock: 0,
+      }
+    },
 
-  "& .details-list h3": {
-    marginBlock: 0,
-    fontSize: "14px",
-  },
-
-  "& .details-list p": {
-    marginBlock: 0,
-  },
-
-  "& .details-list .detail": {
-    overflow: "unset",
-    fontSize: "unset",
-  },
-  "& .proceed-button": {
-    backgroundColor: "#4B0082",
-    color: "#ffffff",
-    fontSize: "16px",
-    border: "none",
-    borderRadius: "8px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    overflow: "hidden",
-    marginTop: "var(--basic-margin)",
-    marginBottom: "var(--basic-margin)",
-    padding: "calc(var(--basic-padding) / 2) var(--basic-padding)",
-  },
-
-  "@media screen and (max-width: 480px)": {
     "& .details-list": {
-      alignItems: "flex-start",
-      flexDirection: "column",
-    },
-
-    "& .details-list .list-item": {
-      alignItems: "flex-start",
-    },
-  },
-
-  "@media screen and (max-width: 1440px)": {
-    "& .details-list div": {
-      gap: 0,
-      flexDirection: "column",
-    },
-
-    "& .service-scheduler": {
+      display: "flex",
+      gap: "calc(var(--flex-gap) / 2)",
+      alignItems: "center",
+      justifyContent: "space-between",
       overflow: "hidden",
-      flexDirection: "column",
-    }
-  },
-
-  "@media screen and (min-width: 1025px) and (max-width: 1096px)": {
-    "& .details-list": {
-      alignItems: "flex-start",
-      flexDirection: "column",
+      padding: 0,
+      marginBlock: "calc(var(--basic-margin)/2)",
     },
 
     "& .details-list .list-item": {
-      alignItems: "flex-start",
+      alignItems: "center",
     },
-  },
 
-    
-        marginBottom: "var(--basic-margin)",
-        "& .header": {
-            marginBottom: "20px",
-            "& h1": {
-                fontSize: "24px",
-                fontWeight: "bold",
-                color: "#333",
-            }
-            
-        }
+    "& .details-list h3": {
+      marginBlock: 0,
+      fontSize: "14px",
+    },
 
-    }
+    "& .details-list p": {
+      marginBlock: 0,
+    },
 
-    
+    "& .proceed-button": {
+      backgroundColor: "#4B0082",
+      color: "#ffffff",
+      fontSize: "16px",
+      border: "none",
+      borderRadius: "8px",
+      cursor: "pointer",
+      fontWeight: "bold",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      overflow: "hidden",
+      marginTop: "var(--basic-margin)",
+      marginBottom: "var(--basic-margin)",
+      padding: "calc(var(--basic-padding) / 2) var(--basic-padding)",
+    },
+
+    "@media screen and (max-width: 480px)": {
+      "& .details-list": {
+        alignItems: "flex-start",
+        flexDirection: "column",
+      },
+
+      "& .details-list .list-item": {
+        alignItems: "flex-start",
+      },
+    },
+
+    "@media screen and (max-width: 1440px)": {
+      "& .details-list div": {
+        gap: 0,
+        flexDirection: "column",
+      },
+
+      "& .service-scheduler": {
+        overflow: "hidden",
+        flexDirection: "column",
+      }
+    },
+
+    "@media screen and (min-width: 1025px) and (max-width: 1096px)": {
+      "& .details-list": {
+        alignItems: "flex-start",
+        flexDirection: "column",
+      },
+
+      "& .details-list .list-item": {
+        alignItems: "flex-start",
+      },
+    },
+  }
 })
 
 export const BookingRow = styled(Row)(() => ({
@@ -128,7 +109,10 @@ export const BookingRow = styled(Row)(() => ({
     "& input": {
       padding: "calc(var(--basic-padding) / 2) var(--basic-padding)",
       border: "1px solid #000000",
-      width:247,
+      width: "-webkit-fill-available",
+      "@media screen and (min-width: 425px)": {
+        maxWidth: 247
+      },
     },
 
     "& label": {

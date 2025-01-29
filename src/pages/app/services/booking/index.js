@@ -69,7 +69,6 @@ export const ServicesBooking = () => {
         });
     };
 
-
     return (
         <Layout
             role={profile?.role}
@@ -83,129 +82,117 @@ export const ServicesBooking = () => {
             fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
         >
             {/* Faith, your code goes under here */}
-                <ServicesWrapper>
-                    <Row
-                        className="header"
-                        alignitems="center"
-                        justifycontent="space-between"
+            <ServicesWrapper>
+                <Row
+                    className="header"
+                    alignitems="center"
+                    justifycontent="space-between"
                 >
-                        <div>
-                            <H1>Book Service</H1>
-                        </div>
-                    </Row> 
+                    <div>
+                        <H1>Book Service</H1>
+                    </div>
+                </Row>
 
-                    <div className="booking">
-                     <H1>Massage</H1>
-                        <ul className="details-list">
-                            <Li className="detail">
-                                <Row
-                                 className="list-item"
-                            >
-                                    <H3>Location</H3>
-                                </Row>
-                            </Li>
-                    
+                <div className="booking">
+                    <H1>Massage</H1>
+                    <ul className="details-list">
+                        <Li>
                             <Row
-                                 className="list-item"
+                                className="list-item"
                             >
-                                    <H3>2nd floor</H3>
+                                <H3>Location</H3>
+                                <P>2nd floor</P>
                             </Row>
-                        
-                            <Li className="detail">
-                                <Row
-                                 className="list-item"
+                        </Li>
+                        <Li>
+                            <Row
+                                className="list-item"
                             >
-                                    <H3>Fee</H3>       
-                                </Row>
-                            </Li>
-                            <Li>
-                                <Row
-                                    className="list-item"
-                            >
-                                    <H3>#2500/hr</H3>
-                                </Row>
-                            </Li>
-                        </ul>
+                                <H3>Fee</H3>
+                                <P>#2500/hr</P>
+                            </Row>
+                        </Li>
+                    </ul>
                     <BookingRow>
                         <BaseFieldSet>
                             <Label>Date</Label>
                             <BaseInput
-                            type="date"
-                            />    
+                                type="date"
+                            />
                         </BaseFieldSet>
                     </BookingRow>
-                        <Row
-                         gap={"0"}
-                         className="service-scheduler"
-                     >
-                            <Sidebar>
-                                <div> 
-                                    <H2>Interview Scheduler</H2>     
-                                </div>
-                                <Column
-                                     className={"days-container"}
-                                     gap={"calc(var(--flex-gap) * 1.5)"}
-                                 >
-                                    {days.map((day) => (
-                                        <Column
-                                            key={day}
-                                            gap={"calc(var(--flex-gap)/4)"}
-                                            className={`day ${day === selectedDay ? 'selected-day' : ''}`}
-                                            onClick={() => handleDaySelection(day)}
-                                        >
-                                            <Span>{day}</Span>
-                                            <Span>{schedules[day].length} spots remaining</Span>
-                                        </Column>
-                                    ))}
-                                </Column>
-                            </Sidebar>
-                            <Schedule>
-                                {schedules[selectedDay].map((slot, index) => (
-                                    <TimeSlot key={index}>
-                                        <div className="time">
-                                            <Span>{slot.time}</Span>
-                                        </div>
-                                        <Column
-                                            gap={"0"}
-                                            className="input-fields"
-                                        >
-                                            <BaseInput
-                                                type="text"
-                                                placeholder="Interviewer"
-                                                value={slot.interviewer}
-                                                onChange={(e) => handleInputChange(index, 'interviewer', e.target.value)}
-                                            />
-                                            <BaseInput
-                                                type="text"
-                                                placeholder="Interviewer"
-                                                value={slot.interviewer}
-                                                onChange={(e) => handleInputChange(index, 'interviewer', e.target.value)}
-                                            />
-                                        </Column>
-                                        <div className="remove-slot-button">
-                                            <BaseButton
-                                                width={"auto"}
-                                                color={"#CCCCCC"}
-                                                backgroundcolor={"#2C3E50"}
-                                                onClick={() => handleRemoveSlot(index)}
-                                            >
-                                                -
-                                            </BaseButton>
-                                        </div>
-                                    </TimeSlot>
+                    <Row
+                        gap={"0"}
+                        className="service-scheduler"
+                    >
+                        <Sidebar>
+                            <div>
+                                <H2>Interview Scheduler</H2>
+                            </div>
+                            <Column
+                                className={"days-container"}
+                                gap={"calc(var(--flex-gap) * 1.5)"}
+                            >
+                                {days.map((day) => (
+                                    <Column
+                                        key={day}
+                                        gap={"calc(var(--flex-gap)/4)"}
+                                        className={`day ${day === selectedDay ? 'selected-day' : ''}`}
+                                        onClick={() => handleDaySelection(day)}
+                                    >
+                                        <Span>{day}</Span>
+                                        <Span>{schedules[day].length} spots remaining</Span>
+                                    </Column>
                                 ))}
-                                <BaseButton
-                                    color={"#CCCCCC"}
-                                    backgroundcolor={"#2C3E50"}
-                                    onClick={handleAddSlot}
-                                >
-                                    +
-                                </BaseButton>
-                             </Schedule>
-                        </Row>
-                    </div>   
-                    <BaseButton className="proceed-button">Proceed to payment</BaseButton>
-                </ServicesWrapper>
-         </Layout>
+                            </Column>
+                        </Sidebar>
+                        <Schedule>
+                            {schedules[selectedDay].map((slot, index) => (
+                                <TimeSlot key={index}>
+                                    <div className="time">
+                                        <Span>{slot.time}</Span>
+                                    </div>
+                                    <Column
+                                        gap={"0"}
+                                        className="input-fields"
+                                    >
+                                        <BaseInput
+                                            type="text"
+                                            placeholder="Interviewer"
+                                            value={slot.interviewer}
+                                            onChange={(e) => handleInputChange(index, 'interviewer', e.target.value)}
+                                        />
+                                        <BaseInput
+                                            type="text"
+                                            placeholder="Interviewer"
+                                            value={slot.interviewer}
+                                            onChange={(e) => handleInputChange(index, 'interviewer', e.target.value)}
+                                        />
+                                    </Column>
+                                    <div className="remove-slot-button">
+                                        <BaseButton
+                                            width={"auto"}
+                                            color={"#CCCCCC"}
+                                            backgroundcolor={"#2C3E50"}
+                                            onClick={() => handleRemoveSlot(index)}
+                                        >
+                                            -
+                                        </BaseButton>
+                                    </div>
+                                </TimeSlot>
+                            ))}
+                            <BaseButton
+                                color={"#CCCCCC"}
+                                backgroundcolor={"#2C3E50"}
+                                onClick={handleAddSlot}
+                            >
+                                +
+                            </BaseButton>
+                        </Schedule>
+                    </Row>
+                </div>
+                <BaseButton className="proceed-button">Proceed to payment</BaseButton>
+            </ServicesWrapper>
+        </Layout>
     )
 }

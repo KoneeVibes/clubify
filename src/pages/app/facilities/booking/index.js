@@ -85,7 +85,7 @@ export const Booking = () => {
                 <div className="booking">
                     <H1>Meeting Room</H1>
                     <ul className="details-list">
-                        <Li className="detail">
+                        <Li>
                             <Row
                                 className="list-item"
                             >
