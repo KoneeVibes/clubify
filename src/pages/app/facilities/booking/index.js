@@ -1,7 +1,15 @@
 import { useState } from "react";
 import { BookingWrapper } from "./styled";
 import { Layout } from "../../../../containers/layout/index";
-import { H1, Label, Li, H3, P, H2, Span } from "../../../../components/typography/styled";
+import {
+  H1,
+  Label,
+  Li,
+  H3,
+  P,
+  H2,
+  Span,
+} from "../../../../components/typography/styled";
 import { BookingRow } from "./styled";
 import { Sidebar } from "./styled";
 import { Schedule } from "./styled";
@@ -13,61 +21,65 @@ import { BaseButton } from "../../../../components/button/styled";
 import { Column, Row } from "../../../../components/flex/styled";
 
 export const Booking = () => {
-    const cookies = new Cookies();
-    const { profile } = cookies.getAll();
-    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  const cookies = new Cookies();
+  const { profile } = cookies.getAll();
+  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-    const [selectedDay, setSelectedDay] = useState('Monday');
-    const [schedules, setSchedules] = useState({
-        Monday: [
-            { time: '1pm', interviewee: '', interviewer: '' },
-            { time: '2pm', interviewee: '', interviewer: '' },
-        ],
-        Tuesday: [
-            { time: '1pm', interviewee: '', interviewer: '' },
-            { time: '2pm', interviewee: '', interviewer: '' },
-        ],
-        Wednesday: [
-            { time: '1pm', interviewee: '', interviewer: '' },
-            { time: '2pm', interviewee: '', interviewer: '' },
-        ],
-        Thursday: [
-            { time: '1pm', interviewee: '', interviewer: '' },
-            { time: '2pm', interviewee: '', interviewer: '' },
-        ],
-        Friday: [
-            { time: '1pm', interviewee: '', interviewer: '' },
-            { time: '2pm', interviewee: '', interviewer: '' },
-        ],
+  const [selectedDay, setSelectedDay] = useState("Monday");
+  const [schedules, setSchedules] = useState({
+    Monday: [
+      { time: "1pm", interviewee: "", interviewer: "" },
+      { time: "2pm", interviewee: "", interviewer: "" },
+    ],
+    Tuesday: [
+      { time: "1pm", interviewee: "", interviewer: "" },
+      { time: "2pm", interviewee: "", interviewer: "" },
+    ],
+    Wednesday: [
+      { time: "1pm", interviewee: "", interviewer: "" },
+      { time: "2pm", interviewee: "", interviewer: "" },
+    ],
+    Thursday: [
+      { time: "1pm", interviewee: "", interviewer: "" },
+      { time: "2pm", interviewee: "", interviewer: "" },
+    ],
+    Friday: [
+      { time: "1pm", interviewee: "", interviewer: "" },
+      { time: "2pm", interviewee: "", interviewer: "" },
+    ],
+  });
+
+  const handleDaySelection = (day) => setSelectedDay(day);
+
+  const handleAddSlot = () => {
+    setSchedules((prevSchedules) => ({
+      ...prevSchedules,
+      [selectedDay]: [
+        ...prevSchedules[selectedDay],
+        {
+          time: `${prevSchedules[selectedDay].length + 1}pm`,
+          interviewee: "",
+          interviewer: "",
+        },
+      ],
+    }));
+  };
+
+  const handleRemoveSlot = (index) => {
+    setSchedules((prevSchedules) => ({
+      ...prevSchedules,
+      [selectedDay]: prevSchedules[selectedDay].filter((_, i) => i !== index),
+    }));
+  };
+
+  const handleInputChange = (index, field, value) => {
+    const updatedDaySchedule = [...schedules[selectedDay]];
+    updatedDaySchedule[index][field] = value;
+    setSchedules({
+      ...schedules,
+      [selectedDay]: updatedDaySchedule,
     });
-
-    const handleDaySelection = (day) => setSelectedDay(day);
-
-    const handleAddSlot = () => {
-        setSchedules((prevSchedules) => ({
-            ...prevSchedules,
-            [selectedDay]: [
-                ...prevSchedules[selectedDay],
-                { time: `${prevSchedules[selectedDay].length + 1}pm`, interviewee: '', interviewer: '' },
-            ],
-        }));
-    };
-
-    const handleRemoveSlot = (index) => {
-        setSchedules((prevSchedules) => ({
-            ...prevSchedules,
-            [selectedDay]: prevSchedules[selectedDay].filter((_, i) => i !== index),
-        }));
-    };
-
-    const handleInputChange = (index, field, value) => {
-        const updatedDaySchedule = [...schedules[selectedDay]];
-        updatedDaySchedule[index][field] = value;
-        setSchedules({
-            ...schedules,
-            [selectedDay]: updatedDaySchedule,
-        });
-    };
+  };
 
     return (
         <Layout
