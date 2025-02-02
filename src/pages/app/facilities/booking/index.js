@@ -81,133 +81,133 @@ export const Booking = () => {
     });
   };
 
-  return (
-    <Layout
-      role={profile?.role}
-      title={`Hello ${
-        profile?.role === "administrator"
-          ? profile?.firstname || ""
-          : profile?.member?.firstname || ""
-      }`}
-      subTitle={new Date().toLocaleDateString("en-US", {
-        day: "numeric",
-        month: "long",
-        weekday: "long",
-      })}
-      plan={profile?.plan?.planName || ""}
-      fullName={
-        profile?.role === "administrator"
-          ? `${profile?.firstname || ""} ${profile?.lastname || ""}`
-          : `${profile?.member?.firstname || ""} ${
-              profile?.member?.lastname || ""
-            }`
-      }
-    >
-      <BookingWrapper>
-        <div className="booking">
-          <H1>Meeting Room</H1>
-          <ul className="details-list">
-            <Li className="detail">
-              <Row className="list-item">
-                <H3>Location</H3>
-                <P>Wing B, 3rd Floor</P>
-              </Row>
-            </Li>
-            <Li>
-              <Row className="list-item">
-                <H3>Capacity</H3>
-                <P>25</P>
-              </Row>
-            </Li>
-            <Li>
-              <Row className="list-item">
-                <H3>Fee</H3>
-                <P>₦2500/hr</P>
-              </Row>
-            </Li>
-          </ul>
-          <BookingRow>
-            <BaseFieldSet>
-              <Label>Start Date</Label>
-              <BaseInput type="date" />
-            </BaseFieldSet>
-            <BaseFieldSet>
-              <Label>End Date</Label>
-              <BaseInput type="date" />
-            </BaseFieldSet>
-          </BookingRow>
-          <Row gap={"0"} className="facilty-scheduler">
-            <Sidebar>
-              <div>
-                <H2>Interview Scheduler</H2>
-              </div>
-              <Column
-                className={"days-container"}
-                gap={"calc(var(--flex-gap) * 1.5)"}
-              >
-                {days.map((day) => (
-                  <Column
-                    key={day}
-                    gap={"calc(var(--flex-gap)/4)"}
-                    className={`day ${
-                      day === selectedDay ? "selected-day" : ""
-                    }`}
-                    onClick={() => handleDaySelection(day)}
-                  >
-                    <Span>{day}</Span>
-                    <Span>{schedules[day].length} spots remaining</Span>
-                  </Column>
-                ))}
-              </Column>
-            </Sidebar>
-            <Schedule>
-              {schedules[selectedDay].map((slot, index) => (
-                <TimeSlot key={index}>
-                  <div className="time">
-                    <Span>{slot.time}</Span>
-                  </div>
-                  <Column gap={"0"} className="input-fields">
-                    <BaseInput
-                      type="text"
-                      placeholder="Interviewee"
-                      value={slot.interviewee}
-                      onChange={(e) =>
-                        handleInputChange(index, "interviewee", e.target.value)
-                      }
-                    />
-                    <BaseInput
-                      type="text"
-                      placeholder="Interviewer"
-                      value={slot.interviewer}
-                      onChange={(e) =>
-                        handleInputChange(index, "interviewer", e.target.value)
-                      }
-                    />
-                  </Column>
-                  <div className="remove-slot-button">
-                    <BaseButton
-                      width={"auto"}
-                      color={"#CCCCCC"}
-                      backgroundcolor={"#2C3E50"}
-                      onClick={() => handleRemoveSlot(index)}
+    return (
+        <Layout
+            role={profile?.role}
+            title={`Hello ${profile.role === "administrator" ? profile?.firstname || "" : profile?.member?.firstname || ""}`}
+            subTitle={new Date().toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'long',
+                weekday: 'long'
+            })}
+            plan={profile?.plan?.planName || ""}
+            fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
+        >
+            <BookingWrapper>
+                <div className="booking">
+                    <H1>Meeting Room</H1>
+                    <ul className="details-list">
+                        <Li>
+                            <Row
+                                className="list-item"
+                            >
+                                <H3>Location</H3>
+                                <P>Wing B, 3rd Floor</P>
+                            </Row>
+                        </Li>
+                        <Li>
+                            <Row
+                                className="list-item"
+                            >
+                                <H3>Capacity</H3>
+                                <P>25</P>
+                            </Row>
+                        </Li>
+                        <Li>
+                            <Row
+                                className="list-item"
+                            >
+                                <H3>Fee</H3>
+                                <P>₦2500/hr</P>
+                            </Row>
+                        </Li>
+                    </ul>
+                    <BookingRow>
+                        <BaseFieldSet>
+                            <Label>Start Date</Label>
+                            <BaseInput
+                                type="date"
+                            />
+                        </BaseFieldSet>
+                        <BaseFieldSet>
+                            <Label>End Date</Label>
+                            <BaseInput
+                                type="date"
+                            />
+                        </BaseFieldSet>
+                    </BookingRow>
+                    <Row
+                        gap={"0"}
+                        className="facilty-scheduler"
                     >
-                      -
-                    </BaseButton>
-                  </div>
-                </TimeSlot>
-              ))}
-              <BaseButton
-                color={"#CCCCCC"}
-                backgroundcolor={"#2C3E50"}
-                onClick={handleAddSlot}
-              >
-                +
-              </BaseButton>
-            </Schedule>
-          </Row>
-        </div>
-        <BaseButton className="proceed-button">Proceed to payment</BaseButton>
-      </BookingWrapper>
-    </Layout>
-  );
+                        <Sidebar>
+                            <div>
+                                <H2>Interview Scheduler</H2>
+                            </div>
+                            <Column
+                                className={"days-container"}
+                                gap={"calc(var(--flex-gap) * 1.5)"}
+                            >
+                                {days.map((day) => (
+                                    <Column
+                                        key={day}
+                                        gap={"calc(var(--flex-gap)/4)"}
+                                        className={`day ${day === selectedDay ? 'selected-day' : ''}`}
+                                        onClick={() => handleDaySelection(day)}
+                                    >
+                                        <Span>{day}</Span>
+                                        <Span>{schedules[day].length} spots remaining</Span>
+                                    </Column>
+                                ))}
+                            </Column>
+                        </Sidebar>
+                        <Schedule>
+                            {schedules[selectedDay].map((slot, index) => (
+                                <TimeSlot key={index}>
+                                    <div className="time">
+                                        <Span>{slot.time}</Span>
+                                    </div>
+                                    <Column
+                                        gap={"0"}
+                                        className="input-fields"
+                                    >
+                                        <BaseInput
+                                            type="text"
+                                            placeholder="Interviewee"
+                                            value={slot.interviewee}
+                                            onChange={(e) => handleInputChange(index, 'interviewee', e.target.value)}
+                                        />
+                                        <BaseInput
+                                            type="text"
+                                            placeholder="Interviewer"
+                                            value={slot.interviewer}
+                                            onChange={(e) => handleInputChange(index, 'interviewer', e.target.value)}
+                                        />
+                                    </Column>
+                                    <div className="remove-slot-button">
+                                        <BaseButton
+                                            width={"auto"}
+                                            color={"#CCCCCC"}
+                                            backgroundcolor={"#2C3E50"}
+                                            onClick={() => handleRemoveSlot(index)}
+                                        >
+                                            -
+                                        </BaseButton>
+                                    </div>
+                                </TimeSlot>
+                            ))}
+                            <BaseButton
+                                color={"#CCCCCC"}
+                                backgroundcolor={"#2C3E50"}
+                                onClick={handleAddSlot}
+                            >
+                                +
+                            </BaseButton>
+                        </Schedule>
+                    </Row>
+                </div>
+                <BaseButton className="proceed-button">Proceed to payment</BaseButton>
+            </BookingWrapper>
+        </Layout>
+    );
 };

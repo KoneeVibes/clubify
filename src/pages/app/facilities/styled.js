@@ -47,7 +47,7 @@ export const FacilitiesWrapper = styled("div")(() => {
                 color: "#555",
                 fontWeight: "500",
             },
-            "@media screen and (max-width: 365px)": {
+            "@media screen and (max-width: 425px)": {
                 gap: "calc(var(--flex-gap)/3)",
                 alignItems: "flex-start",
                 flexDirection: "column",
@@ -79,7 +79,7 @@ export const FacilitiesWrapper = styled("div")(() => {
             "@media screen and (min-width: 768px) and (max-width: 975px)": {
                 flexDirection: "column",
             },
-            "@media screen and (min-width: 1024px) and (max-width: 1240px)": {
+            "@media screen and (min-width: 1025px) and (max-width: 1240px)": {
                 flexDirection: "column",
             },
         },
@@ -102,8 +102,16 @@ export const FacilitiesWrapper = styled("div")(() => {
             flex: 1,
             overflow: "hidden",
             "& button": {
-                float: "right",
                 width: "auto",
+                "@media screen and (min-width:565px) and (max-width: 767px)": {
+                    float: "right",
+                },
+                "@media screen and (min-width:974px) and (max-width: 1024px)": {
+                    float: "right",
+                },
+                "@media screen and (min-width:1241px)": {
+                    float: "right",
+                },
                 "& span": {
                     fontSize: "18px",
                     fontWeight: 500,
