@@ -42,6 +42,25 @@ export const Table = ({ columnTitles, rowItems, location }) => {
                   <Td>{rowItem.status || ""}</Td>
                 </Fragment>
               )}
+              {location === "billing-history" && (
+                <Fragment>
+                  <Td>{rowItem.subscription || ""}</Td>
+                  <Td>{rowItem.date || ""}</Td>
+                  <Td>{rowItem.amount || ""}</Td>
+                  <Td>{rowItem.renewal || ""}</Td>
+                  <Td>{rowItem.status || ""}</Td>
+                  <Td>{rowItem.action || ""}</Td>
+                </Fragment>
+              )}
+              {location === "billing-table" && (
+                <Fragment>
+                  <Td>{rowItem.serial || ""}</Td>
+                  <Td>{rowItem.description || ""}</Td>
+                  <Td>{rowItem.price || ""}</Td>
+                  <Td>{rowItem.qty || ""}</Td>
+                  <Td>{rowItem.total || ""}</Td>
+                </Fragment>
+              )}
             </tr>
           );
         })}

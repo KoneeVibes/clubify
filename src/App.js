@@ -7,9 +7,9 @@ import { SignIn } from "./pages/authentication/signin";
 import { Events } from "./pages/app/events";
 import { Booking } from "./pages/app/facilities/booking";
 import { Services } from "./pages/app/services";
-import { Billing } from "./pages/app/billing";
-import { BillingHistory } from "./pages/app/billinghistory";
-import { BillingSubscription } from "./pages/app/billingsubscription";
+import { Billing } from "./pages/app/billing/billingdetail";
+import { BillingHistory } from "./pages/app/billing/billinghistory";
+import { BillingSubscription } from "./pages/app/billing/billingsubscription";
 import { AllMembers } from "./pages/app/allmembers";
 import { Facilities } from "./pages/app/facilities";
 import { BookingHistory } from "./pages/app/facilities/bookinghistory";
@@ -27,14 +27,13 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/membership" element={<Membership />} />
-        {/* route for facilities goes under here */}
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/facilities/booking/:id" element={<Booking />} />
         <Route path="/facilities/history" element={<BookingHistory />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/booking/:id" element={<ServicesBooking />} />
         <Route path="/services/history" element={<ServicesHistory />} />
-        <Route path="/billing" element={<Billing />} />
+        <Route path="/billing/detail/:id" element={<Billing />} />
         <Route path="/billing/history" element={<BillingHistory />} />
         <Route path="/billing/subscription" element={<BillingSubscription />} />
         <Route path="/allmembers" element={<AllMembers />} />

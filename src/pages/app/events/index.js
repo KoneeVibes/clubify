@@ -16,8 +16,10 @@ import {
   Workshop,
 } from "../../../assets";
 import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 
 export const Events = () => {
+  const navigate = useNavigate();
   const [filter, setFilter] = useState({
     months: "",
   });
@@ -44,14 +46,18 @@ export const Events = () => {
       });
   }, [data]);
 
+  const handleNavigateToEventDetails = (e) => {
+    e.preventDefault();
+    return navigate(`/events/detail/1`)
+  };
+
   return (
     <Layout
       role={profile?.role}
-      title={`Hello ${
-        profile.role === "administrator"
-          ? profile?.firstname || ""
-          : profile?.member?.firstname || ""
-      }`}
+      title={`Hello ${profile.role === "administrator"
+        ? profile?.firstname || ""
+        : profile?.member?.firstname || ""
+        }`}
       subTitle={new Date().toLocaleDateString("en-US", {
         day: "numeric",
         month: "long",
@@ -61,9 +67,8 @@ export const Events = () => {
       fullName={
         profile?.role === "administrator"
           ? `${profile?.firstname || ""} ${profile?.lastname || ""}`
-          : `${profile?.member?.firstname || ""} ${
-              profile?.member?.lastname || ""
-            }`
+          : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""
+          }`
       }
     >
       <EventsWrapper>
@@ -92,22 +97,40 @@ export const Events = () => {
           </Row>
         </Row>
         <div className="event-cards">
-          <div className="event-card">
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
             <Business />
           </div>
-          <div className="event-card">
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
             <Game />
           </div>
-          <div className="event-card">
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
             <Easter />
           </div>
-          <div className="event-card">
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
             <Party />
           </div>
-          <div className="event-card">
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
             <PoolParty />
           </div>
-          <div className="event-card">
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
             <Workshop />
           </div>
         </div>

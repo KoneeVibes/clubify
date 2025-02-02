@@ -15,6 +15,10 @@ export const BillingHistoryWrapper = styled("div")(() => {
         padding: "calc(var(--basic-padding)/5)",
         borderRadius: "5px",
       },
+      "@media screen and (max-width: 425px)": {
+        alignItems: "flex-start",
+        flexDirection: "column",
+      },
     },
     "& .history-table": {
       overflow: "auto",
