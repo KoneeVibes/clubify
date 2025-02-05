@@ -1,4 +1,4 @@
-import { BillingWrapper } from "./styled";
+import { BillingDetailWrapper } from "./styled";
 import { Layout } from "../../../../containers/layout/index";
 import Cookies from "universal-cookie";
 import { CMS } from "../../../../assets";
@@ -9,7 +9,7 @@ import { Table } from "../../../../components/table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPrint } from "@fortawesome/free-solid-svg-icons";
 
-export const Billing = () => {
+export const BillingDetail = () => {
   const headers = ["Serial", "Description", "Price", "Qty", "Total"];
 
   const cookies = new Cookies();
@@ -28,10 +28,11 @@ export const Billing = () => {
   return (
     <Layout
       role={profile?.role}
-      title={`Hello ${profile?.role === "administrator"
-        ? profile?.firstname || ""
-        : profile?.member?.firstname || ""
-        }`}
+      title={`Hello ${
+        profile?.role === "administrator"
+          ? profile?.firstname || ""
+          : profile?.member?.firstname || ""
+      }`}
       subTitle={new Date().toLocaleDateString("en-US", {
         day: "numeric",
         month: "long",
@@ -41,11 +42,12 @@ export const Billing = () => {
       fullName={
         profile?.role === "administrator"
           ? `${profile?.firstname || ""} ${profile?.lastname || ""}`
-          : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""
-          }`
+          : `${profile?.member?.firstname || ""} ${
+              profile?.member?.lastname || ""
+            }`
       }
     >
-      <BillingWrapper>
+      <BillingDetailWrapper>
         <Row
           className="heading-row"
           alignitems={"center"}
@@ -61,16 +63,15 @@ export const Billing = () => {
             <P>Print invoice</P>
           </Row>
         </Row>
-        <Column
-          className="main-area"
-        >
+        <Column className="main-area">
           <Row
             className="invoice-title"
             alignitems={"center"}
             justifycontent={"space-between"}
           >
             <Span>
-              Invoice <Span className="invoice-number"> #1245-0001</Span> for #20,000
+              Invoice <Span className="invoice-number"> #1245-0001</Span> for
+              #20,000
             </Span>
             <CMS />
           </Row>
@@ -80,15 +81,11 @@ export const Billing = () => {
             justifycontent={"space-between"}
           >
             <Span>Billing Type: One Time</Span>
-            <BaseButton
-              className="completed-button"
-            >
+            <BaseButton className="completed-button">
               <P>Completed</P>
             </BaseButton>
           </Row>
-          <Column
-            className="details"
-          >
+          <Column className="details">
             <Row
               className="detail-header"
               alignitems={"center"}
@@ -146,7 +143,7 @@ export const Billing = () => {
             />
           </div>
         </Column>
-      </BillingWrapper>
+      </BillingDetailWrapper>
     </Layout>
   );
 };

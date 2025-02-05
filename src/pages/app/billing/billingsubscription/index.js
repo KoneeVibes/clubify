@@ -23,10 +23,11 @@ export const BillingSubscription = () => {
   return (
     <Layout
       role={profile?.role}
-      title={`Hello ${profile?.role === "administrator"
-        ? profile?.firstname || ""
-        : profile?.member?.firstname || ""
-        }`}
+      title={`Hello ${
+        profile?.role === "administrator"
+          ? profile?.firstname || ""
+          : profile?.member?.firstname || ""
+      }`}
       subTitle={new Date().toLocaleDateString("en-US", {
         day: "numeric",
         month: "long",
@@ -36,8 +37,9 @@ export const BillingSubscription = () => {
       fullName={
         profile?.role === "administrator"
           ? `${profile?.firstname || ""} ${profile?.lastname || ""}`
-          : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""
-          }`
+          : `${profile?.member?.firstname || ""} ${
+              profile?.member?.lastname || ""
+            }`
       }
     >
       <BillingSubscriptionWrapper>
@@ -49,10 +51,7 @@ export const BillingSubscription = () => {
           <div className="title">
             <H1>Manage Billing Subscriptions</H1>
           </div>
-          <Row
-            className="filter"
-            alignitems="center"
-          >
+          <Row className="filter" alignitems="center">
             <Filter />
             <Span>Filter</Span>
             <BaseFieldSet>
@@ -67,25 +66,14 @@ export const BillingSubscription = () => {
             </BaseFieldSet>
           </Row>
         </Row>
-        <Column
-          className="main-area"
-        >
-          <Row
-            alignitems={"center"}
-            justifycontent={"space-between"}
-          >
+        <Column className="main-area">
+          <Row alignitems={"center"} justifycontent={"space-between"}>
             <Span className="section-text">Parking</Span>
-            <BaseButton
-              className="active-button"
-            >
-              <P>
-                Active
-              </P>
+            <BaseButton className="active-button">
+              <P>Active</P>
             </BaseButton>
           </Row>
-          <Column
-            gap={"0"}
-          >
+          <Column gap={"0"}>
             <div>
               <Span>Date Created</Span>
               <P>01 January, 2023</P>
@@ -94,10 +82,7 @@ export const BillingSubscription = () => {
               <Span>Amount</Span>
               <P>₦18,000</P>
             </div>
-            <Row
-              alignitems={"center"}
-              justifycontent={"space-between"}
-            >
+            <Row alignitems={"center"} justifycontent={"space-between"}>
               <div>
                 <Span>Repeat</Span>
                 <P>2pm - 3pm, Every Mon & Wed</P>
@@ -108,10 +93,7 @@ export const BillingSubscription = () => {
               <Span>Next Renewal</Span>
               <P>03 January, 2023</P>
             </div>
-            <Row
-              alignitems={"center"}
-              justifycontent={"space-between"}
-            >
+            <Row alignitems={"center"} justifycontent={"space-between"}>
               <div>
                 <Span>Payment Method</Span>
                 <P>Visa 8986</P>
@@ -121,22 +103,14 @@ export const BillingSubscription = () => {
           </Column>
         </Column>
         <Row className="button-area">
-          <BaseButton
-            className="change-button"
-          >
-            <P>
-              Change Plan
-            </P>
+          <BaseButton className="change-button">
+            <P>Change Plan</P>
           </BaseButton>
-          <BaseButton
-            className="cancel-button"
-          >
-            <P>
-              Cancel Subscription
-            </P>
+          <BaseButton className="cancel-button">
+            <P>Cancel Subscription</P>
           </BaseButton>
         </Row>
       </BillingSubscriptionWrapper>
-    </Layout >
+    </Layout>
   );
 };

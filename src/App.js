@@ -7,8 +7,8 @@ import { SignIn } from "./pages/authentication/signin";
 import { Events } from "./pages/app/events";
 import { Booking } from "./pages/app/facilities/booking";
 import { Services } from "./pages/app/services";
-import { BillingPlan } from "./pages/app/billing/billingplan";
-import { Billing } from "./pages/app/billing/billingdetail";
+import { Billing } from "./pages/app/billing";
+import { BillingDetail } from "./pages/app/billing/billingdetail";
 import { BillingHistory } from "./pages/app/billing/billinghistory";
 import { BillingSubscription } from "./pages/app/billing/billingsubscription";
 import { AllMembers } from "./pages/app/allmembers";
@@ -34,8 +34,8 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/services/booking/:id" element={<ServicesBooking />} />
         <Route path="/services/history" element={<ServicesHistory />} />
-        <Route path="/billing/plan/:id" element={<BillingPlan />} />
-        <Route path="/billing/detail/:id" element={<Billing />} />
+        <Route path="/billing" element={<Billing />} />
+        <Route path="/billing/detail/:id" element={<BillingDetail />} />
         <Route path="/billing/history" element={<BillingHistory />} />
         <Route path="/billing/subscription" element={<BillingSubscription />} />
         <Route path="/allmembers" element={<AllMembers />} />

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BillingWrapper = styled("div")(() => {
+export const BillingDetailWrapper = styled("div")(() => {
   return {
     overflow: "hidden",
     "& .heading-row": {
@@ -18,7 +18,7 @@ export const BillingWrapper = styled("div")(() => {
         alignItems: "flex-start",
         flexDirection: "column",
         "& .print-invoice, & h1": {
-          width: "100%"
+          width: "100%",
         },
       },
     },
@@ -43,8 +43,8 @@ export const BillingWrapper = styled("div")(() => {
       "& span": {
         fontSize: "16px",
         fontWeight: "500",
-        whiteSpace: "normal"
-      }
+        whiteSpace: "normal",
+      },
     },
     "& .completed-button": {
       maxWidth: "8rem",
@@ -57,7 +57,7 @@ export const BillingWrapper = styled("div")(() => {
         fontWeight: 500,
         marginBlock: 0,
         color: "#EFEFEF",
-      }
+      },
     },
     "& .invoice-number": {
       color: "#4B95FF",
@@ -77,7 +77,7 @@ export const BillingWrapper = styled("div")(() => {
         fontSize: "22px",
         fontWeight: 500,
         lineHeight: "26.63px",
-      }
+      },
     },
     "& .details": {
       "@media screen and (min-width: 1440px)": {
@@ -87,8 +87,8 @@ export const BillingWrapper = styled("div")(() => {
         "& span": {
           fontSize: "20px",
           fontWeight: "500",
-        }
+        },
       },
-    }
+    },
   };
 });
