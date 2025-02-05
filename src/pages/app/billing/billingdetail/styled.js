@@ -62,7 +62,7 @@ export const BillingDetailWrapper = styled("div")(() => {
     "& .invoice-number": {
       color: "#4B95FF",
     },
-    "& .billing-table": {
+    "& .billing-detail-table": {
       overflow: "auto",
     },
     "& .invoice-title": {

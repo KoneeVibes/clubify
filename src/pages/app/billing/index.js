@@ -17,7 +17,7 @@ export const Billing = () => {
     "Bill",
     "Date",
     "Amount",
-    "Due Date",
+    "DueDate",
     "Status",
     "Action",
   ];
@@ -25,8 +25,19 @@ export const Billing = () => {
   const cookies = new Cookies();
   const { profile } = cookies.getAll();
 
+  const plan = [
+    {
+      Type: "1",
+      Bill: "Message Service",
+      Date: "20,000.00",
+      Amount: "1",
+      DueDate: "20,000.00",
+      Status: "20,000.00",
+      Action: "",
+    },
+  ];
+
   const [filter, setFilter] = useState("");
-  const [plan] = useState([]);
 
   const handleChange = (e) => {
     const { value } = e.target;

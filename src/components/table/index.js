@@ -52,13 +52,24 @@ export const Table = ({ columnTitles, rowItems, location }) => {
                   <Td>{rowItem.action || ""}</Td>
                 </Fragment>
               )}
-              {location === "billing-table" && (
+              {location === "billing-detail" && (
                 <Fragment>
                   <Td>{rowItem.serial || ""}</Td>
                   <Td>{rowItem.description || ""}</Td>
                   <Td>{rowItem.price || ""}</Td>
                   <Td>{rowItem.qty || ""}</Td>
                   <Td>{rowItem.total || ""}</Td>
+                </Fragment>
+              )}
+              {location === "billing-table" && (
+                <Fragment>
+                  <Td>{rowItem.Type || ""}</Td>
+                  <Td>{rowItem.Bill || ""}</Td>
+                  <Td>{rowItem.Date || ""}</Td>
+                  <Td>{rowItem.Amount || ""}</Td>
+                  <Td>{rowItem.DueDate || ""}</Td>
+                  <Td>{rowItem.Status || ""}</Td>
+                  <Td>{rowItem.Action || ""}</Td>
                 </Fragment>
               )}
             </tr>

@@ -15,7 +15,7 @@ export const BillingDetail = () => {
   const cookies = new Cookies();
   const { profile } = cookies.getAll();
 
-  const history = [
+  const detail = [
     {
       serial: "1",
       description: "Message Service",
@@ -135,11 +135,11 @@ export const BillingDetail = () => {
               <Span>Payment Method: Card</Span>
             </Row>
           </Column>
-          <div className="billing-table">
+          <div className="billing-detail-table">
             <Table
               columnTitles={headers}
-              location={"billing-table"}
-              rowItems={history}
+              location={"billing-detail"}
+              rowItems={detail}
             />
           </div>
         </Column>
