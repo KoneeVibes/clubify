@@ -10,13 +10,9 @@ export const BillWrapper = styled("div")(() => {
       borderRadius: "1rem",
       padding: "calc(var(--basic-padding)/3)",
       color: "#FFFFFF",
-      // "& svg, & p": {
-      //
-      // },
-    },
-    "& div": {
       width: "100%",
     },
+
     "& .filter": {
       gap: "calc(var(--flex-gap)/4)",
       "& span": {
