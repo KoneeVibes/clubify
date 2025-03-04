@@ -24,12 +24,13 @@ export const Events = () => {
     };
     const cookies = new Cookies();
     const { profile, data } = cookies.getAll();
-    const [profileDetails, setProfileDetails] = useState({});
+    // eslint-disable-next-line no-unused-vars
+    const [events, setEvents] = useState({});
 
     useEffect(() => {
         getAllEvent(data.token)
             .then((detail) => {
-                setProfileDetails(detail);
+                setEvents(detail);
             })
             .catch((err) => {
                 console.error("Failed to fetch projects:", err);
@@ -76,14 +77,40 @@ export const Events = () => {
                         </BaseFieldSet>
                     </Row>
                 </Row>
-                <Row>
-                    <Business/>
-                    <Game/>
-                    <Easter/>
-                    <Party/>
-                    <PoolParty/>
-                    <Workshop/>
-                </Row>
+                <div
+                    className="event-cards"
+                >
+                    <div
+                        className="event-card"
+                    >
+                        <Business />
+                    </div>
+                    <div
+                        className="event-card"
+                    >
+                        <Game />
+                    </div>
+                    <div
+                        className="event-card"
+                    >
+                        <Easter />
+                    </div>
+                    <div
+                        className="event-card"
+                    >
+                        <Party />
+                    </div>
+                    <div
+                        className="event-card"
+                    >
+                        <PoolParty />
+                    </div>
+                    <div
+                        className="event-card"
+                    >
+                        <Workshop />
+                    </div>
+                </div>
             </EventsWrapper>
         </Layout>
     )

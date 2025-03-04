@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const EventsWrapper = styled("div")(() => {
-    return {
+  return {
     overflow: "hidden",
     marginBottom: "var(--basic-margin)",
     "& .header": {
@@ -53,5 +53,30 @@ export const EventsWrapper = styled("div")(() => {
         flexDirection: "column",
       },
     },
+
+    "& .event-cards": {
+      display: "grid",
+      gap: "calc(var(--flex-gap)/2)",
+      gridTemplateColumns: "repeat(1, 1fr)",
+      "& .event-card": {
+        "& svg": {
+          width: "100%",
+          height: "100%",
+        }
+      },
+      "@media screen and (min-width: 280px)": {
+        gridTemplateColumns: "repeat(2, 1fr)",
+      },
+      "@media screen and (min-width: 425px)": {
+        gridTemplateColumns: "repeat(3, 1fr)",
+      },
+      "@media screen and (min-width: 768px)": {
+        gridTemplateColumns: "repeat(4, 1fr)",
+      },
+      "@media screen and (min-width: 1280px)": {
+        gap: "calc(var(--flex-gap)/1.5)",
+      }
     }
+
+  }
 })
