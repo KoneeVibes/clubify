@@ -13,15 +13,15 @@ import Cookies from "universal-cookie";
 export const Events = () => {
     const [filter, setFilter] = useState({
         months: "",
-      });
-    
-      const handleChange = (e) => {
+    });
+
+    const handleChange = (e) => {
         const { name, value } = e.target;
         setFilter((prev) => ({
-          ...prev,
-          [name]: value,
+            ...prev,
+            [name]: value,
         }));
-      };
+    };
     const cookies = new Cookies();
     const { profile, data } = cookies.getAll();
     const [profileDetails, setProfileDetails] = useState({});
