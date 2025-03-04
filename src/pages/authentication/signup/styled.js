@@ -51,6 +51,12 @@ export const SignUpWrapper = styled(Row)(() => {
             border: "1px solid black",
             borderRadius: "8px",
         },
+        "& .reg-form select": {
+            padding: "calc(var(--basic-padding) / 5) calc(var(--basic-padding)/5)",
+            outline: "none",
+            border: "1px solid black",
+            borderRadius: "8px",
+        },
         "& .reg-form input[type='radio']": {
             width: "auto",
         },
