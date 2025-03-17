@@ -12,67 +12,64 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 export const SideNavigation = () => {
-    const cookies = new Cookies();
-    const { profile } = cookies.getAll() ?? {};
+  const cookies = new Cookies();
+  const { profile } = cookies.getAll() ?? {};
 
-    const roleBasedSideNavLinks = profile?.role === "administrator"
-        ? sideNavLinks
-        : sideNavLinks.filter((link) => link.name !== "All Members");
+  const roleBasedSideNavLinks =
+    profile?.role === "administrator"
+      ? sideNavLinks
+      : sideNavLinks.filter((link) => link.name !== "All Members");
 
-    const navigate = useNavigate();
-    const sideNavigationRef = useRef(null);
-    const { isSideNavigationOpen, setIsSideNavigationOpen } = useContext(Context);
+  const navigate = useNavigate();
+  const sideNavigationRef = useRef(null);
+  const { isSideNavigationOpen, setIsSideNavigationOpen } = useContext(Context);
 
-    useEffect(() => {
-        const handleClickOutside = (e) => {
-            if (isSideNavigationOpen && sideNavigationRef.current && !sideNavigationRef.current.contains(e.target)) {
-                setIsSideNavigationOpen(false);
-            }
-        };
-        window.addEventListener("click", handleClickOutside);
-        return () => {
-            window.removeEventListener("click", handleClickOutside);
-        };
-    }, [isSideNavigationOpen, setIsSideNavigationOpen]);
-
-    const closeSideNavigation = (e) => {
-        e.stopPropagation();
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (
+        isSideNavigationOpen &&
+        sideNavigationRef.current &&
+        !sideNavigationRef.current.contains(e.target)
+      ) {
         setIsSideNavigationOpen(false);
-    }
+      }
+    };
+    window.addEventListener("click", handleClickOutside);
+    return () => {
+      window.removeEventListener("click", handleClickOutside);
+    };
+  }, [isSideNavigationOpen, setIsSideNavigationOpen]);
 
-    return (
-        <SideNavigationWrapper
-            ref={sideNavigationRef}
+  const closeSideNavigation = (e) => {
+    e.stopPropagation();
+    setIsSideNavigationOpen(false);
+  };
+
+  return (
+    <SideNavigationWrapper ref={sideNavigationRef}>
+      <Row className="logo-box">
+        <Logo />
+        <BaseButton
+          className="close-side-navigation-button"
+          onClick={closeSideNavigation}
         >
+          <FontAwesomeIcon icon={faXmark} />
+        </BaseButton>
+      </Row>
+      <Column className="nav-links-box">
+        {roleBasedSideNavLinks.map((sideNavLinks, index) => {
+          return (
             <Row
-                className="logo-box"
+              key={index}
+              className="nav-link"
+              onClick={() => navigate(sideNavLinks.url)}
             >
-                <Logo />
-                <BaseButton
-                    className="close-side-navigation-button"
-                    onClick={closeSideNavigation}
-                >
-                    <FontAwesomeIcon
-                        icon={faXmark}
-                    />
-                </BaseButton>
+              <Fragment>{sideNavLinks.icon}</Fragment>
+              <P>{sideNavLinks.name}</P>
             </Row>
-            <Column
-                className="nav-links-box"
-            >
-                {roleBasedSideNavLinks.map((sideNavLinks, index) => {
-                    return (
-                        <Row
-                            key={index}
-                            className="nav-link"
-                            onClick={() => navigate(sideNavLinks.url)}
-                        >
-                            <Fragment>{sideNavLinks.icon}</Fragment>
-                            <P>{sideNavLinks.name}</P>
-                        </Row>
-                    )
-                })}
-            </Column>
-        </SideNavigationWrapper>
-    )
-}
+          );
+        })}
+      </Column>
+    </SideNavigationWrapper>
+  );
+};

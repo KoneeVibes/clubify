@@ -7,111 +7,134 @@ import { Row } from "../../../components/flex/styled";
 import { Span, H1 } from "../../../components/typography/styled";
 import { getAllEvent } from "../../../utils/apis/getAllEvent";
 import { useEffect, useState } from "react";
-import { Business, Game, Easter, Party, PoolParty, Workshop } from "../../../assets";
+import {
+  Business,
+  Game,
+  Easter,
+  Party,
+  PoolParty,
+  Workshop,
+} from "../../../assets";
 import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
 
 export const Events = () => {
-    const [filter, setFilter] = useState({
-        months: "",
-    });
+  const navigate = useNavigate();
+  const [filter, setFilter] = useState({
+    months: "",
+  });
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFilter((prev) => ({
-            ...prev,
-            [name]: value,
-        }));
-    };
-    const cookies = new Cookies();
-    const { profile, data } = cookies.getAll();
-    // eslint-disable-next-line no-unused-vars
-    const [events, setEvents] = useState({});
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFilter((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+  const cookies = new Cookies();
+  const { profile, data } = cookies.getAll();
+  // eslint-disable-next-line no-unused-vars
+  const [events, setEvents] = useState({});
 
-    useEffect(() => {
-        getAllEvent(data.token)
-            .then((detail) => {
-                setEvents(detail);
-            })
-            .catch((err) => {
-                console.error("Failed to fetch projects:", err);
-            })
-    }, [data]);
+  useEffect(() => {
+    getAllEvent(data.token)
+      .then((detail) => {
+        setEvents(detail);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch projects:", err);
+      });
+  }, [data]);
 
-    return (
-        <Layout
-            role={profile?.role}
-            title={`Hello ${profile.role === "administrator" ? profile?.firstname || "" : profile?.member?.firstname || ""}`}
-            subTitle={new Date().toLocaleDateString('en-US', {
-                day: 'numeric',
-                month: 'long',
-                weekday: 'long'
-            })}
-            plan={profile?.plan?.planName || ""}
-            fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
+  const handleNavigateToEventDetails = (e) => {
+    e.preventDefault();
+    return navigate(`/events/detail/1`)
+  };
+
+  return (
+    <Layout
+      role={profile?.role}
+      title={`Hello ${profile.role === "administrator"
+        ? profile?.firstname || ""
+        : profile?.member?.firstname || ""
+        }`}
+      subTitle={new Date().toLocaleDateString("en-US", {
+        day: "numeric",
+        month: "long",
+        weekday: "long",
+      })}
+      plan={profile?.plan?.planName || ""}
+      fullName={
+        profile?.role === "administrator"
+          ? `${profile?.firstname || ""} ${profile?.lastname || ""}`
+          : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""
+          }`
+      }
+    >
+      <EventsWrapper>
+        <Row
+          className="header"
+          alignitems="center"
+          justifycontent="space-between"
         >
-            <EventsWrapper>
-                <Row
-                    className="header"
-                    alignitems="center"
-                    justifycontent="space-between"
-                >
-                    <div>
-                        <H1>Events</H1>
-                    </div>
-                    <Row
-                        className="filter"
-                        alignitems="center"
-                    >
-                        <Filter />
-                        <Span>Filter</Span>
-                        <BaseFieldSet>
-                            <BaseSelect
-                                name="months"
-                                onChange={handleChange}
-                                value={filter.months}
-                            >
-                                <option value="">This Months</option>
-                                <option value="1">April</option>
-                                <option value="2">May</option>
-                            </BaseSelect>
-                        </BaseFieldSet>
-                    </Row>
-                </Row>
-                <div
-                    className="event-cards"
-                >
-                    <div
-                        className="event-card"
-                    >
-                        <Business />
-                    </div>
-                    <div
-                        className="event-card"
-                    >
-                        <Game />
-                    </div>
-                    <div
-                        className="event-card"
-                    >
-                        <Easter />
-                    </div>
-                    <div
-                        className="event-card"
-                    >
-                        <Party />
-                    </div>
-                    <div
-                        className="event-card"
-                    >
-                        <PoolParty />
-                    </div>
-                    <div
-                        className="event-card"
-                    >
-                        <Workshop />
-                    </div>
-                </div>
-            </EventsWrapper>
-        </Layout>
-    )
-}
+          <div>
+            <H1>Events</H1>
+          </div>
+          <Row className="filter" alignitems="center">
+            <Filter />
+            <Span>Filter</Span>
+            <BaseFieldSet>
+              <BaseSelect
+                name="months"
+                onChange={handleChange}
+                value={filter.months}
+              >
+                <option value="">This Months</option>
+                <option value="1">April</option>
+                <option value="2">May</option>
+              </BaseSelect>
+            </BaseFieldSet>
+          </Row>
+        </Row>
+        <div className="event-cards">
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
+            <Business />
+          </div>
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
+            <Game />
+          </div>
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
+            <Easter />
+          </div>
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
+            <Party />
+          </div>
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
+            <PoolParty />
+          </div>
+          <div
+            className="event-card"
+            onClick={handleNavigateToEventDetails}
+          >
+            <Workshop />
+          </div>
+        </div>
+      </EventsWrapper>
+    </Layout>
+  );
+};

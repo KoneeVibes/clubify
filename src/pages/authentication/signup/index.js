@@ -15,9 +15,12 @@ import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../../utils/apis/authUser";
 import { DotLoader } from "react-spinners";
+import { BaseSelect } from "../../../components/form/select/styled";
 
 export const SignUp = () => {
+    const genders = ["Male", "Female", "Other"];
     const navigate = useNavigate();
+
     const [step, setStep] = useState(1);
     const [isSignedUpAsMember, setIsSignedUpAsMember] = useState(true);
     const [formDetails, setFormDetails] = useState({
@@ -26,11 +29,12 @@ export const SignUp = () => {
         email: "",
         password: "",
         dob: "",
-        gender: "male",
+        gender: "",
         phone: "",
         address: "",
         displayPicture: "http://bit.ju/fChGFao3f29gOzzFKuQ0aCvr_h",
-        role: "member",
+        role: "",
+        attachments: []
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -136,9 +140,7 @@ export const SignUp = () => {
                                     <Label>Lastname</Label>
                                     <BaseInput
                                         type="text"
-                                        name="lastname"
                                         placeholder="Enter your last name"
-                                        value={formDetails.lastname}
                                         onChange={(e) => handleChange(e)}
                                         required
                                     />
@@ -190,6 +192,20 @@ export const SignUp = () => {
                                 />
                             </BaseFieldSet>
                             <BaseFieldSet>
+                                <Label>Gender</Label>
+                                <BaseSelect
+                                    name="gender"
+                                    value={formDetails.gender}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                >
+                                    <option value="">Select Gender</option>
+                                    {genders.map((gender, index) => (
+                                        <option key={index} value={gender}>{gender}</option>
+                                    ))}
+                                </BaseSelect>
+                            </BaseFieldSet>
+                            <BaseFieldSet>
                                 <Label>DOB</Label>
                                 <BaseInput
                                     type="date"
@@ -222,7 +238,7 @@ export const SignUp = () => {
                                     />
                                     <Label>Member</Label>
                                 </BaseFieldSet>
-                                <BaseFieldSet className="userrole-radio">
+                                {/* <BaseFieldSet className="userrole-radio">
                                     <BaseInput
                                         type="radio"
                                         name="role"
@@ -231,7 +247,7 @@ export const SignUp = () => {
                                         onChange={(e) => handleChange(e)}
                                     />
                                     <Label>Admin</Label>
-                                </BaseFieldSet>
+                                </BaseFieldSet> */}
                                 <BaseFieldSet className="userrole-radio">
                                     <BaseInput
                                         type="radio"

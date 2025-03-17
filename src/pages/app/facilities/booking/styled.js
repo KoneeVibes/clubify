@@ -38,11 +38,6 @@ export const BookingWrapper = styled("div")(() => ({
     marginBlock: 0,
   },
 
-  "& .details-list .detail": {
-    overflow: "unset",
-    fontSize: "unset",
-  },
-
   "& .proceed-button": {
     backgroundColor: "#4B0082",
     color: "#ffffff",

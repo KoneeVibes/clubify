@@ -15,10 +15,10 @@ import { useNavigate } from "react-router-dom";
 const facilitiesData = [
     { id: 1, name: "Pool 1", location: "Outdoor", capacity: 25, fee: "₦2500/hr", icon: <Pool /> },
     { id: 2, name: "Meeting Room", location: "Wing B, 3rd Floor", capacity: 25, fee: "₦2500/hr", icon: <MeetingRoom /> },
-    { name: "Mini Lounge", location: "2nd Floor", capacity: 25, fee: "₦10000/hr", icon: <MiniLounge /> },
-    { name: "Bar", location: "Ground Floor", capacity: 132, fee: "₦12100/hr", icon: <Bar /> },
-    { name: "Pool 2", location: "Outdoor", capacity: 32, fee: "₦12100/hr", icon: <Pool2 /> },
-    { name: "Cinema", location: "Outdoor", capacity: 32, fee: "₦12500/hr", icon: <Cinema /> },
+    { id: 3, name: "Mini Lounge", location: "2nd Floor", capacity: 25, fee: "₦10000/hr", icon: <MiniLounge /> },
+    { id: 4, name: "Bar", location: "Ground Floor", capacity: 132, fee: "₦12100/hr", icon: <Bar /> },
+    { id: 5, name: "Pool 2", location: "Outdoor", capacity: 32, fee: "₦12100/hr", icon: <Pool2 /> },
+    { id: 6, name: "Cinema", location: "Outdoor", capacity: 32, fee: "₦12500/hr", icon: <Cinema /> },
 ];
 
 export const Facilities = () => {
@@ -131,6 +131,7 @@ export const Facilities = () => {
                                 className="book-facility"
                             >
                                 <BaseButton
+                                    backgroundcolor={"#4B0082"}
                                     onClick={(e) => handleNavigateToBookFacility(e, facility.id)}
                                 >
                                     <Span>
