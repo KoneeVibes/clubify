@@ -15,8 +15,10 @@ import { Fragment, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authenticateUser } from "../../../utils/apis/authUser";
 import { DotLoader } from "react-spinners";
+import { BaseSelect } from "../../../components/form/select/styled";
 
 export const SignUp = () => {
+    const genders = ["male", "female","other"];
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [isSignedUpAsMember, setIsSignedUpAsMember] = useState(true);
@@ -26,18 +28,18 @@ export const SignUp = () => {
         email: "",
         password: "",
         dob: "",
-        gender: "male",
+        gender: "",
         phone: "",
         address: "",
-        displayPicture: "http://bit.ju/fChGFao3f29gOzzFKuQ0aCvr_h",
+        displayPicture: "",
         role:"",
-        attachments:[""]
+        attachments:[{}]
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+        const { name, value,files} = e.target;
         if (name === "role") {
             if (value === "member") {
                 setIsSignedUpAsMember(true);
@@ -45,19 +47,47 @@ export const SignUp = () => {
                 setIsSignedUpAsMember(false);
             };
         };
+console.log(name)
+        if(name === "displayPicture"){
+            setFormDetails((prev) => ({
+                ...prev,
+                [name]: files[0],
+            }))} else {
         setFormDetails((prev) => ({
             ...prev,
             [name]: value,
-        }));
+        }))};
     };
 
     const handleSubmit = async (e) => {
         let payload;
         e.preventDefault();
+        if (isSignedUpAsMember) {
+            const { role, address, attachments, displayPicture, ...rest } = formDetails;
+            payload = { ...rest };
+        } else {
+            const formData = new FormData();
+        formData.append("firstname", formDetails.firstname);
+        formData.append("lastname", formDetails.lastname);
+        formData.append("email", formDetails.email);
+        formData.append("password", formDetails.password);
+        formData.append("phone", formDetails.phone);
+        formData.append("role", formDetails.role);
+        formData.append("dob", formDetails.dob);
+        formData.append("gender", formDetails.gender);
+        formData.append("address", formDetails.address);
+        formDetails.attachments.forEach((attachment, index) => {
+            if (attachment.file) {
+                formData.append("attachments", attachment.file);
+            }
+        });
+            payload = formData;
+        }
 
         setError(null);
         setLoading(true);
         try {
+            console.log(payload);
             const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", payload);
             if (response.status) {
                 setLoading(false);
@@ -183,6 +213,22 @@ export const SignUp = () => {
                                     onChange={(e) => handleChange(e)}
                                     required
                                 />
+                                </BaseFieldSet>
+                                <BaseFieldSet>
+                                <Label>Gender</Label>
+                                <BaseSelect
+                                    name="gender"
+                                    value={formDetails.gender}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                >
+                                    <option value="">Select Gender</option>
+                                    {genders.map((gender, index) => (
+                                        <option key={index} value={gender}>
+                                            {gender.charAt(0).toUpperCase() + gender.slice(1)}
+                                        </option>
+                                    ))}
+                                </BaseSelect>
                             </BaseFieldSet>
                             <BaseFieldSet>
                                 <Label>DOB</Label>
@@ -201,6 +247,15 @@ export const SignUp = () => {
                                     name="phone"
                                     placeholder="Enter your phone number"
                                     value={formDetails.phone}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
+                            </BaseFieldSet>
+                            <BaseFieldSet>
+                                <Label>Display Picture</Label>
+                                <BaseInput
+                                    type="file"
+                                    name="displayPicture"
                                     onChange={(e) => handleChange(e)}
                                     required
                                 />
