@@ -10,6 +10,7 @@ import { BaseButton } from "../../../components/button/styled";
 import { Filter } from "../../../assets";
 import { Pool, MeetingRoom, MiniLounge, Bar, Pool2, Cinema } from "../../../assets";
 import { useNavigate } from "react-router-dom";
+import { getAllFacilities } from "../../../utils/apis/getAllFacilities";
 
 // Define a facilities array with data for each facility
 const facilitiesData = [
@@ -22,10 +23,16 @@ const facilitiesData = [
 ];
 
 export const Facilities = () => {
+    const cookies = new Cookies();
+    const { profile, data } = cookies.getAll();
+
+    const navigate = useNavigate();
+    
     const [filter, setFilter] = useState({
         location: "",
         capacity: "",
     });
+    const [facilities, setFacilities] = useState([]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,17 +42,22 @@ export const Facilities = () => {
         }));
     };
 
-    useEffect(() => console.log(filter), [filter]);
-
-    const cookies = new Cookies();
-    const { profile } = cookies.getAll();
-
-    const navigate = useNavigate();
+    useEffect(() => {
+        const fetchFacilities = async () => {
+            try {
+                const response = await getAllFacilities(data.token);
+                return setFacilities(response);
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        fetchFacilities();
+    }, [data.token]);
 
     const handleNavigateToBookFacility = (e, id) => {
         e.preventDefault();
         return navigate(`/facilities/booking/${id}`)
-    }
+    };
 
     return (
         <Layout

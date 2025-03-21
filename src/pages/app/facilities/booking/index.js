@@ -1,14 +1,15 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { BookingWrapper } from "./styled";
 import { Layout } from "../../../../containers/layout/index";
 import {
-  H1,
-  Label,
-  Li,
-  H3,
-  P,
-  H2,
-  Span,
+    H1,
+    Label,
+    Li,
+    H3,
+    P,
+    H2,
+    Span,
 } from "../../../../components/typography/styled";
 import { BookingRow } from "./styled";
 import { Sidebar } from "./styled";
@@ -19,67 +20,95 @@ import { BaseFieldSet } from "../../../../components/form/fieldset/styled";
 import { BaseInput } from "../../../../components/form/input/styled";
 import { BaseButton } from "../../../../components/button/styled";
 import { Column, Row } from "../../../../components/flex/styled";
+import { bookFacility } from "../../../../utils/apis/bookFacility";
+import { DotLoader } from "react-spinners";
+import React from "react";
 
 export const Booking = () => {
-  const cookies = new Cookies();
-  const { profile } = cookies.getAll();
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    const cookies = new Cookies();
+    const { profile, data } = cookies.getAll();
+    const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
 
-  const [selectedDay, setSelectedDay] = useState("Monday");
-  const [schedules, setSchedules] = useState({
-    Monday: [
-      { time: "1pm", interviewee: "", interviewer: "" },
-      { time: "2pm", interviewee: "", interviewer: "" },
-    ],
-    Tuesday: [
-      { time: "1pm", interviewee: "", interviewer: "" },
-      { time: "2pm", interviewee: "", interviewer: "" },
-    ],
-    Wednesday: [
-      { time: "1pm", interviewee: "", interviewer: "" },
-      { time: "2pm", interviewee: "", interviewer: "" },
-    ],
-    Thursday: [
-      { time: "1pm", interviewee: "", interviewer: "" },
-      { time: "2pm", interviewee: "", interviewer: "" },
-    ],
-    Friday: [
-      { time: "1pm", interviewee: "", interviewer: "" },
-      { time: "2pm", interviewee: "", interviewer: "" },
-    ],
-  });
+    const navigate = useNavigate();
 
-  const handleDaySelection = (day) => setSelectedDay(day);
-
-  const handleAddSlot = () => {
-    setSchedules((prevSchedules) => ({
-      ...prevSchedules,
-      [selectedDay]: [
-        ...prevSchedules[selectedDay],
-        {
-          time: `${prevSchedules[selectedDay].length + 1}pm`,
-          interviewee: "",
-          interviewer: "",
-        },
-      ],
-    }));
-  };
-
-  const handleRemoveSlot = (index) => {
-    setSchedules((prevSchedules) => ({
-      ...prevSchedules,
-      [selectedDay]: prevSchedules[selectedDay].filter((_, i) => i !== index),
-    }));
-  };
-
-  const handleInputChange = (index, field, value) => {
-    const updatedDaySchedule = [...schedules[selectedDay]];
-    updatedDaySchedule[index][field] = value;
-    setSchedules({
-      ...schedules,
-      [selectedDay]: updatedDaySchedule,
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const [selectedDay, setSelectedDay] = useState("Monday");
+    const [schedules, setSchedules] = useState({
+        Monday: [
+            { time: "1pm", interviewee: "", interviewer: "" },
+            { time: "2pm", interviewee: "", interviewer: "" },
+        ],
+        Tuesday: [
+            { time: "1pm", interviewee: "", interviewer: "" },
+            { time: "2pm", interviewee: "", interviewer: "" },
+        ],
+        Wednesday: [
+            { time: "1pm", interviewee: "", interviewer: "" },
+            { time: "2pm", interviewee: "", interviewer: "" },
+        ],
+        Thursday: [
+            { time: "1pm", interviewee: "", interviewer: "" },
+            { time: "2pm", interviewee: "", interviewer: "" },
+        ],
+        Friday: [
+            { time: "1pm", interviewee: "", interviewer: "" },
+            { time: "2pm", interviewee: "", interviewer: "" },
+        ],
     });
-  };
+
+    const handleDaySelection = (day) => setSelectedDay(day);
+
+    const handleAddSlot = () => {
+        setSchedules((prevSchedules) => ({
+            ...prevSchedules,
+            [selectedDay]: [
+                ...prevSchedules[selectedDay],
+                {
+                    time: `${prevSchedules[selectedDay].length + 1}pm`,
+                    interviewee: "",
+                    interviewer: "",
+                },
+            ],
+        }));
+    };
+
+    const handleRemoveSlot = (index) => {
+        setSchedules((prevSchedules) => ({
+            ...prevSchedules,
+            [selectedDay]: prevSchedules[selectedDay].filter((_, i) => i !== index),
+        }));
+    };
+
+    const handleInputChange = (index, field, value) => {
+        const updatedDaySchedule = [...schedules[selectedDay]];
+        updatedDaySchedule[index][field] = value;
+        setSchedules({
+            ...schedules,
+            [selectedDay]: updatedDaySchedule,
+        });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await bookFacility(data.token, schedules);
+            if (response.status) {
+                setLoading(false);
+                navigate("/facilities");
+            } else {
+                setLoading(false);
+                setError('Facility booking operation failed. Please check your credentials and try again.');
+                console.error("Facility booking operation failed. Please check your credentials and try again.");
+            }
+        } catch (error) {
+            setLoading(false);
+            setError(`Booking operation failed. ${error.message}`);
+            console.error('Booking operation failed:', error);
+        }
+    };
 
     return (
         <Layout
@@ -206,7 +235,20 @@ export const Booking = () => {
                         </Schedule>
                     </Row>
                 </div>
-                <BaseButton className="proceed-button">Proceed to payment</BaseButton>
+                {error && <P style={{ color: 'red', fontSize: "18px" }}>{error}</P>}
+                <BaseButton
+                    className="proceed-button"
+                    onClick={handleSubmit}
+                >
+                    {loading ?
+                        <DotLoader
+                            size={20}
+                            color="white"
+                            className='dotLoader'
+                        />
+                        : "Proceed to payment"
+                    }
+                </BaseButton>
             </BookingWrapper>
         </Layout>
     );

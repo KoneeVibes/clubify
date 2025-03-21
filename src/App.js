@@ -34,7 +34,7 @@ function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/services/booking/:id" element={<ServicesBooking />} />
         <Route path="/services/history" element={<ServicesHistory />} />
-        <Route path="/bill" element={<Bill />} />
+        <Route path="/billing" element={<Bill />} />
         <Route path="/billing/detail/:id" element={<Billing />} />
         <Route path="/billing/history" element={<BillingHistory />} />
         <Route path="/billing/subscription" element={<BillingSubscription />} />

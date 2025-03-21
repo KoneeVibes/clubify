@@ -33,11 +33,11 @@ export const sideNavLinks = [
         icon: <FontAwesomeIcon icon={faMoneyCheck} />,
         url: "/billing"
     },
-    {
-        name: "Settings",
-        icon: <FontAwesomeIcon icon={faGear} />,
-        url: "/settings"
-    },
+    // {
+    //     name: "Settings",
+    //     icon: <FontAwesomeIcon icon={faGear} />,
+    //     url: "/settings"
+    // },
     {
         name: "All Members",
         icon: <FontAwesomeIcon icon={faPeopleArrows} />,

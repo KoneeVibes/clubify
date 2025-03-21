@@ -48,17 +48,17 @@ export const SignUp = () => {
                 setIsSignedUpAsMember(false);
             };
         };
-        if (name === "displayPicture"){
+        if (name === "displayPicture") {
             setFormDetails((prev) => ({
                 ...prev,
-                [name]:files[0]
+                [name]: files[0]
             }))
-        }else{
-                setFormDetails((prev) => ({
-                    ...prev,
-                    [name]: value
-                }))
-            }
+        } else {
+            setFormDetails((prev) => ({
+                ...prev,
+                [name]: value
+            }))
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -67,9 +67,8 @@ export const SignUp = () => {
         if (isSignedUpAsMember) {
             const { role, address, attachments, displayPicture, ...rest } = formDetails;
             payload = { ...rest };
-            const { role, address, displayPicture, attachments, ...rest } = formDetails;
-            payload = { ...rest };
-        } else {const formData = new FormData();
+        } else {
+            const formData = new FormData();
             formData.append("firstname", formDetails.firstname);
             formData.append("lastname", formDetails.lastname);
             formData.append("email", formDetails.email);
@@ -86,12 +85,10 @@ export const SignUp = () => {
                 }
             });
             payload = formData
-        }
-
+        };
         setError(null);
         setLoading(true);
         try {
-            console.log(payload);
             const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", payload);
             if (response.status) {
                 setLoading(false);
@@ -217,8 +214,8 @@ export const SignUp = () => {
                                     onChange={(e) => handleChange(e)}
                                     required
                                 />
-                                </BaseFieldSet>
-                                <BaseFieldSet>
+                            </BaseFieldSet>
+                            <BaseFieldSet>
                                 <Label>Gender</Label>
                                 <BaseSelect
                                     name="gender"
@@ -253,28 +250,10 @@ export const SignUp = () => {
                                     value={formDetails.phone}
                                     onChange={(e) => handleChange(e)}
                                     required
-                                /> 
-                            </BaseFieldSet> 
-                            <BaseFieldSet>
-                                <Label>Upload Picture</Label>
-                                <BaseInput
-                                    type="file"
-                                    name="displayPicture"
-                                    onChange={(e) => handleChange(e)}
-                                    required
-                            />
-                            </BaseFieldSet>
-                            <BaseFieldSet>
-                                <Label>Upload picture</Label>
-                                <BaseInput
-                                    type="file"
-                                    name="displayPicture"
-                                    onChange={(e) => handleChange(e)}
-                                    required
                                 />
                             </BaseFieldSet>
                             <BaseFieldSet>
-                                <Label>Display Picture</Label>
+                                <Label>Upload Picture</Label>
                                 <BaseInput
                                     type="file"
                                     name="displayPicture"
