@@ -20,7 +20,6 @@ import { BaseSelect } from "../../../components/form/select/styled";
 export const SignUp = () => {
     const genders = ["male", "female", "other"];
     const navigate = useNavigate();
-
     const [step, setStep] = useState(1);
     const [isSignedUpAsMember, setIsSignedUpAsMember] = useState(true);
     const [formDetails, setFormDetails] = useState({
@@ -66,6 +65,8 @@ export const SignUp = () => {
         let payload;
         e.preventDefault();
         if (isSignedUpAsMember) {
+            const { role, address, attachments, displayPicture, ...rest } = formDetails;
+            payload = { ...rest };
             const { role, address, displayPicture, attachments, ...rest } = formDetails;
             payload = { ...rest };
         } else {const formData = new FormData();
@@ -86,9 +87,11 @@ export const SignUp = () => {
             });
             payload = formData
         }
+
         setError(null);
         setLoading(true);
         try {
+            console.log(payload);
             const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", payload);
             if (response.status) {
                 setLoading(false);
@@ -214,8 +217,8 @@ export const SignUp = () => {
                                     onChange={(e) => handleChange(e)}
                                     required
                                 />
-                            </BaseFieldSet>
-                            <BaseFieldSet>
+                                </BaseFieldSet>
+                                <BaseFieldSet>
                                 <Label>Gender</Label>
                                 <BaseSelect
                                     name="gender"
@@ -263,6 +266,15 @@ export const SignUp = () => {
                             </BaseFieldSet>
                             <BaseFieldSet>
                                 <Label>Upload picture</Label>
+                                <BaseInput
+                                    type="file"
+                                    name="displayPicture"
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
+                            </BaseFieldSet>
+                            <BaseFieldSet>
+                                <Label>Display Picture</Label>
                                 <BaseInput
                                     type="file"
                                     name="displayPicture"
