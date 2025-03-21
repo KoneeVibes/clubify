@@ -61,6 +61,17 @@ export const Table = ({ columnTitles, rowItems, location }) => {
                   <Td>{rowItem.total || ""}</Td>
                 </Fragment>
               )}
+              {location === "billing" && (
+                <Fragment>
+                  <Td>{rowItem.Type || ""}</Td>
+                  <Td>{rowItem.Bill || ""}</Td>
+                  <Td>{rowItem.Date || ""}</Td>
+                  <Td>{rowItem.Amount || ""}</Td>
+                  <Td>{rowItem.DueDate || ""}</Td>
+                  <Td>{rowItem.Status || ""}</Td>
+                  <Td>{rowItem.Action || ""}</Td>
+                </Fragment>
+              )}
             </tr>
           );
         })}
