@@ -4,7 +4,7 @@ export const authenticateUser = async (action, authDetails) => {
     try {
         const response = await fetch(`${BASE_ENDPOINT}/api/v1/auth/${action}`, {
             method: 'POST',
-            headers: action === "staff/register" ? {}: {
+            headers: action === "staff/register"? {}:{
                 'Content-Type': 'application/json',
             },
             body: action === "staff/register"? authDetails : JSON.stringify(authDetails)

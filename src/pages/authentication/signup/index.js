@@ -43,32 +43,32 @@ export const SignUp = () => {
         const { name, value, files } = e.target;
         if (name === "role") {
             if (value === "member") {
+
                 setIsSignedUpAsMember(true);
             } else {
                 setIsSignedUpAsMember(false);
             };
         };
-        if (name === "displayPicture") {
-            setFormDetails((prev) => ({
-                    ...prev,
-                    [name]: files[0]
-            }))
-        } else {
+        if (name === "displayPicture"){
             setFormDetails((prev) => ({
                 ...prev,
-                [name]: value
+                [name]:files[0]
             }))
-        }
+        }else{
+                setFormDetails((prev) => ({
+                    ...prev,
+                    [name]: value
+                }))
+            }
     };
 
     const handleSubmit = async (e) => {
         let payload;
         e.preventDefault();
         if (isSignedUpAsMember) {
-            const { role, address, attachments, displayPicture, ...rest } = formDetails;
+            const { role, address, displayPicture, attachments, ...rest } = formDetails;
             payload = { ...rest };
-        } else {
-            const formData = new FormData();
+        } else {const formData = new FormData();
             formData.append("firstname", formDetails.firstname);
             formData.append("lastname", formDetails.lastname);
             formData.append("email", formDetails.email);
@@ -83,13 +83,12 @@ export const SignUp = () => {
                 if (attachment.file) {
                     formData.append("attachments", attachment.file);
                 }
-            })
-            payload = formData;
+            });
+            payload = formData
         }
         setError(null);
         setLoading(true);
         try {
-            console.log(payload);
             const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", payload);
             if (response.status) {
                 setLoading(false);
@@ -225,11 +224,11 @@ export const SignUp = () => {
                                     required
                                 >
                                     <option value="">Select Gender</option>
-                                        {genders.map((gender, index) => (
-                                            <option key={index} value={gender}>
-                                                {gender.charAt(0).toUpperCase() + gender.slice(1)}
-                                            </option>
-                                        ))}
+                                    {genders.map((gender, index) => (
+                                        <option key={index} value={gender}>
+                                            {gender.charAt(0).toUpperCase() + gender.slice(1)}
+                                        </option>
+                                    ))}
                                 </BaseSelect>
                             </BaseFieldSet>
                             <BaseFieldSet>
@@ -251,7 +250,16 @@ export const SignUp = () => {
                                     value={formDetails.phone}
                                     onChange={(e) => handleChange(e)}
                                     required
-                                />
+                                /> 
+                            </BaseFieldSet> 
+                            <BaseFieldSet>
+                                <Label>Upload Picture</Label>
+                                <BaseInput
+                                    type="file"
+                                    name="displayPicture"
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                            />
                             </BaseFieldSet>
                             <BaseFieldSet>
                                 <Label>Upload picture</Label>
