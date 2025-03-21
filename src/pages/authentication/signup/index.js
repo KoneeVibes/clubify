@@ -49,7 +49,6 @@ export const SignUp = () => {
                 setIsSignedUpAsMember(false);
             };
         };
-        console.log(name);
         if (name === "displayPicture"){
             setFormDetails((prev) => ({
                 ...prev,
@@ -90,7 +89,6 @@ export const SignUp = () => {
         setError(null);
         setLoading(true);
         try {
-            console.log(payload)
             const response = await authenticateUser(isSignedUpAsMember ? "register" : "staff/register", payload);
             if (response.status) {
                 setLoading(false);
@@ -262,6 +260,15 @@ export const SignUp = () => {
                                     onChange={(e) => handleChange(e)}
                                     required
                             />
+                            </BaseFieldSet>
+                            <BaseFieldSet>
+                                <Label>Upload picture</Label>
+                                <BaseInput
+                                    type="file"
+                                    name="displayPicture"
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                />
                             </BaseFieldSet>
                             <Label>Sign up as:</Label>
                             <Row className="user-roles">
