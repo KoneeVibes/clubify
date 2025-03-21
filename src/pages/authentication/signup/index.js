@@ -18,7 +18,7 @@ import { DotLoader } from "react-spinners";
 import { BaseSelect } from "../../../components/form/select/styled";
 
 export const SignUp = () => {
-    const genders = ["male", "female","other"];
+    const genders = ["male", "female", "other"];
     const navigate = useNavigate();
     const [step, setStep] = useState(1);
     const [isSignedUpAsMember, setIsSignedUpAsMember] = useState(true);
@@ -32,31 +32,33 @@ export const SignUp = () => {
         phone: "",
         address: "",
         displayPicture: "",
-        role:"",
-        attachments:[{}]
+        role: "",
+        attachments: [{}]
     });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const handleChange = (e) => {
-        const { name, value,files} = e.target;
+        const { name, value, files } = e.target;
         if (name === "role") {
             if (value === "member") {
+
                 setIsSignedUpAsMember(true);
             } else {
                 setIsSignedUpAsMember(false);
-            };
-        };
-console.log(name)
-        if(name === "displayPicture"){
+            };
+        };
+        if (name === "displayPicture"){
             setFormDetails((prev) => ({
                 ...prev,
-                [name]: files[0],
-            }))} else {
-        setFormDetails((prev) => ({
-            ...prev,
-            [name]: value,
-        }))};
+                [name]:files[0]
+            }))
+        }else{
+                setFormDetails((prev) => ({
+                    ...prev,
+                    [name]: value
+                }))
+            }
     };
 
     const handleSubmit = async (e) => {
@@ -65,23 +67,25 @@ console.log(name)
         if (isSignedUpAsMember) {
             const { role, address, attachments, displayPicture, ...rest } = formDetails;
             payload = { ...rest };
-        } else {
-            const formData = new FormData();
-        formData.append("firstname", formDetails.firstname);
-        formData.append("lastname", formDetails.lastname);
-        formData.append("email", formDetails.email);
-        formData.append("password", formDetails.password);
-        formData.append("phone", formDetails.phone);
-        formData.append("role", formDetails.role);
-        formData.append("dob", formDetails.dob);
-        formData.append("gender", formDetails.gender);
-        formData.append("address", formDetails.address);
-        formDetails.attachments.forEach((attachment, index) => {
-            if (attachment.file) {
-                formData.append("attachments", attachment.file);
-            }
-        });
-            payload = formData;
+            const { role, address, displayPicture, attachments, ...rest } = formDetails;
+            payload = { ...rest };
+        } else {const formData = new FormData();
+            formData.append("firstname", formDetails.firstname);
+            formData.append("lastname", formDetails.lastname);
+            formData.append("email", formDetails.email);
+            formData.append("password", formDetails.password);
+            formData.append("dob", formDetails.dob);
+            formData.append("gender", formDetails.gender);
+            formData.append("phone", formDetails.phone);
+            formData.append("address", formDetails.address);
+            formData.append("displayPicture", formDetails.displayPicture);
+            formData.append("role", formDetails.role);
+            formDetails.attachments.forEach((attachment, index) => {
+                if (attachment.file) {
+                    formData.append("attachments", attachment.file);
+                }
+            });
+            payload = formData
         }
 
         setError(null);
@@ -247,6 +251,24 @@ console.log(name)
                                     name="phone"
                                     placeholder="Enter your phone number"
                                     value={formDetails.phone}
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                                /> 
+                            </BaseFieldSet> 
+                            <BaseFieldSet>
+                                <Label>Upload Picture</Label>
+                                <BaseInput
+                                    type="file"
+                                    name="displayPicture"
+                                    onChange={(e) => handleChange(e)}
+                                    required
+                            />
+                            </BaseFieldSet>
+                            <BaseFieldSet>
+                                <Label>Upload picture</Label>
+                                <BaseInput
+                                    type="file"
+                                    name="displayPicture"
                                     onChange={(e) => handleChange(e)}
                                     required
                                 />
