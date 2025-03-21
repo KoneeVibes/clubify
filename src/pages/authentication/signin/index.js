@@ -38,6 +38,7 @@ export const SignIn = () => {
         setLoading(true);
         setError(null);
         try {
+            console.log(signInDetails)
             const response = await authenticateUser("login", signInDetails);
             if (response.status) {
                 setLoading(false);
