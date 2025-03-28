@@ -10,7 +10,7 @@ import { DashboardWrapper } from "./styled";
 import { adverts } from "../../../config";
 import { BaseButton } from "../../../components/button/styled";
 import { useEffect, useMemo, useState } from "react";
-import { getProfile } from "../../../utils/apis/getProfile";
+import { getProfile } from "../../../utils/apis/profile/getProfile";
 import { jwtDecode } from "jwt-decode";
 
 export const Dashboard = () => {
@@ -30,6 +30,7 @@ export const Dashboard = () => {
             })
     }, [cookies, data, role]);
 
+    
     return (
         <Layout
             role={profileDetails?.role || profile?.role || ""}

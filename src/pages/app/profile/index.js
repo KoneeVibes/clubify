@@ -1,0 +1,52 @@
+import Cookies from "universal-cookie";
+import { Layout } from "../../../containers/layout";
+import { ProfileWrapper } from "./styled";
+import { H2, P } from "../../../components/typography/styled";
+import { Card } from "../../../components/card";
+import { BaseButton } from "../../../components/button/styled";
+import picture from "../../../assets/images/User icon.svg";
+import pic from "../../../assets/gold badge.svg";
+import { Row } from "../../../components/flex/styled";
+
+
+
+export const Profile = () => {
+  const cookies = new Cookies();
+  const { profile } = cookies.getAll();
+    
+  return (
+    <Layout
+      role={profile?.role}
+      title={`Hello ${profile?.role === "administrator" ? profile?.firstname || "" : profile?.member?.firstname || ""}`}
+      subTitle={new Date().toLocaleDateString('en-US', {
+        day: 'numeric',
+        month: 'long',
+        weekday: 'long'
+      })}
+      plan={profile?.plan?.planName || ""}
+      fullName={profile?.role === "administrator" ? `${profile?.firstname || ""} ${profile?.lastname || ""}` : `${profile?.member?.firstname || ""} ${profile?.member?.lastname || ""}`}
+    >
+      <ProfileWrapper>
+      <div className="background"/>  
+      <Card>
+          <img src={picture} alt= "user icon"/>
+           <H2>Sarah Adebowale</H2> 
+           <Row className="badge">
+            <img src={pic} alt="gold badge"/>
+            <P>Gold Plan Staff</P>
+           </Row>
+           <P>+234 8083876042</P>
+           <P>DOB: 17/04/2005</P>
+           <P>Female</P>
+         <BaseButton
+            className="change-button"
+          >
+            <span>
+              Edit Profile
+           </span>
+          </BaseButton>
+      </Card>
+     </ProfileWrapper>
+    </Layout>
+  );
+};

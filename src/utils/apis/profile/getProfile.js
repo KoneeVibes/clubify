@@ -1,4 +1,4 @@
-import { BASE_ENDPOINT } from "../endpoint";
+import { BASE_ENDPOINT } from "../../endpoint";
 
 export const getProfile = async (token, role) => {
     try {

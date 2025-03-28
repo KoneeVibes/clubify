@@ -54,7 +54,7 @@ export const Events = () => {
   return (
     <Layout
       role={profile?.role}
-      title={`Hello ${profile.role === "administrator"
+      title={`Hello ${profile?.role === "administrator"
         ? profile?.firstname || ""
         : profile?.member?.firstname || ""
         }`}
