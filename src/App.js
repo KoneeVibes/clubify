@@ -19,6 +19,7 @@ import { EventDetails } from "./pages/app/events/eventdetails";
 import { EventsHistory } from "./pages/app/events/eventhistory";
 import { ServicesBooking } from "./pages/app/services/booking";
 import { ServicesHistory } from "./pages/app/services/bookinghistory";
+import { MembershipPlans } from "./pages/app/membershipplans";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/membership" element={<Membership />} />
+        <Route path="membershipplans" element={<MembershipPlans />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/facilities/booking/:id" element={<Booking />} />
         <Route path="/facilities/history" element={<BookingHistory />} />
