@@ -2,13 +2,48 @@ import { MembershipWrapper } from "./styled";
 import { Layout } from "../../../containers/layout/index";
 import Cookies from "universal-cookie";
 import { Row } from "../../../components/flex/styled";
-import { BaseInput } from "../../../components/form/input/styled";
 import { H2, P, Span } from "../../../components/typography/styled";
 import { Card } from "../../../components/card";
+import { getAllMembershipPlans } from "../../../utils/apis/membershipplans/getAllMembershipPlans";
+import { getMembershipPlan } from "../../../utils/apis/membershipplans/getMembershipPlan";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Membership = () => {
   const cookies = new Cookies();
-  const { profile } = cookies.getAll();
+  const { profile, data } = cookies.getAll();
+  const navigate = useNavigate();
+
+  const [plans, setPlans] = useState({});
+  useEffect(() => {
+    getAllMembershipPlans(data.token)
+      .then((detail) => {
+        setPlans(detail);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch projects:", err);
+      });
+  }, [data.token]);
+
+
+  const [plan, setPlan] = useState({});
+  useEffect(() => {
+    getMembershipPlan(data.token, "")
+      .then((detail) => {
+        setPlan(detail);
+      })
+      .catch((err) => {
+        console.error("Failed to fetch projects:", err);
+      });
+  }, [data]);
+
+  const handleNavigateToUploadFile = (e, id) => {
+    e.preventDefault();
+    return navigate(`/membership/uploadfile/${id}`)
+  };
+
+
+
 
   return (
     <Layout
@@ -77,12 +112,10 @@ export const Membership = () => {
             >
               <div>
                 <Span>Upload Membership Documents</Span>
-                <P>Keep Your Membership Information Updated</P>
+                <P
+                  onClick={handleNavigateToUploadFile}>
+                  Keep Your Membership Information Updated</P>
               </div>
-              <BaseInput
-                type="file"
-                width={"auto"}
-              />
             </Row>
             <hr />
             <div>

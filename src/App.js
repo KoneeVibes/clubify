@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SignUp } from "./pages/authentication/signup";
 import { Dashboard } from "./pages/app/dashboard";
 import { Membership } from "./pages/app/membership";
+import { Upload } from "./pages/app/membership/uploadfile";
+import { Upgrade } from "./pages/app/membership/upgradeplan";
 import { SignIn } from "./pages/authentication/signin";
 import { Events } from "./pages/app/events";
 import { Booking } from "./pages/app/facilities/booking";
@@ -20,6 +22,8 @@ import { EventsHistory } from "./pages/app/events/eventhistory";
 import { ServicesBooking } from "./pages/app/services/booking";
 import { ServicesHistory } from "./pages/app/services/bookinghistory";
 
+
+
 function App() {
   return (
     <BrowserRouter>
@@ -28,6 +32,8 @@ function App() {
         <Route path="/signup" element={<SignUp />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/membership" element={<Membership />} />
+        <Route path="/membership/uploadfile/:id" element={<Upload />} />
+        <Route path="/membership/upgradeplan" element={<Upgrade />} />
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/facilities/booking/:id" element={<Booking />} />
         <Route path="/facilities/history" element={<BookingHistory />} />
