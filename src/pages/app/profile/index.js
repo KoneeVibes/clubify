@@ -35,14 +35,13 @@ export const Profile = () => {
               <img src={pic} alt="gold badge" />
               <P>
                 <Span className="gold">Gold</Span>
-                {/* display: inline-block */}
-                Plan
-                Staff
+                <Span className="planText"> plan</Span>
+                <Span className="black"> Staff</Span>
               </P>
             </Row>
-            <P>+234 8083876042</P>
-            <P>DOB: 17/04/2005</P>
-            <P>Female</P>
+            <P>+234 8083876042 </P>
+            <P className="head"> <h4>DOB:</h4> 17/04/2005 </P>
+            <P>Female </P>
             <BaseButton
               className="change-button"
             >

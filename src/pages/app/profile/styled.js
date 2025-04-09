@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import wavy from "../../../assets/twistline3.svg";
-import curly from "../../../assets/bluetwistline.svg";
+import lines from "../../../assets/vastlines2.svg";
 
 export const ProfileWrapper = styled("div")(() => {
   return {
@@ -17,7 +17,7 @@ export const ProfileWrapper = styled("div")(() => {
       right: "0",
     },
     "& .card": {
-      backgroundImage: `url(${curly})`,
+      backgroundImage: `url(${lines})`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       backgroundSize: "cover",
@@ -26,17 +26,23 @@ export const ProfileWrapper = styled("div")(() => {
       marginRight: "auto",
       position: "relative",
       overflow: "visible",
+      height: "100%",
+      
     },
     "& p": {
-      fontSize: "18px",
-      fontWeight: "600",
+      fontSize: "16px",
+      fontWeight: "400",
       textAlign: "center",
+      color: "#FDFAF6",
+    
     },
     "& h2": {
       fontSize: "36px",
       fontWeight: "400",
       lineHeight: "100%",
       textAlign: "center",
+      color: "#FDFAF6",
+      
     },
     "& .change-button": {
       borderRadius: "10px",
@@ -47,24 +53,47 @@ export const ProfileWrapper = styled("div")(() => {
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
+      margin: "auto",
+
       "& p": {
         fontSize: "16px",
-        fontWeight: 600,
-        color: "#EFEFEF",
+        fontWeight: 400,
         marginBlock: 0,
       },
-    },
+  },
     "& .user-icon": {
       borderRadius: "30px",
       justifyContent: "flex-start",
       display: "flex",
       position: "absolute",
       left: "-25px",
-      top: "-55px"
+      top: "-95px",
     },
     "& .badge": {
       justifyContent: "center",
       gap: "calc(var(--flex-gap)/10)",
-    }
+      marginBottom: "-10px",
+      marginTop: "-20px",
+    },
+    "& .gold": {
+      color: "#FEBA17",
+      display: "inline-block",
+      paddingRight: "3px",
+    },
+    "& .black": {
+      color: "#2C3930",
+      display: "inline-block",
+      paddingLeft: "3px",
+    },
+    "& .planText": {
+      display: "inline-block",
+    },
+     "& H4": {
+      display: "inline-block",
+      color: "#2C3930",
+    },
+     "& head": {
+      margin: "0",
+     }
   }
 })
