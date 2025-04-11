@@ -14,14 +14,25 @@ export const Upgrade = () => {
 
     const plansInfo = [
         {
-            name: "Gold",
+            name: "GOLD",
             duration: "12 Months",
             description: "Premium membership with exclusive access to all club activities, events, and VIP priveleges",
             benefits: ["Full access to all club events and networking session", "Priority seating at premium events", "Exclusive mentorship and training sessions", "Free access to all club facilities", "Free access to all club event"],
             amount: "₦100,000"
         },
         {
-
+            name: "SILVER",
+            duration: "12 Months",
+            description: "Premium membership with exclusive access to all club activities, events, and VIP priveleges",
+            benefits: ["Full access to all club events and networking session", "Priority seating at premium events", "Exclusive mentorship and training sessions", "Free access to all club facilities", "Free access to all club event"],
+            amount: "₦50,000"
+        },
+        {
+            name: "BRONZE",
+            duration: "12 Months",
+            description: "Premium membership with exclusive access to all club activities, events, and VIP priveleges",
+            benefits: ["Full access to all club events and networking session", "Priority seating at premium events", "Exclusive mentorship and training sessions", "Free access to all club facilities", "Free access to all club event"],
+            amount: "₦25,000"
         }
     ];
 

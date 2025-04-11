@@ -30,6 +30,10 @@ export const Membership = () => {
     e.preventDefault();
     return navigate(`/membership/uploadfile`)
   };
+  const handleNavigateToUpgradeplan = (e, id) => {
+    e.preventDefault();
+    return navigate(`/membership/upgradeplan`)
+  };
 
   return (
     <Layout
@@ -106,7 +110,9 @@ export const Membership = () => {
             <hr />
             <div>
               <Span>Upgrade Membership Plan</Span>
-              <P>Explore Membership upgrades</P>
+              <P
+                onClick={handleNavigateToUpgradeplan}>
+                Explore Membership upgrades</P>
             </div>
             <hr />
             <div>
