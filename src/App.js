@@ -19,6 +19,7 @@ import { EventDetails } from "./pages/app/events/eventdetails";
 import { EventsHistory } from "./pages/app/events/eventhistory";
 import { ServicesBooking } from "./pages/app/services/booking";
 import { ServicesHistory } from "./pages/app/services/bookinghistory";
+import { Profile } from "./pages/app/profile";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/events/detail/:id" element={<EventDetails />} />
         <Route path="/events/history" element={<EventsHistory />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </BrowserRouter>
   );
