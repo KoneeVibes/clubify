@@ -4,7 +4,6 @@ import Cookies from "universal-cookie";
 import { Row } from "../../../components/flex/styled";
 import { H2, P, Span } from "../../../components/typography/styled";
 import { Card } from "../../../components/card";
-import { getAllMembershipPlans } from "../../../utils/apis/membershipplans/getAllMembershipPlans";
 import { getMembershipPlan } from "../../../utils/apis/membershipplans/getMembershipPlan";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -14,19 +13,9 @@ export const Membership = () => {
   const { profile, data } = cookies.getAll();
   const navigate = useNavigate();
 
-  const [plans, setPlans] = useState({});
-  useEffect(() => {
-    getAllMembershipPlans(data.token)
-      .then((detail) => {
-        setPlans(detail);
-      })
-      .catch((err) => {
-        console.error("Failed to fetch projects:", err);
-      });
-  }, [data.token]);
-
-
+  // eslint-disable-next-line no-unused-vars
   const [plan, setPlan] = useState({});
+
   useEffect(() => {
     getMembershipPlan(data.token, "")
       .then((detail) => {
@@ -39,11 +28,8 @@ export const Membership = () => {
 
   const handleNavigateToUploadFile = (e, id) => {
     e.preventDefault();
-    return navigate(`/membership/uploadfile/${id}`)
+    return navigate(`/membership/uploadfile`)
   };
-
-
-
 
   return (
     <Layout

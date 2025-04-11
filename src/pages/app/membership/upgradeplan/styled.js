@@ -5,31 +5,56 @@ export const UpgradePlanWrapper = styled(Column)(() => {
     return {
         overflow: "hidden",
         "& .title": {
-            marginLeft: "auto",
-            marginRight: "auto",
-            width: "100%",
+            alignItems: "center",
+            gap: "calc(var(--flex-gap) * 2)",
+            marginBlock: "calc(var(--basic-margin) / 2)",
             "& h1": {
-                fontWeight: "bold",
-                fontSize: "15px",
-                textAlign: "center",
-                margin: "0 auto",
+                fontWeight: 400,
+                fontSize: "32px",
                 marginBlock: 0,
-                float: "left",
+            },
+            "@media screen and (max-width: 1280px)": {
+                flexDirection: "column",
+                gap: "calc(var(--flex-gap) / 2)",
+                "& h1": {
+                    textAlign: "center"
+                },
+            }
+        },
+        "& .title-text": {
+            flex: 0.75,
+        },
+        "& .upload-button": {
+            overflow: "hidden",
+            flex: 0.25,
+            "& button": {
+                "& span": {
+                    fontSize: "15px",
+                    fontWeight: 500,
+                    transition: "background-color 0.3s ease, transform 0.2s ease",
+                    width: "100%",
+                    display: "inline-block"
+                },
             }
         },
         "& .highlight-purple": {
             color: "#3C1985",
-            display: "inline",
+            display: "inline-block",
+            fontWeight: "inherit",
+            fontSize: "inherit",
+            overflow: "unset",
         },
-        "& .cards": {
-            flex: "1",
+        "& .card": {
+            flex: 1,
+            "& .card-header": {
+                display: "flex",
+                justifyContent: "center",
+            },
+            "& h3": {
+                marginBlock: 0
+            }
         },
-        "& .card-header": {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-        },
-        "& P": {
+        "& p": {
             fontSize: "12px",
         },
         "& li": {
@@ -38,30 +63,21 @@ export const UpgradePlanWrapper = styled(Column)(() => {
             overflow: "unset",
 
         },
-        "& .upload-button": {
-            overflow: "hidden",
-            marginBlockEnd: "calc(var(--basic-margin))",
-            display: "flex",
-            justifyContent: "center",
-            "& button": {
-                width: "auto",
-                "& span": {
-                    fontSize: "15px",
-                    fontWeight: 500,
-                    transition: "background-color 0.3s ease, transform 0.2s ease",
-                },
-            }
-        },
-
         "& .amount": {
-            fontWeight: "bold",
+            fontWeight: 700,
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             textShadow: "0 4px 4px rgba(0, 0, 0, 0.5) ",
+            marginBlock: "calc(var(--basic-margin)/1.5)"
+        },
+        "& .card-row": {
+            marginBlockEnd: "calc(var(--basic-margin) * 2)",
+        },
+        "@media screen and (max-width: 1440px)": {
+            "& .card-row": {
+                flexDirection: "column"
+            },
         }
-
-
-
     };
 });
