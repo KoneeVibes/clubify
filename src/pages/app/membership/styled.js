@@ -46,6 +46,11 @@ export const MembershipWrapper = styled("div")(() => {
       "& p": {
         fontSize: "12px",
         fontWeight: 400,
+        "&:hover": {
+          color: "#0000EE",
+          cursor: "pointer",
+          textDecoration: "underline",
+        },
       },
     },
     "& .card div": {
@@ -56,6 +61,15 @@ export const MembershipWrapper = styled("div")(() => {
         flexDirection: "column",
         gap: "calc(var(--flex-gap)/4)"
       }
-    }
+    },
+    "& .facility-icon": {
+      flex: 0.5,
+      overflow: "hidden",
+      "& svg": {
+        width: "100%",
+        height: "auto"
+      }
+    },
+
   };
 });
